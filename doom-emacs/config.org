@@ -21,8 +21,7 @@
       auto-save-default t)
 
 ;; Show battery status
-(unless (string-match-p "^Power N/A" (battery))
-  (display-battery-mode 1))
+(display-battery-mode 1)
 #+end_src
 * UI
 ** Font Settings
@@ -429,6 +428,7 @@
 (map! :map elfeed-show-mode-map
       :n "J" #'elfeed-goodies/split-show-next
       :n "K" #'elfeed-goodies/split-show-prev)
+
 #+end_src
 * Emacs everywhere
 #+begin_src emacs-lisp :tangle yes
