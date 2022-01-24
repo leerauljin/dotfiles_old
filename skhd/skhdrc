@@ -2,30 +2,31 @@
 # rcmd - 0 : open -n -a Finder
 rcmd - return : emacsclient --eval "(emacs-everywhere)"
 rcmd - t : open -n -a Alacritty #; yabai -m space --focus 1
-rcmd - e : open -a Emacs; yabai -m space --focus 1
 rcmd - j : open -a jamovi; yabai -m space --focus 1
 rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 1
 
 rcmd - b : open -a Safari; yabai -m space --focus 2
 
-rcmd - z : open -a Zotero; yabai -m space --focus 3
-rcmd - n : open -a Notion; yabai -m space --focus 3
-rcmd - c : open -a Calendar; yabai -m space --focus 3
+rcmd - e : open -a Emacs # ; yabai -m space --focus 1
 
-rcmd - m : open -a Spark ; yabai -m space --focus 4
+rcmd - z : open -a Zotero; yabai -m space --focus 4
+rcmd - n : open -a Notion; yabai -m space --focus 4
+rcmd - c : open -a Calendar; yabai -m space --focus 4
 
-rcmd - p : open -a Music; yabai -m space --focus 5
+rcmd - m : open -a Spark ; yabai -m space --focus 5
+
+rcmd - p : open -a Music; yabai -m space --focus 6
 
 
 # open folders
-rcmd - 1 : open ~/
-rcmd - 2 : open ~/Downloads
-rcmd - 3 : open ~/Desktop
-rcmd - 4 : open ~/Documents
-rcmd - 5 : open ~/Documents/Academic
-rcmd - 6 : open ~/Documents/Academic/Research
-rcmd - 7 : open ~/Documents/Academic/Graduate\ School
-rcmd - 8 : open ~/Documents/Academic/Org-papers
+rcmd + shift - h : open ~/
+rcmd + shift - d : open ~/Downloads
+rcmd + shift - k : open ~/Desktop
+rcmd + shift - c : open ~/Documents
+rcmd + shift - a : open ~/Documents/Academic
+rcmd + shift - r : open ~/Documents/Academic/Research
+rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
+rcmd + shift - o : open ~/Documents/Academic/Org-papers
 # rcmd - 0 : open ~/.trash
 
 # open websites
