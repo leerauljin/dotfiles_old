@@ -1,0 +1,4 @@
+#+TITLE: My private dotfiles
+
+* Description
+As usual, I'm anxious to lose all this.
