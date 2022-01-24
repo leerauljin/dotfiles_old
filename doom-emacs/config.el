@@ -190,93 +190,76 @@
 
 (add-hook! 'org-mode-hook (setq-local line-spacing 0.1))
 
-(add-hook! 'doom-load-theme-hook
-  (after! org
-    (set-face-attribute
-     'org-document-title nil :foreground (doom-color 'fg))
-    (set-face-attribute
-     'org-level-1 nil :foreground (doom-color 'fg))
-    (set-face-attribute
-     'org-level-2 nil :foreground (doom-color 'fg))
-    (set-face-attribute
-     'org-level-3 nil :foreground (doom-color 'fg))
-    (set-face-attribute
-     'org-level-4 nil :foreground (doom-color 'fg))
-    (set-face-attribute
-     'org-ellipsis nil  :foreground (doom-color 'grey)
-                        :background (doom-color 'bg))
-    (set-face-attribute
-     'org-hide nil :background (doom-color 'bg))
-    (set-face-attribute
-     'org-block nil :background (doom-color 'bg))
-    (set-face-attribute
-     'org-block-begin-line nil :background (doom-color 'bg))
-    (set-face-attribute
-     'org-block-end-line nil :background (doom-color 'bg))
-    (set-face-attribute
-     'org-table nil  :foreground (doom-color 'fg)
-                        :background (doom-color 'bg-alt))
-    (set-face-attribute
-     'org-agenda-date nil :foreground (doom-color 'grey))
-    (set-face-attribute
-     'org-agenda-date-today nil :foreground (doom-color 'blue))
-    (set-face-attribute
-     'org-agenda-date-weekend nil :foreground (doom-color 'red))))
-
 (custom-set-faces!
   '(org-level-1
+    :foreground (doom-color 'fg)
     :height 1.6
     :weight bold)
   '(org-level-2
+    :foreground (doom-color 'fg)
     :height 1.3
     :weight bold
     :slant italic)
   '(org-level-3
+    :foreground (doom-color 'fg)
     :height 1.2
     :weight bold)
   '(org-level-4
+    :foreground (doom-color 'fg)
     :height 1.1
     :weight bold)
   '(org-ellipsis
+    :foreground (doom-color 'grey)
+    :background (doom-color 'bg)
     :weight normal
     :slant normal)
+  '(org-block
+    :background (doom-color 'fg-alt)
   '(org-block-begin-line
+    :foreground (doom-color 'fg)
+    :background (doom-color 'fg-alt)
     :slant italic)
   '(org-block-end-line
+    :background (doom-color 'fg-alt)
     :slant italic)
   '(org-headline-done
     :strike-through nil)
   '(org-agenda-date
-    :weight normal)
+    :foreground (doom-color 'grey)
+    :weight bold)
   '(org-agenda-date-today
+    :foreground (doom-color 'blue)
     :weight bold
     :slant italic
     :height 1.2)
   '(org-agenda-date-weekend
+    :foreground (doom-color 'red)
     :weight normal)
   '(org-document-title
+    :foreground (doom-color 'fg)
     :weight bold
     :slant italic
-    :height 1.9))
+    :height 1.9
+    )))
 
-(after! org
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-          (sequence "IDEA(i)" "READ(r)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u)" "RETURN(j)" "|" "FIN(f)" "KILL(k)"))
-        org-todo-keyword-faces
-        '(("TODO"   . "#D95468")
-          ("NEXT"  . "#D98E48")
-          ("DONE"  . "#008B94")
-          ("IDEA"  . "#E27E8D")
-          ("READ"  . "#EBBF83")
-          ("DATA"  . "#8BD49C")
-          ("ANAL"  . "#33CED8")
-          ("WRITE"  . "#5EC4FF")
-          ("PROOF"  . "#539AFC")
-          ("RETURN" . "#D95468")
-          ("U/R" . "#718CA1")
-          ("FIN" . "#008B94")
-          ("KILL"   . "grey"))))
+;; (after! org
+;;   (setq org-todo-keywords
+;;         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+;;           (sequence "IDEA(i)" "READ(r)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u)" "RETURN(j)" "|" "FIN(f)" "KILL(k)"))
+;;         org-todo-keyword-faces
+;;         '(("TODO"   . (doom-color 'red))
+;;           ("NEXT"  . (doom-color 'orange))
+;;           ("DONE"  . (doom-color 'green))
+;;           ("IDEA"  . (doom-color 'magenta))
+;;           ("READ"  . (doom-color 'yellow))
+;;           ("DATA"  . (doom-color 'dark-cyan))
+;;           ("ANAL"  . (doom-color 'red))
+;;           ("WRITE"  . (doom-color 'blue))
+;;           ("PROOF"  . (doom-color 'bright-blue))
+;;           ("RETURN" . (doom-color 'red))
+;;           ("U/R" . (doom-color 'dark-blue))
+;;           ("FIN" . (doom-color 'green))
+;;           ("KILL"   . (doom-color 'grey)))))
 
 (setq hl-todo-keyword-faces
       '(("TODO"   . "#D95468")
