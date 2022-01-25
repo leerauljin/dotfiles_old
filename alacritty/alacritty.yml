@@ -110,10 +110,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode Nerd Font Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Retina
+    style: Regular
 
   # Bold font face
   bold:
@@ -121,7 +121,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -132,7 +132,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -143,7 +143,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -177,90 +177,62 @@ font:
 
 schemes:
   # Default colors
-  my-custom: &plain
+  nasa-theme: &dark
     primary:
-      background: '0xffffff'
-      foreground: '0x282a2e'
+      background: '#212121'
+      foreground: '#ffffff'
 
     # Normal colors
     normal:
-      black:   '0xf3f3f3'
-      red:     '0x282a2e'
-      green:   '0x282a2e'
-      yellow:  '0x282a2e'
-      blue:    '0x282a2e'
-      magenta: '0x282a2e'
-      cyan:    '0x282a2e'
-      white:   '0xf3f3f3'
+      black:   '#212121' # color-base
+      red:     '#dd361c' # color-secondary
+      green:   '#4aa564' # color-green-light
+      yellow:  '#f9aa43' # color-gold-light 
+      blue:    '#0b3d91' # color-primary-darker
+      magenta: '#4c2c92' # color-visited
+      cyan:    '#02bfe7' # color-primary-alt
+      white:   '#f1f1f1' # clolor-gray-lightest
 
     # Bright colors
     bright:
-      black:   '0xf3f3f3'
-      red:     '0x282a2e'
-      green:   '0x282a2e'
-      yellow:  '0x282a2e'
-      blue:    '0x282a2e'
-      magenta: '0x282a2e'
-      cyan:    '0x282a2e'
-      white:   '0xf3f3f3'
+      black:   '#323a45' # color-gray-dark
+      red:     '#e59892' # color-secondary-light
+      green:   '#94bfa2' # color-green-lighter
+      yellow:  '#ffc375' # color-gold-lighter
+      blue:    '#105bd8' # color-primary
+      magenta: '#4c2c92' # color-visited
+      cyan:    '#9bdaf1' # color-primary-alt-light
+      white:   '#ffffff' # color-white
 
 
-  my-custom: &light
+  nasa-theme: &light
     primary:
       background: '#ffffff'
-      foreground: '#282a2e'
+      foreground: '#212121'
 
     # Normal colors
     normal:
-      black:   '#282a2e'
-      red:     '#B62D65'
-      green:   '#008B94'
-      yellow:  '#D98E48'
-      blue:    '#718CA1'
-      magenta: '#B62D65'
-      cyan:    '#33CED8'
-      white:   '#f3f3f3'
+      black:   '#101010' 
+      red:     '#99231b' # color-secondary-darkest
+      green:   '#2e8540' # color-green
+      yellow:  '#ff9d1e' # color-gold 
+      blue:    '#061f4a' # color-primary-darkest
+      magenta: '#4c2c92' # color-visited
+      cyan:    '#046b99' # color-primary-alt-darkest
+      white:   '#aeb0b5' # clolor-gray-light
 
     # Bright colors
     bright:
-      black:   '#282a2e'
-      red:     '#D95468'
-      green:   '#8BD49C'
-      yellow:  '#EBBF83'
-      blue:    '#5EC4FF'
-      magenta: '#E27E8D'
-      cyan:    '#70E1E8'
-      white:   '#ffffff'
+      black:   '#212121' # color-base
+      red:     '#dd361c' # color-secondary
+      green:   '#4aa564' # color-green-light
+      yellow:  '#f9aa43' # color-gold-light 
+      blue:    '#0b3d91' # color-primary-darker
+      magenta: '#4c2c92' # color-visited
+      cyan:    '#00a6d2' # color-primary-alt
+      white:   '#d6d7d9' # clolor-gray-lighter
 
-
-  my-custom: &dark
-    primary:
-      background: '0x20242c'
-      foreground: '0xA0B3C5'
-
-    # Normal colors
-    normal:
-      black:   '0x10151C'
-      red:     '0xd95468'
-      green:   '0x8bd49c'
-      yellow:  '0xebbf83'
-      blue:    '0x539afc'
-      magenta: '0xb62d65'
-      cyan:    '0x70e1e8'
-      white:   '0x718ca1'
-
-    # Bright colors
-    bright:
-      black:   '0x41505e'
-      red:     '0xd95468'
-      green:   '0x8bd49c'
-      yellow:  '0xf7dab3'
-      blue:    '0x5ec4ff'
-      magenta: '0xb62d65'
-      cyan:    '0x70e1e8'
-      white:   '0xb7c5d3'
-
-colors: *dark
+colors: *light
 
   # Cursor colors
   #

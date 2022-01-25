@@ -22,13 +22,21 @@
 
 ;; Show battery status
 (display-battery-mode 1)
+(setq display-time-default-load-average nil)
+#+end_src
+** Coding system
+#+begin_src emacs-lisp :tangle yes
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 #+end_src
 * UI
 ** Font Settings
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 18 :style "Retina")
+(setq doom-font (font-spec :family "SFMono Nerd Font" :size 18)
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
       doom-variable-pitch-font (font-spec :family "ETbb" :size 18 :slant 'normal :weight 'normal))
 #+end_src
@@ -55,16 +63,17 @@
 
 (add-hook 'ns-system-appearance-change-functions #'apply-system-theme)
 #+end_src
+**
 ** Header line
 #+begin_src emacs-lisp :tangle yes
 ;; "Adds a bar with the same color as the fringe as the header-line.Imitates the look of wordprocessors a bit."
 (setq-default header-line-format
     (concat
         (propertize " " 'display (list 'space :width 'left-fringe) 'face 'fringe)
-        (propertize " " 'display (list 'space :width 'left-margin) 'face (list (list :height 600) 'default))
-        (propertize " " 'display (list 'space :width 'text) 'face (list (list :height 600) 'default))
+        (propertize " " 'display (list 'space :width 'left-margin) 'face (list (list :height 800) 'default))
+        (propertize " " 'display (list 'space :width 'text) 'face (list (list :height 800) 'default))
         ;(propertize (format " %dW" (count-words (point-min) (point-max))) 'face 'default)
-        (propertize " " 'display (list 'space :width 'left-margin) 'face (list (list :height 600) 'default))
+        (propertize " " 'display (list 'space :width 'left-margin) 'face (list (list :height 800) 'default))
 ;;(propertize (format " %dW" (count-words (point-min) (point-max))) 'face 'fringe)
 ;; '("" mode-line-misc-info)
         (propertize " " 'display (list 'space :width 'left-fringe) 'face 'fringe))) ;
@@ -92,11 +101,22 @@
 #+begin_src emacs-lisp :tangle yes
 ;; (doom/set-frame-opacity 97)
 #+end_src
+** Miniframe mode
+#+begin_src emacs-lisp :tangle yes
+(add-hook! 'special-mode-hook 'mini-frame-mode)
+(custom-set-variables
+ '(mini-frame-show-parameters
+   '((top . 0.6)
+     (width . 0.85)
+     (left . 0.1))))
+#+end_src
 ** Cursor settings
 #+begin_src emacs-lisp :tangle yes
 ;; Add different colors for VIM state
-(setq evil-normal-state-cursor '(box "light blue")
-      evil-insert-state-cursor '(bar "medium sea green")
+(setq evil-normal-state-cursor '(box "DodgerBlue2")
+      evil-insert-state-cursor '((bar . 3) "SeaGreen3")
+      evil-replace-state-cursor '((hbar . 2) "firebrick2")
+      ;; evil-motion-state-cursor '(bar "medium sea green")
       evil-visual-state-cursor '(hollow "orange"))
 #+end_src
 ** Modeline Configuration
@@ -171,7 +191,7 @@
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun auto-org-babel-tangle ()
   (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.doom.d/config.org"))
+                      (expand-file-name "~/Documents/Dev/dotfiles/doom-emacs/config.org"))
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
@@ -303,6 +323,8 @@
 ** Custom fonts height
 #+begin_src emacs-lisp :tangle yes
 (custom-set-faces!
+  '(tooltip
+    :family "FiraCode Nerd Font Mono")
   '(org-level-1
     :height 1.6
     :weight bold)
@@ -337,7 +359,7 @@
     :weight bold
     :slant italic
     :height 1.9))
-#+end_src
+ #+end_src
 ** Custom Todo
 #+begin_src emacs-lisp :tangle yes
 (after! org
@@ -381,6 +403,24 @@
                                                     "\n"
                                                     (org-agenda-format-date-aligned date))))
 #+end_src
+* Org-roam
+** Basic configs
+#+begin_src emacs-lisp :tangle yes
+(setq org-roam-directory "~/Documents/RoamNotes")
+(setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+#+end_src
+** Org-roam UI
+#+begin_src emacs-lisp :tangle yes
+(map! :leader
+      "n r u" #'org-roam-ui-mode)
+#+end_src
+** Org-roam-bibtex
+#+begin_src emacs-lisp :tangle yes
+(setq citar-bibliography
+      '("~/Documents/Academic/Org-papers/zotero-refs.bib"))
+(setq bibtex-completion-bibliography
+      '("~/Documents/Academic/Org-papers/zotero-refs.bib"))
+#+end_src
 * Custom Functions
 ** Center cursor
 #+begin_src emacs-lisp :tangle yes
@@ -404,7 +444,7 @@
 #+begin_src emacs-lisp :tangle yes
 (load! "misc/auto-capitalize")
 (setq auto-capitalize-words `("I" "English"))
-(add-hook 'org-mode-hook 'auto-capitalize-mode)
+;; (add-hook 'org-mode-hook 'auto-capitalize-mode)
 #+end_src
 * Dired
 #+begin_src emacs-lisp :tangle yes
@@ -430,6 +470,33 @@
       :n "K" #'elfeed-goodies/split-show-prev)
 
 #+end_src
+* Org noter
+#+begin_src emacs-lisp :tangle yes
+(setq org-noter-always-create-frame nil)
+#+end_src
+* Citar
+** Use icons
+#+begin_src emacs-lisp :tangle yes
+;; (setq citar-symbols
+;;       `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
+;;         (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
+;;         (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
+;; (setq citar-symbol-separator "  ")
+#+end_src
+** Template
+#+begin_src emacs-lisp :tangle yes
+(setq citar-templates
+      '((main . "${author editor:20}     ${date year issued:4}     ${title:48}")
+        (suffix . "          ${=type=:12}    ${tags keywords:*}")
+        (note . "Notes on ${author editor}, ${title}")))
+#+end_src
+** Keybind
+#+begin_src emacs-lisp :tangle yes
+(map! :map org-mode-map
+      :leader
+      : "m k" #'citar-insert-edit)
+#+end_src
+**
 * Emacs everywhere
 #+begin_src emacs-lisp :tangle yes
 ;; (map! :map emacs-everywhere-mode-map

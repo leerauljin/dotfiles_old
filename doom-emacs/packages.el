@@ -57,3 +57,8 @@
 (package! mw-thesaurus)
 (package! osx-trash)
 (package! nano-theme)
+(package! mini-frame)
+(package! org-roam-bibtex)
+(package! org-ref)
+(unpin! org-roam)
+(package! org-roam-ui)
