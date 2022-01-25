@@ -31,6 +31,14 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 #+end_src
+** Folders
+#+begin_src emacs-lisp :tangle yes
+(defconst my/config-file "~/Documents/Dev/dotfiles/doom-emacs/config.org")
+(defconst my/bibtex-file "~/Documents/Academic/Org-papers/zotero-refs.bib")
+(defconst my/org-roam-folder "~/Documents/RoamNotes")
+(after! org
+  (defconst my/org-folder "~/Documents/Org-mode/"))
+#+end_src
 * UI
 ** Font Settings
 *** Font family and size
@@ -182,7 +190,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (after! org
-  (setq org-directory "~/Documents/Org-mode/"))
+  (setq org-directory my/org-folder))
 (setq org-agenda-files '("~/Documents/Org-mode/"))
 
 #+end_src
@@ -191,7 +199,7 @@
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun auto-org-babel-tangle ()
   (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/Documents/Dev/dotfiles/doom-emacs/config.org"))
+                      (expand-file-name my/config-file))
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
@@ -403,10 +411,14 @@
                                                     "\n"
                                                     (org-agenda-format-date-aligned date))))
 #+end_src
+* Org noter
+#+begin_src emacs-lisp :tangle yes
+(setq org-noter-always-create-frame nil)
+#+end_src
 * Org-roam
 ** Basic configs
 #+begin_src emacs-lisp :tangle yes
-(setq org-roam-directory "~/Documents/RoamNotes")
+(setq org-roam-directory my/org-roam-folder)
 (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
 #+end_src
 ** Org-roam UI
@@ -416,7 +428,7 @@
 #+end_src
 ** Ivy-bibtex
 #+begin_src emacs-lisp :tangle yes
-(setq bibtex-completion-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib"
+(setq bibtex-completion-bibliography my/bibtex-file
       bibtex-completion-pdf-field "file")
 (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
 #+end_src
@@ -425,7 +437,7 @@
 (setq
  org-ref-completion-library 'org-ref-ivy-cite
  org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-ivy-bibtex
- org-ref-default-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib"
+ org-ref-default-bibliography my/bibtex-file
  org-ref-notes-function 'orb-edit-notes)
 #+end_src
 ** Org-ref custom layout
@@ -447,22 +459,14 @@
       :desc "Search bibliography"
       "m z" #'ivy-bibtex)
 #+end_src
-** Citar
-*** Template
+** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
-;; (setq citar-templates
-;;       '((main . "${author editor:20}     ${date year issued:4}     ${title:48}")
-;;         (suffix . "          ${=type=:12}    ${tags keywords:*}")
-;;         (note . "Notes on ${author editor}, ${title}")))
-#+end_src
-*** Default folder
-#+begin_src emacs-lisp :tangle yes
-;; (setq citar-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib")
-#+end_src
-** Org-roam bibtex
-#+begin_src emacs-lisp :tangle yes
-;; (setq orb-roam-ref-format 'org-cite
-;;       orb-insert-link-description 'citation-org-cite)
+(setq org-roam-capture-templates
+      '(("n" "Org-noter" plain
+         "%?"
+         :target
+         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n* Org-Noter\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:")
+         :unnarrowed t)))
 #+end_src
 * Custom Functions
 ** Center cursor
@@ -512,10 +516,6 @@
       :n "J" #'elfeed-goodies/split-show-next
       :n "K" #'elfeed-goodies/split-show-prev)
 
-#+end_src
-* Org noter
-#+begin_src emacs-lisp :tangle yes
-(setq org-noter-always-create-frame nil)
 #+end_src
 * Emacs everywhere
 #+begin_src emacs-lisp :tangle yes
