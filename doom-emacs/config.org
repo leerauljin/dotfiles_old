@@ -414,13 +414,55 @@
 (map! :leader
       "n r u" #'org-roam-ui-mode)
 #+end_src
-** Org-roam-bibtex
+** Ivy-bibtex
 #+begin_src emacs-lisp :tangle yes
-(setq bibtex-completion-bibliography
-      '("~/Documents/Academic/Org-papers/zotero-refs.bib")
+(setq bibtex-completion-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib"
       bibtex-completion-pdf-field "file")
-      ;; bibtex-completion-library-path '("~/Documents/Academic/Zotero/"))
 (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
+#+end_src
+** Org-ref
+#+begin_src emacs-lisp :tangle yes
+(setq
+ org-ref-completion-library 'org-ref-ivy-cite
+ org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-ivy-bibtex
+ org-ref-default-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib"
+ org-ref-notes-function 'orb-edit-notes)
+#+end_src
+** Org-ref custom layout
+#+begin_src emacs-lisp :tangle yes
+(setq bibtex-completion-display-formats
+      '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:7}")))
+;; pretty simbols
+(setq bibtex-completion-pdf-symbol "⌘")
+(setq bibtex-completion-notes-symbol "✎")
+#+end_src
+
+#+RESULTS:
+
+** Org-ref keybinding
+#+begin_src emacs-lisp :tangle yes
+(map! :map org-mode-map
+      :leader
+      "m @" #'org-ref-insert-cite-link
+      :desc "Search bibliography"
+      "m z" #'ivy-bibtex)
+#+end_src
+** Citar
+*** Template
+#+begin_src emacs-lisp :tangle yes
+;; (setq citar-templates
+;;       '((main . "${author editor:20}     ${date year issued:4}     ${title:48}")
+;;         (suffix . "          ${=type=:12}    ${tags keywords:*}")
+;;         (note . "Notes on ${author editor}, ${title}")))
+#+end_src
+*** Default folder
+#+begin_src emacs-lisp :tangle yes
+;; (setq citar-bibliography "~/Documents/Academic/Org-papers/zotero-refs.bib")
+#+end_src
+** Org-roam bibtex
+#+begin_src emacs-lisp :tangle yes
+;; (setq orb-roam-ref-format 'org-cite
+;;       orb-insert-link-description 'citation-org-cite)
 #+end_src
 * Custom Functions
 ** Center cursor
@@ -475,29 +517,6 @@
 #+begin_src emacs-lisp :tangle yes
 (setq org-noter-always-create-frame nil)
 #+end_src
-* Citar
-** Use icons
-#+begin_src emacs-lisp :tangle yes
-;; (setq citar-symbols
-;;       `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
-;;         (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
-;;         (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
-;; (setq citar-symbol-separator "  ")
-#+end_src
-** Template
-#+begin_src emacs-lisp :tangle yes
-(setq citar-templates
-      '((main . "${author editor:20}     ${date year issued:4}     ${title:48}")
-        (suffix . "          ${=type=:12}    ${tags keywords:*}")
-        (note . "Notes on ${author editor}, ${title}")))
-#+end_src
-** Keybind
-#+begin_src emacs-lisp :tangle yes
-(map! :map org-mode-map
-      :leader
-      : "m k" #'citar-insert-edit)
-#+end_src
-**
 * Emacs everywhere
 #+begin_src emacs-lisp :tangle yes
 ;; (map! :map emacs-everywhere-mode-map
