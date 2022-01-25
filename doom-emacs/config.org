@@ -107,8 +107,8 @@
 (custom-set-variables
  '(mini-frame-show-parameters
    '((top . 0.6)
-     (width . 0.85)
-     (left . 0.1))))
+     (width . 0.95)
+     (left . 0.5))))
 #+end_src
 ** Cursor settings
 #+begin_src emacs-lisp :tangle yes
@@ -416,10 +416,11 @@
 #+end_src
 ** Org-roam-bibtex
 #+begin_src emacs-lisp :tangle yes
-(setq citar-bibliography
-      '("~/Documents/Academic/Org-papers/zotero-refs.bib"))
 (setq bibtex-completion-bibliography
-      '("~/Documents/Academic/Org-papers/zotero-refs.bib"))
+      '("~/Documents/Academic/Org-papers/zotero-refs.bib")
+      bibtex-completion-pdf-field "file")
+      ;; bibtex-completion-library-path '("~/Documents/Academic/Zotero/"))
+(add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
 #+end_src
 * Custom Functions
 ** Center cursor
