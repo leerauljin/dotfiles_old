@@ -64,3 +64,4 @@
 (package! org-roam-ui)
 (package! org-roam-bibtex)
 (package! mixed-pitch)
+(package! synosaurus)

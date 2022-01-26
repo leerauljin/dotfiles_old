@@ -418,11 +418,10 @@
 (map! :map org-mode-map
       :leader
       "m n" #'org-noter)
+
 (map! :map pdf-view-mode-map
-      "i" #'org-noter-insert-note
       :leader
-      "m n" #'org-noter
-      "m k" #'org-noter-create-skeleton)
+      "m n" #'org-noter)
 #+end_src
 * Org-roam
 ** Basic configs
@@ -475,17 +474,17 @@
 ** Org-ref keybinding
 #+begin_src emacs-lisp :tangle yes
 (map! :map org-mode-map
-      :leader
       :desc "Insert node"
-      "m 1" #'org-roam-node-insert-immediate
+      "C-c n" #'org-roam-node-insert
       :desc "Insert node immediately"
-      "m !" #'org-roam-node-insert-immediate
+      "C-c i" #'org-roam-node-insert-immediate
       :desc "Insert Citation"
-      "m 2" #'org-ref-insert-cite-link
+      "C-c c" #'org-ref-insert-cite-link
       :desc "Insert ORB node"
-      "m @" #'org-ref-insert-cite-link
-      :desc "Search bibliography"
-      "m z" #'ivy-bibtex)
+      "C-c a" #'orb-insert-link
+      :leader
+      :desc "Search Citation"
+      "s c" #'ivy-bibtex)
 #+end_src
 ** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
@@ -634,12 +633,21 @@
 #+end_src
 ** MW-Thesaurus
 #+begin_src emacs-lisp :tangle yes
-(map! :leader
-      :desc "M&W Thesaurus at point"
-      "s t" #'mw-thesaurus-lookup-at-point)
-(map! :leader
+(map! :desc "M&W Thesaurus at point"
+      "C-c t" #'mw-thesaurus-lookup-at-point
+      :leader
       :desc "M&W Thesaurus"
-      "s T" #'mw-thesaurus-lookup)
+      "s t" #'mw-thesaurus-lookup)
+#+end_src
+** Sysaurus
+#+begin_src emacs-lisp :tangle yes
+(map! :desc "Find synonym and insert"
+      "C-c r" #'synosaurus-choose-and-replace
+      :desc "Find synonym and insert"
+      "C-c s" #'synosaurus-choose-and-insert
+      :leader
+      :desc "Wordnet"
+      "s w" #'synosaurus-lookup)
 #+end_src
 
 ** PDF-Tools
@@ -657,9 +665,8 @@
 ** Abbrev define
 #+begin_src emacs-lisp :tangle yes
 (map! :map org-mode-map
-      :leader
       :desc "Add abbreviation for word"
-      "m w" #'add-global-abbrev
+      "C-c w" #'add-global-abbrev
       :desc "Add expansion for abbrev"
-      "m W" #'inverse-add-global-abbrev)
+      "C-c W" #'inverse-add-global-abbrev)
 #+end_src
