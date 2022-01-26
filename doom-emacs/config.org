@@ -404,6 +404,7 @@
         ("FIN" . "#008B94")
         ("KILL"   . "grey")))
 #+end_src
+**
 ** Custom calender view
 #+begin_src emacs-lisp :tangle yes
 (setq org-agenda-format-date (lambda (date) (concat "\n"
@@ -439,6 +440,8 @@
 (setq bibtex-completion-bibliography my/bibtex-file
       bibtex-completion-pdf-field "file")
 (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
+(advice-add 'bibtex-completion-candidates
+            :filter-return 'reverse)
 #+end_src
 ** Org-ref
 #+begin_src emacs-lisp :tangle yes
