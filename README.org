@@ -19,7 +19,7 @@ A lot of tips and setups on the internet are outdated, hence, did not work when 
 ** Emacs
 The core of this project. Using Emacs Plus 28 with --with-native-comp and --with-no-titlebar option. I didn't see the great difference in terms of functionality compared to emacs-mac but an option to remove titlebar completely was a huge bonus for me since I'll be using yabai for window management. Doom Emacs is weapon of my choice since it is easy to use and can put into action from day 1 without much configuration. I'm interested in the Nano Emacs for its simplicity but that's another rabit hole which I will investigate litle later.
 - Doom-plain theme is what I use for daily bases. I don't need colors since I won't be needing syntax highlighting! If you want to go little further, you may turn on color filters in Acessibility setting to enjoy complete monotone experience. Though, cursor colors are assigned in config file for indentifying current mode.
-- ETbb font for variable font and SF Mono Nerd Font for monospace font.
+- ETbb font for variable font and FiraCode Nerd Font Mono Font for monospace font.
 ** Yabai + skhd
 Window manager of my choice. I've previosuly using Rectangle, Amethyst, and rcmd which are great programs if you don't want to disable SIP. However, I get more control over sending programs to specific spaces while it takes care of the rest of boring window resizing. In addition, skhd is being used to control functions of yabai and app/folder launcher. Now I feel like I'm using the space of my monitor to its fullest and I can never go back!
 

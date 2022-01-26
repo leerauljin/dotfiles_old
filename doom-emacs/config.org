@@ -44,9 +44,9 @@
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "SFMono Nerd Font" :size 18)
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 19)
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
-      doom-variable-pitch-font (font-spec :family "ETbb" :size 18 :slant 'normal :weight 'normal))
+      doom-variable-pitch-font (font-spec :family "ETbb" :size 19 :slant 'normal :weight 'normal))
 #+end_src
 **
 *** Enable bold and italic
@@ -461,11 +461,28 @@
 #+end_src
 
 #+RESULTS:
+** Org-roam immediate insert node
+#+begin_src emacs-lisp :tangle yes
+;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+(defun org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)))
+#+end_src
 
 ** Org-ref keybinding
 #+begin_src emacs-lisp :tangle yes
 (map! :map org-mode-map
       :leader
+      :desc "Insert node"
+      "m 1" #'org-roam-node-insert-immediate
+      :desc "Insert node immediately"
+      "m !" #'org-roam-node-insert-immediate
+      :desc "Insert Citation"
+      "m 2" #'org-ref-insert-cite-link
+      :desc "Insert ORB node"
       "m @" #'org-ref-insert-cite-link
       :desc "Search bibliography"
       "m z" #'ivy-bibtex)
@@ -477,12 +494,16 @@
          :target (file+head "%<%y%m%d-%H%M>-${slug}.org"
                             "#+title: ${title}\n")
          :unnarrowed t)
-        ("n" "Org-noter" plain "%?"
-         :target (file+head "%<%y%m%d-%H%M>-${citekey}.org"
-                            "#+title: ${author-or-editor-abbrev} (${date}) - ${title}\n- _Keywords_: \n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
-         :unnarrowed t)))
+        ("n" "Annotation" plain "%?"
+         :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
+                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** _Keywords_\n\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
+         :unnarrowed t)
+        ("N" "Annotation, without prompt" plain "%?"
+         :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
+                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** _Keywords_\n\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
+         :immediate-finish t)
+        ))
 #+end_src
-theory, subject, keywords, sample, variables, model, method, findings
 
 * Custom Functions
 ** Center cursor
@@ -533,7 +554,7 @@ theory, subject, keywords, sample, variables, model, method, findings
       :n "K" #'elfeed-goodies/split-show-prev)
 
 #+end_src
-* Deft
+* TODO Deft
 #+begin_src emacs-lisp :tangle yes
 (setq deft-extensions '("txt" "org")
       deft-recursive t
@@ -555,7 +576,7 @@ theory, subject, keywords, sample, variables, model, method, findings
 #+begin_src emacs-lisp :tangle yes
 (evilem-default-keybindings "SPC")
 #+end_src
-** evil-snipe for visible
+*** evil-snipe for visible
 #+begin_src emacs-lisp :tangle yes
 (setq evil-snipe-scope 'visible)
 #+end_src
@@ -603,20 +624,14 @@ theory, subject, keywords, sample, variables, model, method, findings
       "t m" #'hide-mode-line-mode)
 #+end_src
 
-** Magit push
+** Magit
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
       :desc "Magit push"
-      "g p" #'magit-push)
-#+end_src
-
-** Magit commit
-#+begin_src emacs-lisp :tangle yes
-(map! :leader
+      "g p" #'magit-push
       :desc "Magit commit"
       "g C" #'magit-commit)
 #+end_src
-
 ** MW-Thesaurus
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
@@ -635,7 +650,7 @@ theory, subject, keywords, sample, variables, model, method, findings
       :desc "Highlight selected"
       "m h" #'pdf-annot-add-highlight-markup-annotation
       ;; Delete annotation
-      "m h" #'pdf-annot-delete
+      "m H" #'pdf-annot-delete
       ;; Revert
       "m r" #'pdf-view-revert-buffer)
 #+end_src
