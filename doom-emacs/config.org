@@ -34,7 +34,7 @@
 ** Folders
 #+begin_src emacs-lisp :tangle yes
 (defconst my/config-file "~/Documents/Dev/dotfiles/doom-emacs/config.org")
-(defconst my/bibtex-file "~/Documents/Academic/Org-papers/zotero-refs.bib")
+(defconst my/bibtex-file "~/Documents/Academic/Zotero/zotero-refs.bib")
 (defconst my/org-roam-folder "~/Documents/RoamNotes")
 (after! org
   (defconst my/org-folder "~/Documents/Org-mode/"))
@@ -414,6 +414,14 @@
 * Org noter
 #+begin_src emacs-lisp :tangle yes
 (setq org-noter-always-create-frame nil)
+(map! :map org-mode-map
+      :leader
+      "m n" #'org-noter)
+(map! :map pdf-view-mode-map
+      "i" #'org-noter-insert-note
+      :leader
+      "m n" #'org-noter
+      "m k" #'org-noter-create-skeleton)
 #+end_src
 * Org-roam
 ** Basic configs
@@ -443,9 +451,9 @@
 ** Org-ref custom layout
 #+begin_src emacs-lisp :tangle yes
 (setq bibtex-completion-display-formats
-      '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:7}")))
+      '((t . "${=has-pdf=:1}${=has-note=:1} ${author:30} ${year:4} ${title:60} ${=type=:7}")))
 ;; pretty simbols
-(setq bibtex-completion-pdf-symbol "⌘")
+(setq bibtex-completion-pdf-symbol "⎘")
 (setq bibtex-completion-notes-symbol "✎")
 #+end_src
 
@@ -607,26 +615,21 @@
 ** PDF-Tools
 #+begin_src emacs-lisp :tangle yes
 ;; Highlight selected
-(map! :leader
+(map! :map pdf-view-mode-map
+      :leader
       :desc "Highlight selected"
-      "m h" #'pdf-annot-add-highlight-markup-annotation)
-
-;; Delete annotation
-(map! :leader
-      :desc "Delete annotation"
-      "m h" #'pdf-annot-delete)
-
-;; Revert
-(map! :leader
-      :desc "Revert PDF buffer"
+      "m h" #'pdf-annot-add-highlight-markup-annotation
+      ;; Delete annotation
+      "m h" #'pdf-annot-delete
+      ;; Revert
       "m r" #'pdf-view-revert-buffer)
 #+end_src
 ** Abbrev define
 #+begin_src emacs-lisp :tangle yes
-(map! :leader
+(map! :map org-mode-map
+      :leader
       :desc "Add abbreviation for word"
-      "m w" #'add-global-abbrev)
-(map! :leader
+      "m w" #'add-global-abbrev
       :desc "Add expansion for abbrev"
       "m W" #'inverse-add-global-abbrev)
 #+end_src
