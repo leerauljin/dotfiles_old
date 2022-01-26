@@ -473,12 +473,17 @@
 ** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
 (setq org-roam-capture-templates
-      '(("n" "Org-noter" plain
-         "%?"
-         :target
-         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n* Org-Noter\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:")
+      '(("d" "default" plain "%?"
+         :target (file+head "%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n")
+         :unnarrowed t)
+        ("n" "Org-noter" plain "%?"
+         :target (file+head "%<%y%m%d-%H%M>-${citekey}.org"
+                            "#+title: ${author-or-editor-abbrev} (${date}) - ${title}\n- _Keywords_: \n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
          :unnarrowed t)))
 #+end_src
+theory, subject, keywords, sample, variables, model, method, findings
+
 * Custom Functions
 ** Center cursor
 #+begin_src emacs-lisp :tangle yes
@@ -527,6 +532,13 @@
       :n "J" #'elfeed-goodies/split-show-next
       :n "K" #'elfeed-goodies/split-show-prev)
 
+#+end_src
+* Deft
+#+begin_src emacs-lisp :tangle yes
+(setq deft-extensions '("txt" "org")
+      deft-recursive t
+      deft-auto-save-interval -1.0
+      deft-directory my/org-roam-folder)
 #+end_src
 * Emacs everywhere
 #+begin_src emacs-lisp :tangle yes
