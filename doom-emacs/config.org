@@ -38,6 +38,8 @@
 (defconst my/org-roam-folder "~/Documents/RoamNotes")
 (after! org
   (defconst my/org-folder "~/Documents/Org-mode/"))
+(setq yas-snippet-dirs
+      '("~/.doom.d/snippets"))
 #+end_src
 * UI
 ** Font Settings
@@ -493,13 +495,21 @@
          :target (file+head "%<%y%m%d-%H%M>-${slug}.org"
                             "#+title: ${title}\n")
          :unnarrowed t)
-        ("n" "Annotation" plain "%?"
+        ("a" "Annotation" plain "%?"
          :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
-                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** _Keywords_\n\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
+                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n")
          :unnarrowed t)
-        ("N" "Annotation, without prompt" plain "%?"
+        ("a" "Annotation, without prompt" plain "%?"
          :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
-                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n** _Keywords_\n\n** Model\n\n** Variable\n\n** Theory\n\n** Method\n\n** Subject\n\n** Findings\n\n")
+                            "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n")
+         :immediate-finish t)
+        ("c" "Concept" plain "%?"
+         :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
+         :unnarrowed t)
+        ("C" "Concept, without prompt" plain "%?"
+         :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
          :immediate-finish t)
         ))
 #+end_src

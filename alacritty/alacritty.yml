@@ -177,33 +177,31 @@ font:
 
 schemes:
   # Default colors
-  nasa-theme: &dark
+  city-lights-theme: &dark
     primary:
-      background: '#212121'
-      foreground: '#ffffff'
-
+      background: '0x20242c'
+      foreground: '0xA0B3C5'
     # Normal colors
     normal:
-      black:   '#212121' # color-base
-      red:     '#dd361c' # color-secondary
-      green:   '#4aa564' # color-green-light
-      yellow:  '#f9aa43' # color-gold-light 
-      blue:    '#0b3d91' # color-primary-darker
-      magenta: '#4c2c92' # color-visited
-      cyan:    '#02bfe7' # color-primary-alt
-      white:   '#f1f1f1' # clolor-gray-lightest
+      black:   '0x10151C'
+      red:     '0xd95468'
+      green:   '0x8bd49c'
+      yellow:  '0xebbf83'
+      blue:    '0x539afc'
+      magenta: '0xb62d65'
+      cyan:    '0x70e1e8'
+      white:   '0x718ca1'
 
-    # Bright colors
+     # Bright colors
     bright:
-      black:   '#323a45' # color-gray-dark
-      red:     '#e59892' # color-secondary-light
-      green:   '#94bfa2' # color-green-lighter
-      yellow:  '#ffc375' # color-gold-lighter
-      blue:    '#105bd8' # color-primary
-      magenta: '#4c2c92' # color-visited
-      cyan:    '#9bdaf1' # color-primary-alt-light
-      white:   '#ffffff' # color-white
-
+      black:   '0x41505e'
+      red:     '0xd95468'
+      green:   '0x8bd49c'
+      yellow:  '0xf7dab3'
+      blue:    '0x5ec4ff'
+      magenta: '0xb62d65'
+      cyan:    '0x70e1e8'
+      white:   '0xb7c5d3'
 
   nasa-theme: &light
     primary:
@@ -232,7 +230,7 @@ schemes:
       cyan:    '#00a6d2' # color-primary-alt
       white:   '#d6d7d9' # clolor-gray-lighter
 
-colors: *light
+colors: *dark
 
   # Cursor colors
   #

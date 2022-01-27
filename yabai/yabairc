@@ -115,3 +115,31 @@ yabai -m config external_bar all:0:48
 yabai -m signal --add event=space_changed \
     action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 echo "yabai configuration loaded.."
+
+# This prevents focus jumping around spaces after closing emacsclient
+# https://github.com/koekeishiya/yabai/issues/485
+
+function record_window_id {
+    json=$(yabai -m query --windows)
+    window_id=$(echo $json | jq -er 'map(select(.focused == 1))[0].id')
+    ruby $HOME/Documents/Dev/dotfiles/yabai/yabai_focus.rb write $window_id
+}
+
+function focus_previous_window {
+    previous_window_id=$(ruby $HOME/yabai_focus.rb read $YABAI_WINDOW_ID)
+    yabai -m window --focus $previous_window_id
+}
+
+yabai -m signal --add event=window_focused action="${functions[record_display_id]}"
+yabai -m signal --add event=application_front_switched action="${functions[record_display_id]}"
+yabai -m signal --add event=window_destroyed action="${functions[focus_current_display]}"
+yabai -m signal --add event=application_terminated action="${functions[focus_current_display]}"
+
+# Always focus on windows in space when chancing space
+# https://github.com/koekeishiya/yabai/issues/160
+
+# 1. grab all windows on the current space
+# 2. filter for focused windows
+# 3. if the length of the array returned by step 2 is 0, focus the window under the cursor
+yabai -m query --windows --space | jq -er 'map(select(.focused == 1)) | length > 0' \
+	|| yabai -m window --focus mouse

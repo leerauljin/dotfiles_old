@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: rarticle
+# key: rarticle_
+# --
+** _Keywords_
+- $0
+** Model
+
+** Variable
+
+** Theory
+
+** Method
+
+** Subject
+
+** Findings

@@ -7,7 +7,10 @@ rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 1
 
 rcmd - b : open -a Safari; yabai -m space --focus 2
 
-rcmd - e : open -a Emacs # ; yabai -m space --focus 1
+# rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
+
+# Much snappier to launch emacsclient rather than launching Emacs daemon every time.
+rcmd - e : emacsclient -c -a ""
 
 rcmd - z : open -a Zotero; yabai -m space --focus 4
 rcmd - n : open -a Notion; yabai -m space --focus 4
