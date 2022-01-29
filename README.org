@@ -17,7 +17,8 @@ A lot of tips and setups on the internet are outdated, hence, did not work when 
 
 * Major programs and packages
 ** Emacs
-The core of this project. Using Emacs Plus 28 with --with-native-comp and --with-no-titlebar option. I didn't see the great difference in terms of functionality compared to emacs-mac but an option to remove titlebar completely was a huge bonus for me since I'll be using yabai for window management. Doom Emacs is weapon of my choice since it is easy to use and can put into action from day 1 without much configuration. I'm interested in the Nano Emacs for its simplicity but that's another rabit hole which I will investigate litle later.
+The core of this project. Using emacs-mac. Tried emacs-plus with native comp and --no-titlebar but it often crashes. emacs-mac seems to have better font rendering as well. Coudn't quite get --no-title-bar working.
+Doom Emacs is weapon of my choice since it is easy to use and can put into action from day 1 without much configuration. I'm interested in the Nano Emacs for its simplicity but that's another rabit hole which I will investigate litle later.
 - Doom-plain theme is what I use for daily bases. I don't need colors since I won't be needing syntax highlighting! If you want to go little further, you may turn on color filters in Acessibility setting to enjoy complete monotone experience. Though, cursor colors are assigned in config file for indentifying current mode.
 - ETbb font for variable font and FiraCode Nerd Font Mono Font for monospace font.
 ** Yabai + skhd
@@ -57,6 +58,7 @@ These are some really basic tips that I wish someone told me earlier! Keeping th
 - You can use leader key commands (SPC + something) in the insert mode using M+SPC, i.e., you don't need leave insert mode to use commands.
 - Ctrl + [ works same as ESC! No need to reach far left corner to change back to normal mode!
 - When using abbrev-mode, it recognizes punctuations and capitalization. For example, when /em/ is set as an abbreviation of /emacs/, typing /Em/ will convert it to /Emacs/ and /em,/ will be converted to /emacs,/ so that you don't have to mannualy add abbreviations for all this situations! Sadly, it doesn't work with plural :(
+- C-x + o for changing windows. Especially useful in the insert mode!
 
 * Todo
 - [ ] Find way to magically add period at the end of sentence automatically.

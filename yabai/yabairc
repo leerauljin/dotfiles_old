@@ -108,7 +108,7 @@ yabai -m rule --add title="^Open$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
 # yabai -m config external_bar all:40:0
-yabai -m config external_bar all:0:48
+yabai -m config external_bar all:0:42
 
 
 # refresh my Übersicht bar when the space changes

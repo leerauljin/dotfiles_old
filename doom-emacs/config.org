@@ -18,7 +18,8 @@
 (setq undo-limit 80000000
       ;; More granular undo
       evil-want-fine-undo t
-      auto-save-default t)
+      auto-save-default t
+      ns-auto-titlebar-mode t)
 
 ;; Show battery status
 (display-battery-mode 1)
@@ -416,14 +417,25 @@
 #+end_src
 * Org noter
 #+begin_src emacs-lisp :tangle yes
-(setq org-noter-always-create-frame nil)
-(map! :map org-mode-map
-      :leader
-      "m n" #'org-noter)
+(setq org-noter-always-create-frame nil
+      org-noter-hide-other nil
+      org-noter-notes-search-path '("~/Documents/RoamNotes/annotations"))
 
-(map! :map pdf-view-mode-map
+(map! :map org-mode-map
+      :desc "Insert linked note"
+      "C-c l" #'org-noter-insert-note
       :leader
-      "m n" #'org-noter)
+      "m n" #'org-noter
+      "t p" #'org-noter-set-hide-other)
+
+(map! :map org-noter-doc-mode-map
+      :desc "Insert linked note"
+      :n "l" #'org-noter-insert-note
+      :desc "Insert linked note"
+      "C-c l" #'org-noter-insert-note
+      :leader
+      "m n" #'org-noter
+      "t p" #'org-noter-set-hide-other)
 #+end_src
 * Org-roam
 ** Basic configs
@@ -480,13 +492,17 @@
       "C-c n" #'org-roam-node-insert
       :desc "Insert node immediately"
       "C-c i" #'org-roam-node-insert-immediate
-      :desc "Insert Citation"
+      :desc "Insert citation"
       "C-c c" #'org-ref-insert-cite-link
       :desc "Insert ORB node"
       "C-c a" #'orb-insert-link
       :leader
-      :desc "Search Citation"
-      "s c" #'ivy-bibtex)
+      :desc "Search citation"
+      "s c" #'ivy-bibtex
+      :desc "Search ORB node"
+      "s C" #'org-roam-ref-find
+      :desc "Seach code"
+      "s n" #'org-roam-node-find)
 #+end_src
 ** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
@@ -499,7 +515,7 @@
          :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
                             "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n")
          :unnarrowed t)
-        ("a" "Annotation, without prompt" plain "%?"
+        ("A" "Annotation, without prompt" plain "%?"
          :target (file+head "annotations/%<%y%m%d-%H%M>-${citekey}.org"
                             "#+title: ${author-or-editor-abbrev} (${date})  ${title}\n* Notes\n:PROPERTIES:\n:NOTER_DOCUMENT: ${file}\n:END:\n")
          :immediate-finish t)
@@ -510,6 +526,10 @@
         ("C" "Concept, without prompt" plain "%?"
          :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
                             "#+title: ${title}\n\n")
+         :immediate-finish t)
+        ("t" "Test purpose" plain "%?"
+         :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n${pages}")
          :immediate-finish t)
         ))
 #+end_src
@@ -680,3 +700,4 @@
       :desc "Add expansion for abbrev"
       "C-c W" #'inverse-add-global-abbrev)
 #+end_src
+*

@@ -7,10 +7,10 @@ rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 1
 
 rcmd - b : open -a Safari; yabai -m space --focus 2
 
-# rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
+rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
 
 # Much snappier to launch emacsclient rather than launching Emacs daemon every time.
-rcmd - e : emacsclient -c -a ""
+rcmd + shift - e : emacsclient -c -a ""; yabai -m window --focus mouse
 
 rcmd - z : open -a Zotero; yabai -m space --focus 4
 rcmd - n : open -a Notion; yabai -m space --focus 4
@@ -79,17 +79,20 @@ lctrl + lcmd - k : yabai -m window --focus north
 lctrl + lcmd - l : yabai -m window --focus east
 
 # fast focus desktop
-lctrl + lcmd - 1 : yabai -m space --focus 1
-lctrl + lcmd - 2 : yabai -m space --focus 2
-lctrl + lcmd - 3 : yabai -m space --focus 3
-lctrl + lcmd - 4 : yabai -m space --focus 4
-lctrl + lcmd - 5 : yabai -m space --focus 5
-lctrl + lcmd - 6 : yabai -m space --focus 6
-lctrl + lcmd - 7 : yabai -m space --focus 7
-lctrl + lcmd - 8 : yabai -m space --focus 8
-lctrl + lcmd - 9 : yabai -m space --focus 9
-lctrl + lcmd - 0 : yabai -m space --focus 10
+# It seems this doesn't work on 12.3 Beta...
+# lctrl + lcmd - 1 : yabai -m space --focus 1
+# lctrl + lcmd - 2 : yabai -m space --focus 2
+# lctrl + lcmd - 3 : yabai -m space --focus 3
+# lctrl + lcmd - 4 : yabai -m space --focus 4
+# lctrl + lcmd - 5 : yabai -m space --focus 5
+# lctrl + lcmd - 6 : yabai -m space --focus 6
+# lctrl + lcmd - 7 : yabai -m space --focus 7
+# lctrl + lcmd - 8 : yabai -m space --focus 8
+# lctrl + lcmd - 9 : yabai -m space --focus 9
+# lctrl + lcmd - 0 : yabai -m space --focus 10
 
+# Shortcut to focus on mouse location just in case
+lctrl + lcmd - m : yabai -m window --focus mouse
 
 # send window to desktop and follow focus
 lctrl + alt - 1 : yabai -m window --space  1; yabai -m space --focus 1
@@ -173,9 +176,8 @@ lctrl + lcmd - space : yabai -m window --toggle float;\
 # Restart Yabai
 lctrl + alt + shift - y : brew services restart yabai
 
-# Refresh simple-bar
-lctrl + alt + shift - u : osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "simple-bar-spaces-jsx"'
-
+# Refresh Sketchybar
+lctrl + alt + shift - u : brew services restart sketchybar
 
 # focus monitor
 # lctrl + alt + lcmd - p : yabai -m display --focus recent
