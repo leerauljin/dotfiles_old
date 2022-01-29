@@ -36,6 +36,7 @@
 #+begin_src emacs-lisp :tangle yes
 (defconst my/config-file "~/Documents/Dev/dotfiles/doom-emacs/config.org")
 (defconst my/bibtex-file "~/Documents/Academic/Zotero/zotero-refs.bib")
+(defconst my/pdf-folder "~/Documents/Academic/Zotero/PDFs")
 (defconst my/org-roam-folder "~/Documents/RoamNotes")
 (after! org
   (defconst my/org-folder "~/Documents/Org-mode/"))
@@ -532,6 +533,16 @@
                             "#+title: ${title}\n\n${pages}")
          :immediate-finish t)
         ))
+#+end_src
+*** Citar
+#+begin_src emacs-lisp :tangle yes
+(setq citar-bibliography my/bibtex-file
+      ;; citar-library-paths my/pdf-folder
+      citar-file-extensions '("pdf" "org" "md")
+      citar-file-open-function #'find-file)
+(setq citar-open-note-function 'orb-citar-edit-note
+        citar-notes-paths '("~/Documents/RoamNotes/")
+        orb-file-field-extensions '("pdf"))
 #+end_src
 
 * Custom Functions
