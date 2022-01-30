@@ -68,28 +68,28 @@ yabai -m space 7 --label ☀
 ## Default spaces
 # yabai -m rule --add app="Alacritty"     space=1
 # yabai -m rule --add app="Emacs"     space=1
-yabai -m rule --add app="jamovi"     space=1
-yabai -m rule --add app="Microsoft Word"     space=1
-yabai -m rule --add app="Microsoft PowerPoint"     space=1
-yabai -m rule --add app="Microsoft Excel"     space=1
-yabai -m rule --add app="Pages"     space=1
-yabai -m rule --add app="Keynote"     space=1
+# yabai -m rule --add app="jamovi"     space=1
+# yabai -m rule --add app="Microsoft Word"     space=1
+# yabai -m rule --add app="Microsoft PowerPoint"     space=1
+# yabai -m rule --add app="Microsoft Excel"     space=1
+# yabai -m rule --add app="Pages"     space=1
+# yabai -m rule --add app="Keynote"     space=1
 
-yabai -m rule --add app="Safari" space=2
-yabai -m rule --add app="Firefox" space=2
-yabai -m rule --add app="PDF Expert"     space=2
+# yabai -m rule --add app="Safari" space=2
+# yabai -m rule --add app="Firefox" space=2
+# yabai -m rule --add app="PDF Expert"     space=2
 
-yabai -m rule --add app="Zotero" space=4
-yabai -m rule --add app="Notion" space=4
-yabai -m rule --add app="Calendar" space=4
+# yabai -m rule --add app="Zotero" space=4
+# yabai -m rule --add app="Notion" space=4
+# yabai -m rule --add app="Calendar" space=4
 
-yabai -m rule --add app="Spark" space=5
-yabai -m rule --add app="KakaoTalk" space=5
+# yabai -m rule --add app="Spark" space=5
+# yabai -m rule --add app="KakaoTalk" space=5
 
-yabai -m rule --add app="Music" space=6
-yabai -m rule --add app="Plex" space=6
+# yabai -m rule --add app="Music" space=6
+# yabai -m rule --add app="Plex" space=6
 
-yabai -m rule --add title="^Emacs Everywhere$" space=^
+# yabai -m rule --add title="^Emacs Everywhere$" space=^
 
 # ^^ these are annoying
 # yabai -m rule --add app="Safari"        space=3

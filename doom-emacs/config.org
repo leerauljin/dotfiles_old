@@ -591,7 +591,7 @@
 (setq elfeed-feeds (quote
                     (("https://rss.sciencedirect.com/publication/science/02615177" Journal TM)
                      ("https://rss.sciencedirect.com/publication/science/01607383" Journal ATR)
-                     ("feed:https://convention.pusan.ac.kr/bbs/convention/9230/rssList.do?row=50" Notice T&C))))
+                     ("https://convention.pusan.ac.kr/bbs/convention/9230/rssList.do?row=50" Notice T&C))))
 (map! :leader
       "o s" #'elfeed)
 (map! :map elfeed-show-mode-map
@@ -599,6 +599,9 @@
       :n "K" #'elfeed-goodies/split-show-prev)
 
 #+end_src
+
+#+RESULTS:
+
 * TODO Deft
 #+begin_src emacs-lisp :tangle yes
 (setq deft-extensions '("txt" "org")
