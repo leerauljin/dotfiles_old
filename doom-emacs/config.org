@@ -449,29 +449,30 @@
 (map! :leader
       "n r u" #'org-roam-ui-mode)
 #+end_src
-** Ivy-bibtex
+** Bibtex-completion
 #+begin_src emacs-lisp :tangle yes
 (setq bibtex-completion-bibliography my/bibtex-file
-      bibtex-completion-pdf-field "file")
+      bibtex-completion-pdf-field "file"
+      bibtex-completion-notes-path my/pdf-folder)
 (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
 (advice-add 'bibtex-completion-candidates
             :filter-return 'reverse)
 #+end_src
 ** Org-ref
 #+begin_src emacs-lisp :tangle yes
-(setq
- org-ref-completion-library 'org-ref-ivy-cite
- org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-ivy-bibtex
- org-ref-default-bibliography my/bibtex-file
- org-ref-notes-function 'orb-edit-notes)
+;; (setq
+;;  org-ref-completion-library 'org-ref-ivy-cite
+;;  org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-ivy-bibtex
+;;  org-ref-default-bibliography my/bibtex-file
+;;  org-ref-notes-function 'orb-edit-notes)
 #+end_src
 ** Org-ref custom layout
 #+begin_src emacs-lisp :tangle yes
-(setq bibtex-completion-display-formats
-      '((t . "${=has-pdf=:1}${=has-note=:1} ${author:30} ${year:4} ${title:60} ${=type=:7}")))
-;; pretty simbols
-(setq bibtex-completion-pdf-symbol "⎘")
-(setq bibtex-completion-notes-symbol "✎")
+;; (setq bibtex-completion-display-formats
+;;       '((t . "${=has-pdf=:1}${=has-note=:1} ${author:30} ${year:4} ${title:60} ${=type=:7}")))
+;; ;; pretty simbols
+;; (setq bibtex-completion-pdf-symbol "⎘")
+;; (setq bibtex-completion-notes-symbol "✎")
 #+end_src
 
 #+RESULTS:
@@ -488,22 +489,22 @@
 
 ** Org-ref keybinding
 #+begin_src emacs-lisp :tangle yes
-(map! :map org-mode-map
-      :desc "Insert node"
-      "C-c n" #'org-roam-node-insert
-      :desc "Insert node immediately"
-      "C-c i" #'org-roam-node-insert-immediate
-      :desc "Insert citation"
-      "C-c c" #'org-ref-insert-cite-link
-      :desc "Insert ORB node"
-      "C-c a" #'orb-insert-link
-      :leader
-      :desc "Search citation"
-      "s c" #'ivy-bibtex
-      :desc "Search ORB node"
-      "s C" #'org-roam-ref-find
-      :desc "Seach code"
-      "s n" #'org-roam-node-find)
+;; (map! :map org-mode-map
+;;       :desc "Insert node"
+;;       "C-c n" #'org-roam-node-insert
+;;       :desc "Insert node immediately"
+;;       "C-c i" #'org-roam-node-insert-immediate
+;;       :desc "Insert citation"
+;;       "C-c c" #'org-ref-insert-cite-link
+;;       :desc "Insert ORB node"
+;;       "C-c a" #'orb-insert-link
+;;       :leader
+;;       :desc "Search citation"
+;;       "s c" #'ivy-bibtex
+;;       :desc "Search ORB node"
+;;       "s C" #'org-roam-ref-find
+;;       :desc "Seach code"
+;;       "s n" #'org-roam-node-find)
 #+end_src
 ** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
@@ -543,6 +544,36 @@
 (setq citar-open-note-function 'orb-citar-edit-note
         citar-notes-paths '("~/Documents/RoamNotes/")
         orb-file-field-extensions '("pdf"))
+(setq citar-symbols
+      `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . "⎘")
+        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . "✎")))
+        ;; (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . "L")))
+(setq citar-symbol-separator "  ")
+(setq citar-templates
+      '((main . "${author editor:20}     ${date year issued:4}     ${title:40}")
+        (suffix . "          ${=type=:12}    ${tags keywords:*}")
+        (note . "Notes on ${author editor}, ${title}")))
+#+end_src
+** Citar keybinding
+#+begin_src emacs-lisp :tangle yes
+(map! :map org-mode-map
+      :desc "Insert node"
+      "C-c n" #'org-roam-node-insert
+      :desc "Insert node immediately"
+      "C-c i" #'org-roam-node-insert-immediate
+      :desc "Insert citation"
+      "C-c c" #'org-cite-insert
+      :desc "Insert ORB node"
+      "C-c a" #'orb-insert-link
+      :leader
+      :desc "Search ORB node"
+      "s C" #'org-roam-ref-find
+      :desc "Seach code"
+      "s n" #'org-roam-node-find)
+#+end_src
+*** Zotero integration
+#+begin_src emacs-lisp :tangle yes
+(setq org-cite-csl-styles-dir "~/Zotero/styles")
 #+end_src
 
 * Custom Functions
