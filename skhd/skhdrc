@@ -29,7 +29,9 @@ rcmd + shift - c : open ~/Documents
 rcmd + shift - a : open ~/Documents/Academic
 rcmd + shift - r : open ~/Documents/Academic/Research
 rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
-rcmd + shift - o : open ~/Documents/Academic/Org-papers
+rcmd + shift - o : open ~/Documents/OrgDocs
+rcmd + shift - m : open ~/Documents/RoamNotes
+rcmd + shift - z : open ~/Documents/Academic/Zotero
 # rcmd - 0 : open ~/.trash
 
 # open websites

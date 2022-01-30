@@ -40,7 +40,6 @@
 (defconst my/pdf-folder "~/Documents/Academic/Zotero/PDFs")
 (defconst my/org-roam-folder "~/Documents/RoamNotes")
 (defconst my/org-roam-folders '("~/Documents/RoamNotes"))
-(defconst my/annotation-folders '("~/Documents/RoamNotes/annotations"))
 (after! org
   (defconst my/org-folder "~/Documents/OrgDocs/")
   (defconst my/org-agenda-folder '("~/Documents/OrgDocs/Agenda")))
@@ -381,13 +380,31 @@
 (after! org
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-          (sequence "IDEA(i)" "READ(r)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u)" "RETURN(j)" "|" "FIN(f)" "KILL(k)"))
-        org-todo-keyword-faces
+          (sequence "IDEA(i)" "LIT(l)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u)" "RETURN(j)" "|" "FIN(f)" "KILL(k)")
+          (sequence "NOTE(e)" "|" "ARCH(h)"))
+          org-todo-keyword-faces
+          '(("TODO"   . "#D95468")
+            ("NEXT"  . "#D98E48")
+            ("DONE"  . "#008B94")
+            ("IDEA"  . "#E27E8D")
+            ("LIT"  . "#EBBF83")
+            ("DATA"  . "#8BD49C")
+            ("ANAL"  . "#33CED8")
+            ("WRITE"  . "#5EC4FF")
+            ("PROOF"  . "#539AFC")
+            ("RETURN" . "#D95468")
+            ("U/R" . "#718CA1")
+            ("FIN" . "#008B94")
+            ("KILL"   . "grey")
+            ("NOTE"  . "#5EC4FF")
+            ("ARCH"  . "grey"))))
+
+  (setq hl-todo-keyword-faces
         '(("TODO"   . "#D95468")
           ("NEXT"  . "#D98E48")
           ("DONE"  . "#008B94")
           ("IDEA"  . "#E27E8D")
-          ("READ"  . "#EBBF83")
+          ("LIT"  . "#EBBF83")
           ("DATA"  . "#8BD49C")
           ("ANAL"  . "#33CED8")
           ("WRITE"  . "#5EC4FF")
@@ -395,22 +412,9 @@
           ("RETURN" . "#D95468")
           ("U/R" . "#718CA1")
           ("FIN" . "#008B94")
-          ("KILL"   . "grey"))))
-
-(setq hl-todo-keyword-faces
-      '(("TODO"   . "#D95468")
-        ("NEXT"  . "#D98E48")
-        ("DONE"  . "#008B94")
-        ("IDEA"  . "#E27E8D")
-        ("READ"  . "#EBBF83")
-        ("DATA"  . "#8BD49C")
-        ("ANAL"  . "#33CED8")
-        ("WRITE"  . "#5EC4FF")
-        ("PROOF"  . "#539AFC")
-        ("RETURN" . "#D95468")
-        ("U/R" . "#718CA1")
-        ("FIN" . "#008B94")
-        ("KILL"   . "grey")))
+          ("KILL"   . "grey")
+          ("NOTE"  . "#5EC4FF")
+          ("ARCH"  . "grey")))
 #+end_src
 **
 ** Custom calender view
@@ -427,7 +431,7 @@
 #+begin_src emacs-lisp :tangle yes
 (setq org-noter-always-create-frame nil
       org-noter-hide-other nil
-      org-noter-notes-search-path my/annotation-folders)
+      org-noter-notes-search-path '("~/Documents/RoamNotes/annotations"))
 
 (map! :map org-mode-map
       :desc "Insert linked note"
@@ -467,6 +471,15 @@
     (apply #'org-roam-node-insert args)))
 #+end_src
 
+** Bibtex-completion
+#+begin_src emacs-lisp :tangle yes
+(setq bibtex-completion-bibliography my/bibtex-file
+      bibtex-completion-pdf-field "file"
+      bibtex-completion-notes-path "~/Documents/RoamNotes/annotations")
+(add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
+(advice-add 'bibtex-completion-candidates
+            :filter-return 'reverse)
+#+end_src
 ** Org-roam-bibtex link to org noter
 #+begin_src emacs-lisp :tangle yes
 (setq org-roam-capture-templates
@@ -501,28 +514,16 @@
 (setq citar-bibliography my/bibtex-file
       ;; citar-library-paths my/pdf-folder
       citar-file-extensions '("pdf" "org" "md")
-      citar-file-open-function #'find-file)
+      citar-file-open-function #'find-file
+      citar-default-action #'citar-open-library-file)
 (setq citar-open-note-function 'orb-citar-edit-note
-        citar-notes-paths my/org-roam-folders
-        orb-file-field-extensions '("pdf"))
-(setq citar-symbols
-      `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . "⎘")
-        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . "✎")))
-        ;; (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . "L")))
+      citar-notes-paths '("~/Documents/RoamNotes/")
+      orb-file-field-extensions '("pdf"))
 (setq citar-symbol-separator "  ")
 (setq citar-templates
       '((main . "${author editor:20}     ${date year issued:4}     ${title:40}")
-        (suffix . "          ${=type=:12}    ${tags keywords:*}")
+        (suffix . " ${=type=:12}    ${tags keywords:*}")
         (note . "Notes on ${author editor}, ${title}")))
-#+end_src
-** Bibtex-completion
-#+begin_src emacs-lisp :tangle yes
-(setq bibtex-completion-bibliography my/bibtex-file
-      bibtex-completion-pdf-field "file"
-      bibtex-completion-notes-path my/org-roam-folder)
-(add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
-(advice-add 'bibtex-completion-candidates
-            :filter-return 'reverse)
 #+end_src
 ** Citar keybinding
 #+begin_src emacs-lisp :tangle yes
