@@ -40,30 +40,6 @@ yabai -m config left_padding                 12
 yabai -m config right_padding                12
 yabai -m config window_gap                   12
 
-# Space 1 : Productivity
-yabai -m space 1 --label ✎
-
-# Space 2 : Web surfing
-yabai -m space 2 --label ✈
-
-# Space 3 : Emacs FTW
-yabai -m space 3 --label ✌
-
-# Space 4 : File management, orginize
-yabai -m space 4 --label ❖
-
-# Space 5 : Mail and messenger
-yabai -m space 5 --label ☏
-
-# Space 6 : Entertainment
-yabai -m space 6 --label ⚄
-
-# Space 7 : Laptop
-yabai -m space 7 --label ☀
-# yabai -m space 7 --label VII
-# yabai -m space 8 --label VIII
-# yabai -m space 9 --label IX
-# yabai -m space 10 --label X
 
 ## Default spaces
 # yabai -m rule --add app="Alacritty"     space=1
@@ -107,8 +83,8 @@ yabai -m rule --add title="^Preferences$" manage=off
 yabai -m rule --add title="^Open$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
-# yabai -m config external_bar all:40:0
-yabai -m config external_bar all:0:42
+yabai -m config external_bar all:40:0
+# yabai -m config external_bar all:0:30
 
 
 # refresh my Übersicht bar when the space changes

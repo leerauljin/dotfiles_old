@@ -4,7 +4,7 @@ ITEM_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/items" # Directory where the i
 PLUGIN_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
 LOADING=? # Icon displayed while an item is still initializing
-PADDINGS=3 # All paddings use this value (icon, label, background and bar paddings)
+PADDINGS=12 # All paddings use this value (icon, label, background and bar paddings)
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 BAR_COLOR=0xffffffff # Black bar
 ICON_COLOR=0xff1d252c # Color of all icons
@@ -12,12 +12,12 @@ LABEL_COLOR=0xff1d252c # Color of all labels
 CONTRAST_COLOR=$ICON_COLOR #0xff2a2f38 # The color of elements in front of a background
 SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID" # The script that is run for clicking on space components
 
-SEGMENT_HEIGHT=34 # The height of the segments
+SEGMENT_HEIGHT=30 # The height of the segments
 SEGMENT_SPACING=13 # The spacing between the segments
 SEGMENT_BORDER_WIDTH=0 # Width of the borders for segments
-SEGMENT_BACKGROUND_COLOR=0x00000000 # The background color for segments
+SEGMENT_BACKGROUND_COLOR=0xffffffff # The background color for segments
 SEGMENT_BACKGROUND_HIGHLIGHT_COLOR=$SEGMENT_BACKGROUND_COLOR # 0xffe1e3e4 # The background highlight color for segments (borders, etc)
-CORNER_RADIUS=4 # Roundness of the segments
+CORNER_RADIUS=1 # Roundness of the segments
 
 POPUP_BACKGROUND_COLOR=$BAR_COLOR
 POPUP_BORDER_COLOR=0xff9dd274
@@ -26,15 +26,15 @@ POPUP_CORNER_RADIUS=4
 
 HAS_BATTERY=$(if [ "$(pmset -g batt | grep "Battery")" = "" ]; then echo "false"; else echo "true"; fi)
 
-sketchybar --bar                height=36                                                         \
+sketchybar --bar                height=40                                                         \
                                 corner_radius=5                                                   \
                                 border_width=0                                                    \
                                 margin=0                                                          \
                                 blur_radius=30                                                    \
-                                position=bottom                                                   \
-                                padding_left=5                                                    \
-                                padding_right=5                                                   \
-                                color=$BAR_COLOR                                                  \
+                                position=top                                                   \
+                                padding_left=0                                                   \
+                                padding_right=0                                                   \
+                                color=0x00ffffff                                                  \
                                 topmost=off                                                       \
                                 font_smoothing=off                                                \
                                 y_offset=6                                                        \
@@ -54,18 +54,22 @@ sketchybar --bar                height=36                                       
                                 background.padding_right=$PADDINGS                                \
                                 background.padding_left=$PADDINGS                                 \
                                 background.color=$SEGMENT_BACKGROUND_COLOR                        \
-                                background.border_color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR       \
+                                background.border_color=0xff539afc                                \
                                 background.border_width=$SEGMENT_BORDER_WIDTH                     \
                                 background.height=$SEGMENT_HEIGHT                                 \
                                 background.corner_radius=$CORNER_RADIUS                           \
                                 background.drawing=off                                            \
+                                background.shadow.color=0x88000000                                            \
+                                background.shadow.drawing=on                                            \
+                                background.shadow.angle=45                                            \
+                                background.shadow.distance=6                                           \
                                 icon.background.height=$SEGMENT_HEIGHT                            \
                                 icon.background.color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR         \
                                 icon.background.corner_radius=$CORNER_RADIUS                      \
                                 icon.background.drawing=off                                       \
                                 label.background.color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR        \
                                 label.background.border_width=$SEGMENT_BORDER_WIDTH               \
-                                label.background.border_color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR \
+                                label.background.border_color=0xff539afc                          \
                                 label.background.height=$SEGMENT_HEIGHT                           \
                                 label.background.corner_radius=$CORNER_RADIUS                     \
                                 label.background.drawing=off                                      \
@@ -79,7 +83,6 @@ sketchybar --bar                height=36                                       
                                 label.font="$FONT:Black:14.0"                                     \
                                 label.background.drawing=on                                       \
                                 label.color=$CONTRAST_COLOR                                       \
-                                label.padding_right=5                                             \
                                 label.background.height=$SEGMENT_HEIGHT                           \
                                 click_script="$PLUGIN_DIR/toggle_bracket.sh"                      \
                                 background.padding_left=$SEGMENT_SPACING                          \
@@ -89,14 +92,8 @@ sketchybar --bar                height=36                                       
 ###################### FINALIZE ###################
 
 source "$ITEM_DIR/spaces.sh"
-# source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/system.sh"
-# source "$ITEM_DIR/network.sh"
-source "$ITEM_DIR/memory.sh"
-
 source "$ITEM_DIR/calendar.sh"
-# source "$ITEM_DIR/cpu.sh"
-# source "$ITEM_DIR/spotify.sh"
 
 ############## FINALIZING THE SETUP ##############
 sketchybar --update

@@ -10,7 +10,6 @@ sketchybar --add       item               calendar.time right                   
                                           position=right                                \
                                           label=cal                                     \
                                           drawing=on                                    \
-                                          background.padding_right=0                    \
                                           script="$PLUGIN_DIR/date.sh"                  \
                                                                                         \
            --add       bracket            calendar                                      \

@@ -172,8 +172,8 @@ lctrl + alt - r : yabai -m window --toggle split
 lctrl + lcmd - t : yabai -m window --toggle float
 
 # float / unfloat window and center on screen
-lctrl + lcmd - space : yabai -m window --toggle float;\
-           yabai -m window --grid 4:4:1:1:2:2
+# lctrl + lcmd - space : yabai -m window --toggle float;\
+#            yabai -m window --grid 4:4:1:1:2:2
 
 # Restart Yabai
 lctrl + alt + shift - y : brew services restart yabai
