@@ -110,7 +110,7 @@
 ** Splash image
 #+begin_src emacs-lisp :tangle yes
 ;; Set splash image
-;; (setq fancy-splash-image "~/.doom.d/misc/NASA_logo.png")
+(setq fancy-splash-image "~/.doom.d/misc/NASA_logo.png")
 #+end_src
 ** Global hl-todo-mode
 #+begin_src emacs-lisp :tangle yes
@@ -204,6 +204,10 @@
   (setq org-directory my/org-folder))
 (setq org-agenda-files '("~/Documents/OrgDocs/Agenda"))
 
+#+end_src
+** Always show image
+#+begin_src emacs-lisp :tangle yes
+(setq org-startup-with-inline-images t)
 #+end_src
 ** Auto-tangle Configuration Files
 #+begin_src emacs-lisp :tangle yes

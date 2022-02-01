@@ -31,13 +31,13 @@ sketchybar --bar                height=40                                       
                                 border_width=0                                                    \
                                 margin=0                                                          \
                                 blur_radius=30                                                    \
-                                position=top                                                   \
+                                position=bottom                                                   \
                                 padding_left=0                                                   \
                                 padding_right=0                                                   \
                                 color=0x00ffffff                                                  \
                                 topmost=off                                                       \
                                 font_smoothing=off                                                \
-                                y_offset=6                                                        \
+                                y_offset=3                                                        \
                                                                                                   \
            --default            drawing=on                                                        \
                                 lazy=off                                                          \

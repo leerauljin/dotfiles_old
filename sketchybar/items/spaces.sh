@@ -52,7 +52,7 @@ sketchybar --add       space              space_template left                \
            --set       space_template     associated_display=2               \
                                                                              \
            --clone     spaces_2.label     label_template                     \
-           --set       spaces_2.label     label=spc                          \
+           --set       spaces_2.label     label=lap                          \
                                           associated_display=2               \
                                           label.width=dynamic                     \
                                           label.align=left                 \
