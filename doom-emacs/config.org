@@ -65,7 +65,7 @@
 ** Theme
 #+begin_src emacs-lisp :tangle yes
 ;; Set default theme
-(setq doom-theme 'doom-plain)
+(setq doom-theme 'doom-plain-new)
 #+end_src
 ** Theme change with system appearance
 #+begin_src emacs-lisp :tangle yes
@@ -73,7 +73,7 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme 'doom-plain t))
+    ('light (load-theme 'doom-plain-new t))
     ('dark (load-theme 'doom-city-lights t))))
 
 (add-hook 'ns-system-appearance-change-functions #'apply-system-theme)
@@ -298,7 +298,7 @@
 #+end_src
 ** Line spacing
 #+begin_src emacs-lisp :tangle yes
-(add-hook! 'org-mode-hook (setq-local line-spacing 0.1))
+(add-hook! 'org-mode-hook (setq-local line-spacing 0.2))
 #+end_src
 ** Custom fonts color
 #+begin_src emacs-lisp :tangle yes
@@ -503,9 +503,21 @@
          :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
                             "#+title: ${title}\n\n")
          :immediate-finish t)
-        ("t" "Test purpose" plain "%?"
-         :target (file+head "concepts/%<%y%m%d-%H%M>-${slug}.org"
-                            "#+title: ${title}\n\n${pages}")
+        ("m" "Method" plain "%?"
+         :target (file+head "methods/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
+         :unnarrowed t)
+        ("M" "Method, without prompt" plain "%?"
+         :target (file+head "methods/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
+         :immediate-finish t)
+        ("t" "Theory" plain "%?"
+         :target (file+head "theories/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
+         :unnarrowed t)
+        ("T" "Theory, without prompt" plain "%?"
+         :target (file+head "theories/%<%y%m%d-%H%M>-${slug}.org"
+                            "#+title: ${title}\n\n")
          :immediate-finish t)
         ))
 #+end_src
@@ -628,6 +640,15 @@
 #+begin_src emacs-lisp :tangle yes
 (setq evil-snipe-scope 'visible)
 #+end_src
+** find and replace
+#+begin_src emacs-lisp :tangle yes
+(map! :desc "Replace string"
+      "C-c r" #'replace-string
+      :leader
+      :desc "Toggle org heading"
+      "m h" #'org-toggle-heading)
+
+#+end_src
 ** Toggle org-indent
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
@@ -690,8 +711,8 @@
 #+end_src
 ** Sysaurus
 #+begin_src emacs-lisp :tangle yes
-(map! :desc "Find synonym and insert"
-      "C-c r" #'synosaurus-choose-and-replace
+(map! :desc "Find synonym and replace"
+      "C-c S" #'synosaurus-choose-and-replace
       :desc "Find synonym and insert"
       "C-c s" #'synosaurus-choose-and-insert
       :leader
@@ -701,15 +722,15 @@
 
 ** PDF-Tools
 #+begin_src emacs-lisp :tangle yes
-;; Highlight selected
-(map! :map pdf-view-mode-map
-      :leader
-      :desc "Highlight selected"
-      "m h" #'pdf-annot-add-highlight-markup-annotation
-      ;; Delete annotation
-      "m H" #'pdf-annot-delete
-      ;; Revert
-      "m r" #'pdf-view-revert-buffer)
+;; ;; Highlight selected
+;; (map! :map pdf-view-mode-map
+;;       :leader
+;;       :desc "Highlight selected"
+;;       "m h" #'pdf-annot-add-highlight-markup-annotation
+;;       ;; Delete annotation
+;;       "m H" #'pdf-annot-delete
+;;       ;; Revert
+;;       "m r" #'pdf-view-revert-buffer)
 #+end_src
 ** Abbrev define
 #+begin_src emacs-lisp :tangle yes
