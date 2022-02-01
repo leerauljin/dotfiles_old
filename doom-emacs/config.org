@@ -18,12 +18,10 @@
 (setq undo-limit 80000000
       ;; More granular undo
       evil-want-fine-undo' t
-      auto-save-default t
-      ns-auto-titlebar-mode t)
-
+      auto-save-default t)
 ;; Show battery status
-(display-battery-mode 1)
-(setq display-time-default-load-average nil)
+;; (display-battery-mode 1)
+;; (setq display-time-default-load-average nil)
 #+end_src
 ** Coding system
 #+begin_src emacs-lisp :tangle yes
@@ -46,9 +44,6 @@
 (setq yas-snippet-dirs
       '("~/.doom.d/snippets"))
 #+end_src
-
-#+RESULTS:
-| ~/.doom.d/snippets |
 
 * UI
 ** Font Settings
@@ -152,7 +147,6 @@
 #+begin_src emacs-lisp :tangle yes
 ;; Display time on mode-line
 (display-time-mode 1)
-(setq-default display-time-default-load-average nil)
 #+end_src
 *** Word count
 #+begin_src emacs-lisp :tangle yes
@@ -750,4 +744,3 @@
       :desc "Add expansion for abbrev"
       "C-c W" #'inverse-add-global-abbrev)
 #+end_src
-*
