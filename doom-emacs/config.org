@@ -17,7 +17,7 @@
 ;; Raise undo-limit to 80Mb
 (setq undo-limit 80000000
       ;; More granular undo
-      evil-want-fine-undo t
+      evil-want-fine-undo' t
       auto-save-default t
       ns-auto-titlebar-mode t)
 
@@ -37,7 +37,7 @@
 (defconst my/config-file "~/Documents/Dev/dotfiles/doom-emacs/config.org")
 (defconst my/bibtex-file "~/Documents/Academic/Zotero/zotero-refs.bib")
 (defconst my/csl-file "~/Documents/Academic/Zotero/Styles")
-(defconst my/pdf-folder "~/Documents/Academic/Zotero/PDFs")
+(defconst my/pdf-folders '("~/Documents/Academic/Zotero/PDFs"))
 (defconst my/org-roam-folder "~/Documents/RoamNotes")
 (defconst my/org-roam-folders '("~/Documents/RoamNotes"))
 (after! org
@@ -46,14 +46,18 @@
 (setq yas-snippet-dirs
       '("~/.doom.d/snippets"))
 #+end_src
+
+#+RESULTS:
+| ~/.doom.d/snippets |
+
 * UI
 ** Font Settings
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 19)
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :style "Retina")
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
-      doom-variable-pitch-font (font-spec :family "ETbb" :size 19 :slant 'normal :weight 'normal))
+      doom-variable-pitch-font (font-spec :family "ETbb" :size 20 :slant 'normal :weight 'normal))
 #+end_src
 **
 *** Enable bold and italic
@@ -106,7 +110,7 @@
 ** Splash image
 #+begin_src emacs-lisp :tangle yes
 ;; Set splash image
-(setq fancy-splash-image "~/.doom.d/misc/NASA_logo.png")
+;; (setq fancy-splash-image "~/.doom.d/misc/NASA_logo.png")
 #+end_src
 ** Global hl-todo-mode
 #+begin_src emacs-lisp :tangle yes
@@ -474,6 +478,7 @@
 ** Bibtex-completion
 #+begin_src emacs-lisp :tangle yes
 (setq bibtex-completion-bibliography my/bibtex-file
+      bibtex-completion-library-path my/pdf-folders
       bibtex-completion-pdf-field "file"
       bibtex-completion-notes-path "~/Documents/RoamNotes/annotations")
 (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
@@ -524,7 +529,7 @@
 *** Citar
 #+begin_src emacs-lisp :tangle yes
 (setq citar-bibliography my/bibtex-file
-      ;; citar-library-paths my/pdf-folder
+      citar-library-paths my/pdf-folders
       citar-file-extensions '("pdf" "org" "md")
       citar-file-open-function #'find-file
       citar-default-action #'citar-open-library-file)
@@ -534,7 +539,8 @@
 (setq citar-symbol-separator "  ")
 (setq citar-templates
       '((main . "${author editor:20}     ${date year issued:4}     ${title:40}")
-        (suffix . " ${=type=:12}    ${tags keywords:*}")
+        (suffix . " ${=key= id:15}    ${tags keywords:*}")
+        (preview . " ${=type=:12}    ${tags keywords:*}")
         (note . "Notes on ${author editor}, ${title}")))
 #+end_src
 ** Citar keybinding
@@ -558,7 +564,7 @@
 #+end_src
 *** Zotero integration
 #+begin_src emacs-lisp :tangle yes
-(setq org-cite-csl-styles-dir "~/Zotero/styles")
+(setq org-cite-csl-styles-dir "~/Documents/Academic/Zotero/styles")
 #+end_src
 
 * Custom Functions

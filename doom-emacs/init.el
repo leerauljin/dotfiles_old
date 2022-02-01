@@ -190,4 +190,4 @@
        ;;literate
        (default +bindings +smartparens))
 
-(setq insert-directory-program "gls" dired-use-ls-dired t)
+;; (setq insert-directory-program "gls" dired-use-ls-dired t)

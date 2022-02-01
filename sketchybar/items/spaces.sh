@@ -33,38 +33,19 @@ sketchybar --add       space              space_template left                \
                                           icon.highlight_color=0xffd95468    \
                                           drawing=on                         \
                                                                              \
-           --clone     emacs              space_template                     \
-           --set       emacs              associated_space=3                 \
-                                          icon=                             \
-                                          icon.highlight_color=0xffd95468    \
-                                          drawing=on                         \
                                                                              \
            --clone     org                space_template                     \
-           --set       org                associated_space=4                 \
+           --set       org                associated_space=3                 \
                                           icon=ﲾ                             \
                                           icon.highlight_color=0xffd95468    \
                                           drawing=on                         \
                                                                              \
-           --clone     mesg               space_template                     \
-           --set       mesg               associated_space=5                 \
-                                          icon=שּ                             \
-                                          icon.highlight_color=0xffd95468    \
-                                          drawing=on                         \
-                                                                             \
-           --clone     enter              space_template                     \
-           --set       enter              associated_space=6                 \
-                                          icon=                             \
-                                          icon.highlight_color=0xffd95468    \
-                                          drawing=on                         \
                                                                              \
            --add       bracket            spaces_1                           \
                                           spaces_1.label                     \
                                           prod                               \
                                           surf                                \
-                                          emacs                                \
                                           org                                \
-                                          mesg                                \
-                                          enter                                \
                                                                              \
            --set       spaces_1           background.drawing=on              \
                                                                              \
@@ -79,7 +60,7 @@ sketchybar --add       space              space_template left                \
                                           drawing=on                         \
                                                                              \
            --clone     lap               space_template                     \
-           --set       lap               associated_space=7                 \
+           --set       lap               associated_space=4                 \
                                           icon=                             \
                                          icon.highlight_color=0xffd95468    \
                                           drawing=on                         \
