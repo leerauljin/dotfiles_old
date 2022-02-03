@@ -17,7 +17,7 @@
 ;; Raise undo-limit to 80Mb
 (setq undo-limit 80000000
       ;; More granular undo
-      evil-want-fine-undo' t
+      evil-want-fine-undo t
       auto-save-default t)
 ;; Show battery status
 ;; (display-battery-mode 1)
@@ -50,9 +50,9 @@
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :style "Retina")
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 22 :style "Retina")
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
-      doom-variable-pitch-font (font-spec :family "ETbb" :size 20 :slant 'normal :weight 'normal))
+      doom-variable-pitch-font (font-spec :family "ETbb" :size 22 :slant 'normal :weight 'normal))
 #+end_src
 **
 *** Enable bold and italic
@@ -64,7 +64,9 @@
 ** Theme
 #+begin_src emacs-lisp :tangle yes
 ;; Set default theme
-(setq doom-theme 'doom-plain-new)
+(if (display-graphic-p)
+    (setq doom-theme 'doom-ayu-light)
+  (setq doom-theme 'doom-acario-light))
 #+end_src
 ** Theme change with system appearance
 #+begin_src emacs-lisp :tangle yes
@@ -176,13 +178,14 @@
           (width . 140)
           (height . 60))))
 #+end_src
+**
 * Language
 ** Python
 *** Exclude .venv from LSP watch
 #+begin_src emacs-lisp :tangle yes
 ;; Exclude .venv from lsp watch
 (after! lsp-mode
-  (push "[/\\\\]\\.venv$" lsp-file-watch-ignored))
+  (push "[/\\\\]\\.venv$" lsp-file-watch-ignored-directories))
 #+end_src
 ** English
 *** Merriam-Webster thesaurus
@@ -195,7 +198,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (after! org
-  (setq org-directory my/org-folder))
+  (setq org-directory my/org-folder
+        org-log-done 'time
+        org-log-into-drawer t))
 (setq org-agenda-files '("~/Documents/OrgDocs/Agenda"))
 
 #+end_src
@@ -267,7 +272,7 @@
     (abbrev-mode 1)
     (mixed-pitch-mode 1)
     (hl-line-mode -1)
-    (display-line-numbers-mode -1)
+    ;; (display-line-numbers-mode -1)
     (hide-mode-line-mode 1)
     (olivetti-mode 1)
     (org-indent-mode -1)
@@ -284,6 +289,13 @@
 #+end_src
 
 #+RESULTS:
+** Agenda log mode
+#+begin_src emacs-lisp :tangle yes
+(map! :map org-agenda-mode-map
+      :desc "org-agenda-log-mode"
+      :leader
+      "m l" #'org-agenda-log-mode)
+#+end_src
 
 ** Remove stars
 #+begin_src emacs-lisp :tangle yes
@@ -381,9 +393,9 @@
 #+begin_src emacs-lisp :tangle yes
 (after! org
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-          (sequence "IDEA(i)" "LIT(l)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u)" "RETURN(j)" "|" "FIN(f)" "KILL(k)")
-          (sequence "NOTE(e)" "|" "ARCH(h)"))
+        '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d)")
+          (sequence "IDEA(i)" "LIT(l)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u@)" "RETURN(j!)" "|" "FIN(f)" "KILL(k)")
+          (sequence "NOTE(e!)" "|" "ARCH(h!)"))
           org-todo-keyword-faces
           '(("TODO"   . "#D95468")
             ("NEXT"  . "#D98E48")
@@ -426,10 +438,15 @@
                                                     "\n"
                                                     (org-agenda-format-date-aligned date))))
 #+end_src
-
-#+RESULTS:
-
+** Org restart
+#+begin_src emacs-lisp :tangle yes
+(map! :map org-mode-map
+      :desc "Restart org-mode"
+      :leader
+      "m R" #'org-mode-restart)
+#+end_src
 * Org noter
+
 #+begin_src emacs-lisp :tangle yes
 (setq org-noter-always-create-frame nil
       org-noter-hide-other nil
@@ -603,16 +620,16 @@
 #+end_src
 * Elfeed
 #+begin_src emacs-lisp :tangle yes
-(setq elfeed-goodies/entry-pane-size 0.5)
-(setq elfeed-feeds (quote
-                    (("https://rss.sciencedirect.com/publication/science/02615177" Journal TM)
-                     ("https://rss.sciencedirect.com/publication/science/01607383" Journal ATR)
-                     ("https://convention.pusan.ac.kr/bbs/convention/9230/rssList.do?row=50" Notice T&C))))
-(map! :leader
-      "o s" #'elfeed)
-(map! :map elfeed-show-mode-map
-      :n "J" #'elfeed-goodies/split-show-next
-      :n "K" #'elfeed-goodies/split-show-prev)
+;; (setq elfeed-goodies/entry-pane-size 0.5)
+;; (setq elfeed-feeds (quote
+;;                     (("https://rss.sciencedirect.com/publication/science/02615177" Journal TM)
+;;                      ("https://rss.sciencedirect.com/publication/science/01607383" Journal ATR)
+;;                      ("https://convention.pusan.ac.kr/bbs/convention/9230/rssList.do?row=50" Notice T&C))))
+;; (map! :leader
+;;       "o s" #'elfeed)
+;; (map! :map elfeed-show-mode-map
+;;       :n "J" #'elfeed-goodies/split-show-next
+;;       :n "K" #'elfeed-goodies/split-show-prev)
 
 #+end_src
 
