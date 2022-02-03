@@ -64,4 +64,5 @@
 (package! org-roam-bibtex)
 (package! mixed-pitch)
 (package! synosaurus)
+;; (package! org-super-agenda)
 ;; (package! ebib)

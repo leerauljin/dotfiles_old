@@ -199,7 +199,7 @@
 ;; change `org-directory'. It must be set before org loads!
 (after! org
   (setq org-directory my/org-folder
-        org-log-done 'time
+        org-log-done t
         org-log-into-drawer t))
 (setq org-agenda-files '("~/Documents/OrgDocs/Agenda"))
 
@@ -284,7 +284,6 @@
 (add-hook! 'org-mode-hook  #'nicer-org)
 (add-hook! 'org-mode-hook #'hl-todo-mode)
 (remove-hook! 'org-mode-hook  'org-superstar-mode)
-(remove-hook! 'org-mode-hook  'org-fancy-priorities-mode)
 (remove-hook! 'org-mode-hook  'flycheck-mode)
 #+end_src
 
@@ -393,9 +392,9 @@
 #+begin_src emacs-lisp :tangle yes
 (after! org
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d)")
+        '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
           (sequence "IDEA(i)" "LIT(l)" "DATA(c)" "ANAL(a)" "WRITE(w)" "PROOF(o)" "U/R(u@)" "RETURN(j!)" "|" "FIN(f)" "KILL(k)")
-          (sequence "NOTE(e!)" "|" "ARCH(h!)"))
+          (sequence "NOTE(e)" "|" "ARCH(h)"))
           org-todo-keyword-faces
           '(("TODO"   . "#D95468")
             ("NEXT"  . "#D98E48")
@@ -438,7 +437,60 @@
                                                     "\n"
                                                     (org-agenda-format-date-aligned date))))
 #+end_src
-** Org restart
+** Customization
+#+begin_src emacs-lisp :tangle yes
+;;warn me of any deadlines in next 7 days
+;; (setq org-deadline-warning-days 7)
+;;don't show tasks as scheduled if they are already shown as a deadline
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+;;don't give awarning colour to tasks with impending deadlines
+;;if they are scheduled to be done
+(setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+;;don't show tasks that are scheduled or have deadlines in the
+(setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+;;normal todo list
+(setq org-agenda-todo-ignore-deadlines (quote all))
+(setq org-agenda-todo-ignore-scheduled (quote all))
+;;sort tasks in order of when they are due and then by priority
+(setq org-agenda-sorting-strategy
+      (quote
+       ((agenda deadline-up priority-down)
+        (todo priority-down category-keep)
+        (tags priority-down category-keep)
+        (search category-keep))))
+
+;; start from yesterday
+(after! org
+  (setq org-agenda-start-day "0d"
+        org-agenda-span 8
+        org-agenda-start-on-weekday nil
+        org-agenda-start-with-log-mode t))
+
+;; custom view
+
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+         ((tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "EXPRESS: ")))
+          (tags-todo "-read-PRIORITY=\"A\""
+                        ((org-agenda-skip-function
+                         '(org-agenda-skip-subtree-if 'nottodo '("NEXT")))
+                         (org-agenda-overriding-header "Next: ")))
+          (agenda "")
+          (tags-todo "-read"
+                        ((org-agenda-skip-function
+                          '(org-agenda-skip-subtree-if 'nottodo '("TODO")))
+                         (org-agenda-overriding-header "TODO items: ")))
+          (tags-todo "research"
+                       ((org-agenda-skip-function
+                          '(org-agenda-skip-subtree-if 'todo '("FIN" "U/R")))
+                          (org-agenda-overriding-header "On-going research: ")))
+          (todo "U/R" ((org-agenda-overriding-header "Articles under review: "))))
+         ((org-agenda-compact-blocks t)))))
+#+end_src
+
+** Org Restart
 #+begin_src emacs-lisp :tangle yes
 (map! :map org-mode-map
       :desc "Restart org-mode"
@@ -473,6 +525,22 @@
 #+begin_src emacs-lisp :tangle yes
 (setq org-roam-directory my/org-roam-folder)
 (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+#+end_src
+** Hotter buffer
+#+begin_src emacs-lisp :tangle yes
+;; https://github.com/sunnyhasija/Academic-Doom-Emacs-Config/blob/master/config.org
+(defun org-roam-buffer-setup ()
+  "Function to make org-roam-buffer more pretty."
+  (progn
+    ;; (setq-local olivetti-body-width 44)
+    (mixed-pitch-mode 1)
+    ;; (olivetti-mode 1)
+    ;; (centaur-tabs-local-mode -1)
+
+  (set-face-background 'magit-section-highlight (face-background 'default))))
+
+(after! org-roam
+  (add-hook! 'org-roam-mode-hook #'org-roam-buffer-setup))
 #+end_src
 ** Org-roam UI
 #+begin_src emacs-lisp :tangle yes
@@ -618,23 +686,6 @@
 (after! dired
 (setq dired-listing-switches "--group-directories-first -gaGh1v"))
 #+end_src
-* Elfeed
-#+begin_src emacs-lisp :tangle yes
-;; (setq elfeed-goodies/entry-pane-size 0.5)
-;; (setq elfeed-feeds (quote
-;;                     (("https://rss.sciencedirect.com/publication/science/02615177" Journal TM)
-;;                      ("https://rss.sciencedirect.com/publication/science/01607383" Journal ATR)
-;;                      ("https://convention.pusan.ac.kr/bbs/convention/9230/rssList.do?row=50" Notice T&C))))
-;; (map! :leader
-;;       "o s" #'elfeed)
-;; (map! :map elfeed-show-mode-map
-;;       :n "J" #'elfeed-goodies/split-show-next
-;;       :n "K" #'elfeed-goodies/split-show-prev)
-
-#+end_src
-
-#+RESULTS:
-
 * TODO Deft
 #+begin_src emacs-lisp :tangle yes
 (setq deft-extensions '("txt" "org")
