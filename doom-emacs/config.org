@@ -475,16 +475,16 @@
                  (org-agenda-overriding-header "EXPRESS: ")))
           (tags-todo "-read-PRIORITY=\"A\""
                         ((org-agenda-skip-function
-                         '(org-agenda-skip-subtree-if 'nottodo '("NEXT")))
+                         '(org-agenda-skip-entry-if 'nottodo '("NEXT")))
                          (org-agenda-overriding-header "Next: ")))
           (agenda "")
           (tags-todo "-read"
                         ((org-agenda-skip-function
-                          '(org-agenda-skip-subtree-if 'nottodo '("TODO")))
+                          '(org-agenda-skip-entry-if 'nottodo '("TODO")))
                          (org-agenda-overriding-header "TODO items: ")))
           (tags-todo "research"
                        ((org-agenda-skip-function
-                          '(org-agenda-skip-subtree-if 'todo '("FIN" "U/R")))
+                          '(org-agenda-skip-entry-if 'todo '("FIN" "U/R")))
                           (org-agenda-overriding-header "On-going research: ")))
           (todo "U/R" ((org-agenda-overriding-header "Articles under review: "))))
          ((org-agenda-compact-blocks t)))))
@@ -525,6 +525,7 @@
 #+begin_src emacs-lisp :tangle yes
 (setq org-roam-directory my/org-roam-folder)
 (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+(setq +org-roam-open-buffer-on-find-file nil)
 #+end_src
 ** Hotter buffer
 #+begin_src emacs-lisp :tangle yes
