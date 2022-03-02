@@ -149,7 +149,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 18.0
+  size: 20.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -256,7 +256,7 @@ schemes:
       cyan: '0x56d9ad' #14
       white: '0xfeffff' #15
     
-colors: *ayu-light
+colors: *dark
 
   # Cursor colors
   #

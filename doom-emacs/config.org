@@ -50,9 +50,9 @@
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 22 :style "Retina")
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :style "Retina")
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
-      doom-variable-pitch-font (font-spec :family "ETbb" :size 22 :slant 'normal :weight 'normal))
+      doom-variable-pitch-font (font-spec :family "ETbb" :size 20 :slant 'normal :weight 'normal))
 #+end_src
 **
 *** Enable bold and italic
@@ -74,13 +74,13 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme 'doom-plain-new t))
+    ('light (load-theme 'doom-tomorrow-day t))
     ('dark (load-theme 'doom-city-lights t))))
 
 (add-hook 'ns-system-appearance-change-functions #'apply-system-theme)
 #+end_src
 **
-** Header line
+**  Header line
 #+begin_src emacs-lisp :tangle yes
 ;; "Adds a bar with the same color as the fringe as the header-line.Imitates the look of wordprocessors a bit."
 (setq-default header-line-format
@@ -232,10 +232,10 @@
                                  ("#+END_SRC" . "⇤")
                                  ("#+begin_src" . "↦")
                                  ("#+end_src" . "⇤")
+                                 ("#+title:" . " ")
+                                 ("#+TITLE:" . " ")
                                  ("#+BEGIN_EXAMPLE" . "↦")
                                  ("#+END_EXAMPLE" . "⇤")
-                                 ("#+TITLE:" . "")
-                                 ("#+title:" . "")
                                  ("->" . "→")
                                  ("<-" . "←")
                                  ("=>" . "⮕")
@@ -247,15 +247,15 @@
 #+end_src
 ** Enable org-mode for txt files
 #+begin_src emacs-lisp :tangle yes
-(add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+;; (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
 #+end_src
 ** Hide emphasis marker
 #+begin_src emacs-lisp :tangle yes
 ;; show actually italicized text instead of /italicized text/
-(setq org-hide-emphasis-markers t
+(setq org-hide-emphasis-markers nil
       org-ellipsis "  " ;; folding symbol
       ;; org-pretty-entities t
-      org-startup-indented t
+      ;; org-startup-indented t
       org-agenda-block-separator "")
 #+end_src
 ** No gutter for org
@@ -270,7 +270,7 @@
     (+org-pretty-mode 1)
     (org-pretty-table-mode 1)
     (abbrev-mode 1)
-    (mixed-pitch-mode 1)
+    ;; (mixed-pitch-mode 1)
     (hl-line-mode -1)
     ;; (display-line-numbers-mode -1)
     (hide-mode-line-mode 1)
@@ -283,7 +283,7 @@
 (setq olivetti-body-width 0.85)
 (add-hook! 'org-mode-hook  #'nicer-org)
 (add-hook! 'org-mode-hook #'hl-todo-mode)
-(remove-hook! 'org-mode-hook  'org-superstar-mode)
+;; (remove-hook! 'org-mode-hook  'org-superstar-mode)
 (remove-hook! 'org-mode-hook  'flycheck-mode)
 #+end_src
 
@@ -298,6 +298,8 @@
 
 ** Remove stars
 #+begin_src emacs-lisp :tangle yes
+;; (setq org-superstar-headline-bullets-list '(?\s))
+;; (setq org-superstar-remove-leading-stars t)
 (defun org-mode-remove-stars ()
   (font-lock-add-keywords
    nil
@@ -443,6 +445,9 @@
 ;; (setq org-deadline-warning-days 7)
 ;;don't show tasks as scheduled if they are already shown as a deadline
 (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done  t)
 ;;don't give awarning colour to tasks with impending deadlines
 ;;if they are scheduled to be done
 (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
@@ -534,7 +539,7 @@
   "Function to make org-roam-buffer more pretty."
   (progn
     ;; (setq-local olivetti-body-width 44)
-    (mixed-pitch-mode 1)
+    ;; (mixed-pitch-mode 1)
     ;; (olivetti-mode 1)
     ;; (centaur-tabs-local-mode -1)
 
