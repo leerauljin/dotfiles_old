@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sketchybar --add       space              space_template left                \
+sketchybar --add       space              space_template center                \
            --set       space_template     icon.highlight_color=0xff9dd274    \
                                           label.drawing=off                  \
                                           updates=on                         \
@@ -18,8 +18,8 @@ sketchybar --add       space              space_template left                \
            --set       spaces_1.label     label=spc                          \
                                           label.align=left                 \
                                           associated_display=1               \
-                                          position=left                      \
-                                          drawing=on                         \
+                                          position=center                      \
+                                          drawing=off                         \
                                                                              \
            --clone     surf               space_template                     \
            --set       surf               associated_space=1                 \
@@ -62,8 +62,8 @@ sketchybar --add       space              space_template left                \
                                           associated_display=2               \
                                           label.width=dynamic                     \
                                           label.align=left                 \
-                                          position=left                      \
-                                          drawing=on                         \
+                                          position=center                      \
+                                          drawing=off                         \
                                                                              \
            --clone     lap               space_template                     \
            --set       lap               associated_space=4                 \

@@ -12,10 +12,10 @@ LABEL_COLOR=0xff1d252c # Color of all labels
 CONTRAST_COLOR=$ICON_COLOR #0xff2a2f38 # The color of elements in front of a background
 SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID" # The script that is run for clicking on space components
 
-SEGMENT_HEIGHT=30 # The height of the segments
+SEGMENT_HEIGHT=24 # The height of the segments
 SEGMENT_SPACING=13 # The spacing between the segments
 SEGMENT_BORDER_WIDTH=0 # Width of the borders for segments
-SEGMENT_BACKGROUND_COLOR=0xffffffff # The background color for segments
+SEGMENT_BACKGROUND_COLOR=0x00ffffff # The background color for segments
 SEGMENT_BACKGROUND_HIGHLIGHT_COLOR=$SEGMENT_BACKGROUND_COLOR # 0xffe1e3e4 # The background highlight color for segments (borders, etc)
 CORNER_RADIUS=1 # Roundness of the segments
 
@@ -26,24 +26,24 @@ POPUP_CORNER_RADIUS=4
 
 HAS_BATTERY=$(if [ "$(pmset -g batt | grep "Battery")" = "" ]; then echo "false"; else echo "true"; fi)
 
-sketchybar --bar                height=40                                                         \
+sketchybar --bar                height=24                                                         \
                                 corner_radius=5                                                   \
                                 border_width=0                                                    \
                                 margin=0                                                          \
                                 blur_radius=30                                                    \
-                                position=bottom                                                   \
+                                position=top                                                   \
                                 padding_left=0                                                   \
                                 padding_right=0                                                   \
                                 color=0x00ffffff                                                  \
-                                topmost=off                                                       \
+                                topmost=on                                                       \
                                 font_smoothing=off                                                \
-                                y_offset=3                                                        \
+                                y_offset=0                                                        \
                                                                                                   \
            --default            drawing=on                                                        \
                                 lazy=off                                                          \
                                 updates=when_shown                                                \
                                 cache_scripts=on                                                  \
-                                label.font="$FONT:Semibold:14.0"                                  \
+                                label.font="$FONT:Medium:14.0"                                  \
                                 icon.font="$FONT:Bold:13.0"                                       \
                                 icon.color=$ICON_COLOR                                            \
                                 label.color=$LABEL_COLOR                                          \
@@ -60,7 +60,7 @@ sketchybar --bar                height=40                                       
                                 background.corner_radius=$CORNER_RADIUS                           \
                                 background.drawing=off                                            \
                                 background.shadow.color=0x88000000                                            \
-                                background.shadow.drawing=on                                            \
+                                background.shadow.drawing=off                                            \
                                 background.shadow.angle=45                                            \
                                 background.shadow.distance=6                                           \
                                 icon.background.height=$SEGMENT_HEIGHT                            \
@@ -92,8 +92,8 @@ sketchybar --bar                height=40                                       
 ###################### FINALIZE ###################
 
 source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/system.sh"
-source "$ITEM_DIR/calendar.sh"
+# source "$ITEM_DIR/system.sh"
+# source "$ITEM_DIR/calendar.sh"
 
 ############## FINALIZING THE SETUP ##############
 sketchybar --update
