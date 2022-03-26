@@ -8,7 +8,7 @@ sketchybar --add       space              space_template center                \
                                           background.padding_left=0         \
                                           background.padding_right=0         \
                                           label.font="$FONT:Black:13.0"      \
-                                          icon.font="FiraCode Nerd Font:Bold:20.0"        \
+                                          icon.font="FiraCode Nerd Font:Bold:18.0"        \
                                           icon.padding_left=5                                      \
                                           icon.padding_right=5                                     \
                                           script="$PLUGIN_DIR/space.sh"      \

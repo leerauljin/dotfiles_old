@@ -7,12 +7,12 @@ LOADING=? # Icon displayed while an item is still initializing
 PADDINGS=12 # All paddings use this value (icon, label, background and bar paddings)
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 BAR_COLOR=0xffffffff # Black bar
-ICON_COLOR=0xff1d252c # Color of all icons
+ICON_COLOR=0xffeaebee # Color of all icons
 LABEL_COLOR=0xff1d252c # Color of all labels
 CONTRAST_COLOR=$ICON_COLOR #0xff2a2f38 # The color of elements in front of a background
 SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID" # The script that is run for clicking on space components
 
-SEGMENT_HEIGHT=24 # The height of the segments
+SEGMENT_HEIGHT=20 # The height of the segments
 SEGMENT_SPACING=13 # The spacing between the segments
 SEGMENT_BORDER_WIDTH=0 # Width of the borders for segments
 SEGMENT_BACKGROUND_COLOR=0x00ffffff # The background color for segments
@@ -26,7 +26,7 @@ POPUP_CORNER_RADIUS=4
 
 HAS_BATTERY=$(if [ "$(pmset -g batt | grep "Battery")" = "" ]; then echo "false"; else echo "true"; fi)
 
-sketchybar --bar                height=24                                                         \
+sketchybar --bar                height=20                                                         \
                                 corner_radius=5                                                   \
                                 border_width=0                                                    \
                                 margin=0                                                          \
@@ -37,7 +37,7 @@ sketchybar --bar                height=24                                       
                                 color=0x00ffffff                                                  \
                                 topmost=on                                                       \
                                 font_smoothing=off                                                \
-                                y_offset=0                                                        \
+                                y_offset=2                                                        \
                                                                                                   \
            --default            drawing=on                                                        \
                                 lazy=off                                                          \
