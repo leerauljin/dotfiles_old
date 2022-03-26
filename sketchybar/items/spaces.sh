@@ -45,6 +45,11 @@ sketchybar --add       space              space_template center                \
                                           icon.highlight_color=0xffd95468    \
                                           drawing=on                         \
                                                                              \
+           --clone     ent                space_template                     \
+           --set       ent                associated_space=5                 \
+                                          icon=                            \
+                                          icon.highlight_color=0xffd95468    \
+                                          drawing=on                         \
                                                                              \
            --add       bracket            spaces_1                           \
                                           spaces_1.label                     \
@@ -66,7 +71,7 @@ sketchybar --add       space              space_template center                \
                                           drawing=off                         \
                                                                              \
            --clone     lap               space_template                     \
-           --set       lap               associated_space=4                 \
+           --set       lap               associated_space=6                 \
                                           icon=                             \
                                          icon.highlight_color=0xffd95468    \
                                           drawing=on                         \

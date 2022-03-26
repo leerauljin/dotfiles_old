@@ -1,13 +1,15 @@
 # open apps
 # rcmd - 0 : open -n -a Finder
 # rcmd - return : emacsclient --eval "(emacs-everywhere)"
-rcmd - t : open -n -a Alacritty #; yabai -m space --focus 1
-rcmd - j : open -a jamovi; yabai -m space --focus 3
-rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 2
+rcmd - return : open -n -a Alacritty #; yabai -m space --focus 1
+rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
 
 rcmd - b : open -a Safari; yabai -m space --focus 1
 
-rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
+rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 2
+
+rcmd - j : open -a jamovi; yabai -m space --focus 3
+rcmd - l : open -a SmartPLS; yabai -m space --focus 3
 
 # Much snappier to launch emacsclient rather than launching Emacs daemon every time.
 rcmd + shift - e : emacsclient -c -a ""; yabai -m window --focus mouse
@@ -15,10 +17,9 @@ rcmd + shift - e : emacsclient -c -a ""; yabai -m window --focus mouse
 rcmd - z : open -a Zotero; yabai -m space --focus 4
 rcmd - n : open -a Notion; yabai -m space --focus 4
 rcmd - c : open -a Calendar; yabai -m space --focus 4
-
 rcmd - m : open -a Spark ; yabai -m space --focus 4
 
-rcmd - p : open -a Music; yabai -m space --focus 4
+rcmd - p : open -a Music; yabai -m space --focus 5
 
 
 # open folders
@@ -37,6 +38,8 @@ rcmd + shift - z : open ~/Documents/Academic/Zotero
 # open websites
 rcmd - y : open https://www.youtube.com
 rcmd - s : open https://scholar.google.com
+rcmd - d : open https://en.dict.naver.com/
+rcmd - t : open https://www.thesaurus.com
 
 ## Swap and move
 ##

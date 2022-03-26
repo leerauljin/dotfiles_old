@@ -61,11 +61,12 @@ yabai -m rule --add app="Zotero" space=4
 yabai -m rule --add app="Notion" space=4
 yabai -m rule --add app="Calendar" space=4
 
+
 yabai -m rule --add app="Spark" space=4
 yabai -m rule --add app="KakaoTalk" space=4
-yabai -m rule --add app="Plex" space=4
 
 yabai -m rule --add app="Music" space=5
+yabai -m rule --add app="Plex" space=5
 
 yabai -m rule --add title="^Emacs Everywhere$" space=^
 
