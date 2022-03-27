@@ -4,7 +4,7 @@ ITEM_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/items" # Directory where the i
 PLUGIN_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
 LOADING=? # Icon displayed while an item is still initializing
-PADDINGS=12 # All paddings use this value (icon, label, background and bar paddings)
+PADDINGS=6 # All paddings use this value (icon, label, background and bar paddings)
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 BAR_COLOR=0xffffffff # Black bar
 ICON_COLOR=0xffeaebee # Color of all icons
@@ -31,13 +31,13 @@ sketchybar --bar                height=20                                       
                                 border_width=0                                                    \
                                 margin=0                                                          \
                                 blur_radius=30                                                    \
-                                position=top                                                   \
-                                padding_left=0                                                   \
-                                padding_right=0                                                   \
+                                position=bottom                                                   \
+                                padding_left=6                                                   \
+                                padding_right=6                                                   \
                                 color=0x00ffffff                                                  \
                                 topmost=on                                                       \
                                 font_smoothing=off                                                \
-                                y_offset=2                                                        \
+                                y_offset=3                                                        \
                                                                                                   \
            --default            drawing=on                                                        \
                                 lazy=off                                                          \
@@ -92,8 +92,8 @@ sketchybar --bar                height=20                                       
 ###################### FINALIZE ###################
 
 source "$ITEM_DIR/spaces.sh"
-# source "$ITEM_DIR/system.sh"
-# source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/system.sh"
+source "$ITEM_DIR/calendar.sh"
 
 ############## FINALIZING THE SETUP ##############
 sketchybar --update

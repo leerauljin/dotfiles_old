@@ -115,7 +115,7 @@
 #+end_src
 ** Window opacity
 #+begin_src emacs-lisp :tangle yes
-;; (doom/set-frame-opacity 97)
+(doom/set-frame-opacity 95)
 #+end_src
 ** Miniframe mode
 #+begin_src emacs-lisp :tangle yes

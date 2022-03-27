@@ -2,6 +2,8 @@
 
 sketchybar --add       item               calendar.time right                           \
            --set       calendar.time      update_freq=2                                 \
+                                          label.font="$FONT:Bold:16"      \
+                                          label.color=$BAR_COLOR                       \
                                           icon.drawing=off                              \
                                           script="$PLUGIN_DIR/time.sh"                  \
                                                                                         \
