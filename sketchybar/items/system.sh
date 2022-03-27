@@ -2,12 +2,14 @@
 
 sketchybar --clone     system.label       label_template                                \
            --set       system.label       label=sys                                     \
-                                          label.align=center                 \
-                                          label.background.shadow.drawing=on                                            \
-                                          label.background.shadow.angle=45                                            \
-                                          label.background.shadow.distance=6                                            \
-                                          label.background.shadow.color=0x88000000                                            \
-                                          position=center                                 \
+                                          label.align=left                 \
+                                          label.background.shadow.drawing=off               \
+                                          label.background.shadow.angle=45                  \
+                                          background.drawing=off              \
+                                          background.padding_left=6         \
+                                          label.background.drawing=off                                      \
+                                          label.font="$FONT:Black:16"      \
+                                          position=left                                 \
                                           drawing=on                                    \
                                           script="$PLUGIN_DIR/window_title.sh"          \
            --subscribe system.label       front_app_switched                            \
@@ -16,5 +18,5 @@ sketchybar --clone     system.label       label_template                        
            --add       bracket            system                                        \
                                           system.label                                  \
                                                                                         \
-           --set       system             background.drawing=on              \
-                                          background.padding_right=0         \
+           --set       system             background.drawing=off              \
+                                          background.padding_left=0         \
