@@ -8,7 +8,7 @@ sketchybar --clone     system.label       label_template                        
                                           background.drawing=off              \
                                           background.padding_left=6         \
                                           label.background.drawing=off                                      \
-                                          label.font="$FONT:Black:16"      \
+                                          label.font="$FONT:Black:14"      \
                                           position=left                                 \
                                           drawing=on                                    \
                                           script="$PLUGIN_DIR/window_title.sh"          \

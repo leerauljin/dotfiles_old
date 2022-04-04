@@ -124,8 +124,8 @@ lctrl + alt + shift - 9 : yabai -m window --space  9
 lctrl + alt + shift - 0 : yabai -m window --space  10
 
 # fast focus previous and next desktop
-lctrl + lcmd - n : yabai -m space --focus next
-lctrl + lcmd - p : yabai -m space --focus prev
+# lctrl + lcmd - n : yabai -m space --focus next
+# lctrl + lcmd - p : yabai -m space --focus prev
 
 # send window to previous and next desktop and follow focus
 lctrl + lalt - n : yabai -m window --space  next; yabai -m space --focus next

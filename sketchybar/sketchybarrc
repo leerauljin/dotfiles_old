@@ -37,7 +37,7 @@ sketchybar --bar                height=20                                       
                                 color=0x00ffffff                                                  \
                                 topmost=off                                                       \
                                 font_smoothing=off                                                \
-                                y_offset=3                                                        \
+                                y_offset=5                                                        \
                                                                                                   \
            --default            drawing=on                                                        \
                                 lazy=off                                                          \
