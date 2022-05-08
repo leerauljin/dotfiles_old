@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sketchybar --add       space              space_template center                \
+sketchybar --add       space              space_template left                \
            --set       space_template     icon.highlight_color=0xff9dd274    \
                                           label.drawing=off                  \
                                           updates=on                         \

@@ -14,7 +14,8 @@ rcmd - l : open -a SmartPLS; yabai -m space --focus 3
 # Much snappier to launch emacsclient rather than launching Emacs daemon every time.
 rcmd + shift - e : emacsclient -c -a ""; yabai -m window --focus mouse
 
-rcmd - z : open -a Zotero; yabai -m space --focus 4
+rcmd - z : open -a Zotero
+# rcmd - z : open -a Zotero; yabai -m space --focus 4
 rcmd - n : open -a Notion; yabai -m space --focus 4
 rcmd - c : open -a Calendar; yabai -m space --focus 4
 rcmd - m : open -a Spark ; yabai -m space --focus 4
