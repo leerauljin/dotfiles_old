@@ -29,7 +29,7 @@ rcmd + shift - d : open ~/Downloads
 rcmd + shift - k : open ~/Desktop
 rcmd + shift - c : open ~/Documents
 rcmd + shift - a : open ~/Documents/Academic
-rcmd + shift - r : open ~/Documents/Academic/Research
+rcmd + shift - r : open ~/OneDrive\ -\ pusan.ac.kr/Research
 rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
 rcmd + shift - o : open ~/Documents/OrgDocs
 rcmd + shift - m : open ~/Documents/RoamNotes

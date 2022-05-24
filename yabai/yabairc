@@ -81,7 +81,7 @@ yabai -m rule --add app="^Steam$" manage=off
 yabai -m rule --add app="^Font Book$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add app="^uBar$" manage=off
+yabai -m rule --add title="^uBar$" manage=off
 yabai -m rule --add title="^MiniPlayer$" manage=off
 yabai -m rule --add title="^Parallels Desktop$" manage=off
 yabai -m rule --add title="^Preferences$" manage=off
