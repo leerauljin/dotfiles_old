@@ -1,198 +1,82 @@
 # open apps
-# rcmd - 0 : open -n -a Finder
-# rcmd - return : emacsclient --eval "(emacs-everywhere)"
-rcmd - return : open -n -a Alacritty #; yabai -m space --focus 1
-rcmd - e : open -n -a Emacs # ; yabai -m space --focus 1
+rcmd - 0 : open -n -a Finder
 
-rcmd - b : open -a Safari; yabai -m space --focus 1
+rcmd - b : open -a Safari; yabai -m space --focus 2
 
-rcmd - w : open -a Microsoft\ Word; yabai -m space --focus 2
+rcmd - return : open -n -a Alacritty ; yabai -m space --focus 6
 
-rcmd - j : open -a jamovi; yabai -m space --focus 3
-rcmd - l : open -a SmartPLS; yabai -m space --focus 3
 
-# Much snappier to launch emacsclient rather than launching Emacs daemon every time.
-rcmd + shift - e : emacsclient -c -a ""; yabai -m window --focus mouse
 
-rcmd - z : open -a Zotero
-# rcmd - z : open -a Zotero; yabai -m space --focus 4
-rcmd - n : open -a Notion; yabai -m space --focus 4
-rcmd - c : open -a Calendar; yabai -m space --focus 4
-rcmd - m : open -a Spark ; yabai -m space --focus 4
+# rcmd - w : `open -a Microsoft\ Word #; yabai -m space --focus 2
 
-rcmd - p : open -a Music; yabai -m space --focus 5
+# rcmd - j : open -a jamovi #; yabai -m space --focus 3
+# rcmd - l : open -a SmartPLS #; yabai -m space --focus 3
+
+
+# rcmd - z : open -a Zotero
+# rcmd - n : open -a Notion
+# rcmd - c : open -a Calendar
+# rcmd - m : open -a Spark
+
+# rcmd - p : open -a Music; yabai -m space --focus 5
 
 
 # open folders
-rcmd + shift - h : open ~/
-rcmd + shift - d : open ~/Downloads
-rcmd + shift - k : open ~/Desktop
-rcmd + shift - c : open ~/Documents
-rcmd + shift - a : open ~/Documents/Academic
-rcmd + shift - r : open ~/OneDrive\ -\ pusan.ac.kr/Research
-rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
-rcmd + shift - o : open ~/Documents/OrgDocs
-rcmd + shift - m : open ~/Documents/RoamNotes
-rcmd + shift - z : open ~/Documents/Academic/Zotero
+# rcmd + shift - h : open ~/
+# rcmd + shift - d : open ~/Downloads
+# rcmd + shift - k : open ~/Desktop
+# rcmd + shift - c : open ~/Documents
+# rcmd + shift - a : open ~/Documents/Academic
+# rcmd + shift - r : open ~/OneDrive\ -\ pusan.ac.kr/Research
+# rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
+# rcmd + shift - o : open ~/Documents/OrgDocs
+# rcmd + shift - m : open ~/Documents/RoamNotes
+# rcmd + shift - z : open ~/Documents/Academic/Zotero
 # rcmd - 0 : open ~/.trash
 
 # open websites
-rcmd - y : open https://www.youtube.com
-rcmd - s : open https://scholar.google.com
-rcmd - d : open https://en.dict.naver.com/
-rcmd - t : open https://www.thesaurus.com
+# rcmd - y : open https://www.youtube.com
+# rcmd - s : open https://scholar.google.com
+# rcmd - d : open https://en.dict.naver.com/
+# rcmd - t : open https://www.thesaurus.com
 
-## Swap and move
-##
-##
-# swap managed window
-lctrl + alt + shift - h : yabai -m window --swap west
-lctrl + alt + shift - j : yabai -m window --swap south
-lctrl + alt + shift - k : yabai -m window --swap north
-lctrl + alt + shift - l : yabai -m window --swap east
+# Restart sketchybar
+lalt + ctrl + shift - b : brew services restart sketchybar
 
-# move managed window
-lctrl + alt - h : yabai -m window --warp west
-lctrl + alt - j : yabai -m window --warp south
-lctrl + alt - k : yabai -m window --warp north
-lctrl + alt - l : yabai -m window --warp east
-
-## Size adjust
-##
-##
-# resize windows
-lctrl + lcmd - a : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
-lctrl + lcmd - d : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
-# lctrl + lcmd + shift - j : yabai -m window --resize bottom:0:50; \
-#                   yabai -m window --resize top:0:50
-# lctrl + lcmd + shift - k : yabai -m window --resize top:0:-50; \
-#                   yabai -m window --resize bottom:0:-50
-
-# balance size of windows
-lctrl + lcmd - b : yabai -m space --balance
+# Restart yabai
+lalt + ctrl + shift - w : brew services restart yabai
 
 
-## Focus (Space)
-##
-##
-##
-# focus window
-lctrl + lcmd - h : yabai -m window --focus west
-lctrl + lcmd - j : yabai -m window --focus south
-lctrl + lcmd - k : yabai -m window --focus north
-lctrl + lcmd - l : yabai -m window --focus east
+# Yabai Commands
 
-# fast focus desktop
-lctrl + lcmd - 1 : yabai -m space --focus 1
-lctrl + lcmd - 2 : yabai -m space --focus 2
-lctrl + lcmd - 3 : yabai -m space --focus 3
-lctrl + lcmd - 4 : yabai -m space --focus 4
-lctrl + lcmd - 5 : yabai -m space --focus 5
-lctrl + lcmd - 6 : yabai -m space --focus 6
-lctrl + lcmd - 7 : yabai -m space --focus 7
-lctrl + lcmd - 8 : yabai -m space --focus 8
-lctrl + lcmd - 9 : yabai -m space --focus 9
-lctrl + lcmd - 0 : yabai -m space --focus 10
+## Focus window
 
-# Shortcut to focus on mouse location just in case
-lctrl + lcmd - m : yabai -m window --focus mouse
+lctrl - q : yabai -m space --focus recent
+lctrl - 1 : yabai -m space --focus 1
+lctrl - 2 : yabai -m space --focus 2
+lctrl - 3 : yabai -m space --focus 3
+lctrl - 4 : yabai -m space --focus 4
+lctrl - 9 : yabai -m space --focus 5
+lctrl - 0 : yabai -m space --focus 6
 
-# send window to desktop and follow focus
-lctrl + alt - 1 : yabai -m window --space  1; yabai -m space --focus 1
-lctrl + alt - 2 : yabai -m window --space  2; yabai -m space --focus 2
-lctrl + alt - 3 : yabai -m window --space  3; yabai -m space --focus 3
-lctrl + alt - 4 : yabai -m window --space  4; yabai -m space --focus 4
-lctrl + alt - 5 : yabai -m window --space  5; yabai -m space --focus 5
-lctrl + alt - 6 : yabai -m window --space  6; yabai -m space --focus 6
-lctrl + alt - 7 : yabai -m window --space  7; yabai -m space --focus 7
-lctrl + alt - 8 : yabai -m window --space  8; yabai -m space --focus 8
-lctrl + alt - 9 : yabai -m window --space  9; yabai -m space --focus 9
-lctrl + alt - 0 : yabai -m window --space  10; yabai -m space --focus 10
+## Send window and focus
+
+lctrl + rcmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
+lctrl + rcmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
+lctrl + rcmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
+lctrl + rcmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
+lctrl + rcmd - 9 : yabai -m window --space 5; yabai -m space --focus 5
+lctrl + rcmd - 0 : yabai -m window --space 6; yabai -m space --focus 6
+
+## focus window in bsp mode
+rcmd - h: yabai -m window --focus west
+rcmd - j: yabai -m window --focus south; yabai -m window --focus stack.next
+rcmd - k: yabai -m window --focus north; yabai -m window --focus stack.prev
+rcmd - l: yabai -m window --focus east
 
 
-# send window to desktop and not follow focus
-lctrl + alt + shift - 1 : yabai -m window --space  1
-lctrl + alt + shift - 2 : yabai -m window --space  2
-lctrl + alt + shift - 3 : yabai -m window --space  3
-lctrl + alt + shift - 4 : yabai -m window --space  4
-lctrl + alt + shift - 5 : yabai -m window --space  5
-lctrl + alt + shift - 6 : yabai -m window --space  6
-lctrl + alt + shift - 7 : yabai -m window --space  7
-lctrl + alt + shift - 8 : yabai -m window --space  8
-lctrl + alt + shift - 9 : yabai -m window --space  9
-lctrl + alt + shift - 0 : yabai -m window --space  10
-
-# fast focus previous and next desktop
-# lctrl + lcmd - n : yabai -m space --focus next
-# lctrl + lcmd - p : yabai -m space --focus prev
-
-# send window to previous and next desktop and follow focus
-lctrl + lalt - n : yabai -m window --space  next; yabai -m space --focus next
-lctrl + lalt - p : yabai -m window --space  prev; yabai -m space --focus prev
-
-
-# send window to previous and next desktop and not follow focus
-lctrl + lalt + shift - n : yabai -m window --space  next
-lctrl + lalt + shift - p : yabai -m window --space  prev
-
-## Focus (Display)
-##
-##
-##
-
-# fast focus display
-lctrl + lcmd - q : yabai -m display --focus 1
-lctrl + lcmd - w : yabai -m display --focus 2
-lctrl + lcmd - e : yabai -m display --focus 3
-
-
-# send window to display and follow focus
-lctrl + alt - q : yabai -m window --display  1; yabai -m display --focus 1
-lctrl + alt - w : yabai -m window --display  2; yabai -m display --focus 2
-lctrl + alt - e : yabai -m window --display  3; yabai -m display --focus 3
-
-
-# send window to display and not follow focus
-lctrl + alt + shift - q : yabai -m window --display  1
-lctrl + alt + shift - w : yabai -m window --display  2
-lctrl + alt + shift - e : yabai -m window --display  3
-
-
-# create and destroy spaces
-lctrl + alt - x : yabai -m space --create
-lctrl + alt + shift - x : yabai -m space --destroy
-
-
-# toggle window zoom
-lctrl + lcmd - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window split type
-lctrl + alt - r : yabai -m window --toggle split
-
-# float / unfloat window and center on screen
-lctrl + lcmd - t : yabai -m window --toggle float
-
-# float / unfloat window and center on screen
-# lctrl + lcmd - space : yabai -m window --toggle float;\
-#            yabai -m window --grid 4:4:1:1:2:2
-
-# Restart Yabai
-lctrl + alt + shift - y : brew services restart yabai
-
-# Refresh Sketchybar
-lctrl + alt + shift - u : brew services restart sketchybar
-
-# focus monitor
-# lctrl + alt + lcmd - p : yabai -m display --focus recent
-
-# send window to monitor and follow focus
-# lctrl + alt + lcmd + shift - p : yabai -m window --display recent; yabai -m display --focus recent
-
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
+## Swap window in bsp mode
+rcmd + shift - h: yabai -m window --swap west
+rcmd + shift - j: yabai -m window --swap south
+rcmd + shift - k: yabai -m window --swap north
+rcmd + shift - l: yabai -m window --swap east

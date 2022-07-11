@@ -20,9 +20,9 @@ yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.95
 yabai -m config window_border                off
-yabai -m config window_border_width          6
-# yabai -m config active_window_border_color   0xff539AFC
-# yabai -m config normal_window_border_color   0xff181E24
+yabai -m config window_border_width          8
+yabai -m config active_window_border_color   0xbb7dcfff
+yabai -m config normal_window_border_color   0xbb565f89
 # yabai -m config active_window_border_color   0xff81A1C1
 # yabai -m config normal_window_border_color   0xff7A808C
 yabai -m config insert_feedback_color        0xff61afef
@@ -34,41 +34,62 @@ yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
 yabai -m config layout                       bsp
-yabai -m config top_padding                  12
-yabai -m config bottom_padding               12
-yabai -m config left_padding                 12
-yabai -m config right_padding                12
-yabai -m config window_gap                   12
+yabai -m config top_padding                  6
+yabai -m config bottom_padding               6
+yabai -m config left_padding                 6
+yabai -m config right_padding                6
+yabai -m config window_gap                   6
 
 
 ## Default spaces
 
-yabai -m rule --add app="Safari" space=1
-yabai -m rule --add app="Firefox" space=1
+# Space 1 No managed
+yabai -m config --space 1 layout float
 
-# yabai -m rule --add app="Alacritty"     space=2
-# yabai -m rule --add app="Emacs"     space=2
-yabai -m rule --add app="Microsoft Word"     space=2
-yabai -m rule --add app="Microsoft PowerPoint"     space=2
-yabai -m rule --add app="Microsoft Excel"     space=2
-yabai -m rule --add app="Pages"     space=2
-yabai -m rule --add app="Keynote"     space=2
+# Space 2 Web browser
+yabai -m config --space 2 layout stack
+yabai -m rule --add app="Safari" space=2
+yabai -m rule --add app="Firefox" space=2
 
-yabai -m rule --add app="PDF Expert"     space=3
-yabai -m rule --add app="jamovi"     space=3
-
-# yabai -m rule --add app="Zotero" space=4
-yabai -m rule --add app="Notion" space=4
-yabai -m rule --add app="Calendar" space=4
+# Space 3 Writing
+yabai -m config --space 3 layout stack
 
 
-yabai -m rule --add app="Spark" space=4
-yabai -m rule --add app="KakaoTalk" space=4
+# Space 4 Programming
+yabai -m config --space 4 layout stack
+yabai -m rule --add app="Code" space=4
+yabai -m rule --add app="jamovi" space=4
 
+
+# Space 5 Entertainment
 yabai -m rule --add app="Music" space=5
 yabai -m rule --add app="Plex" space=5
+yabai -m rule --add app="TV" space=5
 
-yabai -m rule --add title="^Emacs Everywhere$" space=^
+# Space 6 Terminal
+yabai -m rule --add app="Alacritty"     space=6
+
+
+
+# yabai -m rule --add app="Microsoft Word"     space=2
+# yabai -m rule --add app="Microsoft PowerPoint"     space=2
+# yabai -m rule --add app="Microsoft Excel"     space=2
+# yabai -m rule --add app="Pages"     space=2
+# yabai -m rule --add app="Keynote"     space=2
+
+# yabai -m rule --add app="PDF Expert"     space=3
+# yabai -m rule --add app="jamovi"     space=3
+
+# yabai -m rule --add app="Zotero" space=4
+# yabai -m rule --add app="Notion" space=4
+# yabai -m rule --add app="Calendar" space=4
+
+
+# yabai -m rule --add app="Spark" space=4
+# yabai -m rule --add app="KakaoTalk" space=4
+
+
+# yabai -m rule --add title="^Emacs Everywhere$" space=^
 
 # ^^ these are annoying
 # yabai -m rule --add app="Safari"        space=3
@@ -81,15 +102,11 @@ yabai -m rule --add app="^Steam$" manage=off
 yabai -m rule --add app="^Font Book$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add title="^uBar$" manage=off
 yabai -m rule --add title="^MiniPlayer$" manage=off
-yabai -m rule --add title="^Parallels Desktop$" manage=off
-yabai -m rule --add title="^Preferences$" manage=off
-yabai -m rule --add title="^Open$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
 # yabai -m config external_bar all:20:0
-yabai -m config external_bar all:0:24
+yabai -m config external_bar all:0:30
 
 
 # This prevents focus jumping around spaces after closing emacsclient

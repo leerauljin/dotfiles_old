@@ -47,7 +47,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 12
-    y: 12
+    y: 20
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -92,7 +92,7 @@ window:
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
-  opacity: 0.95
+  opacity: 1
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -150,7 +150,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 20.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -177,87 +177,66 @@ font:
 
 
 schemes:
-  # Default colors
-  city-lights-theme: &dark
+  # Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night: &tokyo-night
+    # Default colors
     primary:
-      background: '0x20242c'
-      foreground: '0xA0B3C5'
-    # Normal colors
-    normal:
-      black:   '0x10151C'
-      red:     '0xd95468'
-      green:   '0x8bd49c'
-      yellow:  '0xebbf83'
-      blue:    '0x539afc'
-      magenta: '0xb62d65'
-      cyan:    '0x70e1e8'
-      white:   '0x718ca1'
-
-     # Bright colors
-    bright:
-      black:   '0x41505e'
-      red:     '0xd95468'
-      green:   '0x8bd49c'
-      yellow:  '0xf7dab3'
-      blue:    '0x5ec4ff'
-      magenta: '0xb62d65'
-      cyan:    '0x70e1e8'
-      white:   '0xb7c5d3'
-
-  nasa-theme: &light
-    primary:
-      background: '#ffffff'
-      foreground: '#212121'
+      background: '0x1a1b26'
+      foreground: '0xa9b1d6'
 
     # Normal colors
     normal:
-      black:   '#101010' 
-      red:     '#99231b' # color-secondary-darkest
-      green:   '#2e8540' # color-green
-      yellow:  '#ff9d1e' # color-gold 
-      blue:    '#061f4a' # color-primary-darkest
-      magenta: '#4c2c92' # color-visited
-      cyan:    '#046b99' # color-primary-alt-darkest
-      white:   '#aeb0b5' # clolor-gray-light
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
 
     # Bright colors
     bright:
-      black:   '#212121' # color-base
-      red:     '#dd361c' # color-secondary
-      green:   '#4aa564' # color-green-light
-      yellow:  '#f9aa43' # color-gold-light 
-      blue:    '#0b3d91' # color-primary-darker
-      magenta: '#4c2c92' # color-visited
-      cyan:    '#00a6d2' # color-primary-alt
-      white:   '#d6d7d9' # clolor-gray-lighter
-  ayu-light: &ayu-light
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+  tokyo-night-storm: &tokyo-night-storm
+    # Default colors
     primary:
-      background: '0xfafafa'
-      foreground: '0x5b6672'
+      background: '0x24283b'
+      foreground: '0xa9b1d6'
 
     # Normal colors
     normal:
-      black: '0x000000' #0
-      red: '0xf2590b' #1
-      green: '0x76cc00' #2
-      yellow: '0xf29717' #3
-      blue: '0x41a5d9' #4
-      magenta: '0x9965cc' #5
-      cyan: '0x4dbf98' #6
-      white: '0xc7c7c7' #7
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x9699a8'
 
     # Bright colors
     bright:
-      black: '0x676767'
-      red: '0xd6646a' #9
-      green: '0xa3d900' #10
-      yellow: '0xe7c446' #11
-      blue: '0x6871ff' #12
-      magenta: '0xa37acc' #13
-      cyan: '0x56d9ad' #14
-      white: '0xfeffff' #15
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
     
-colors: *dark
+colors: *tokyo-night
 
   # Cursor colors
   #

@@ -1,101 +1,160 @@
-#!/usr/bin/env sh
+# This is a demo config to show some of the most important commands more easily.
+# This is meant to be changed and configured, as it is intentionally kept sparse.
+# For a more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
 
-ITEM_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/items" # Directory where the items are configured
-PLUGIN_DIR="$HOME/Documents/Dev/dotfiles/sketchybar/plugins" # Directory where all the plugin scripts are stored
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+FONT="FiraCode Nerd Font"
 
-LOADING=? # Icon displayed while an item is still initializing
-PADDINGS=6 # All paddings use this value (icon, label, background and bar paddings)
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-BAR_COLOR=0xffffffff # Black bar
-ICON_COLOR=0xffeaebee # Color of all icons
-LABEL_COLOR=0xff1d252c # Color of all labels
-CONTRAST_COLOR=$ICON_COLOR #0xff2a2f38 # The color of elements in front of a background
-SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID" # The script that is run for clicking on space components
+##### Bar Appearance #####
+# Configuring the general appearance of the bar, these are only some of the
+# options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-SEGMENT_HEIGHT=20 # The height of the segments
-SEGMENT_SPACING=13 # The spacing between the segments
-SEGMENT_BORDER_WIDTH=0 # Width of the borders for segments
-SEGMENT_BACKGROUND_COLOR=0x00ffffff # The background color for segments
-SEGMENT_BACKGROUND_HIGHLIGHT_COLOR=$SEGMENT_BACKGROUND_COLOR # 0xffe1e3e4 # The background highlight color for segments (borders, etc)
-CORNER_RADIUS=1 # Roundness of the segments
+sketchybar --bar height=28        \
+                 blur_radius=0    \
+                 position=bottom     \
+                 y_offset=2       \
+                 margin=6         \
+                 corner_radius=6  \
+                 padding_left=10  \
+                 padding_right=10 \
+                 shadow=on        \
+                 color=0xff16161e
 
-POPUP_BACKGROUND_COLOR=$BAR_COLOR
-POPUP_BORDER_COLOR=0xff9dd274
-POPUP_BORDER_WIDTH=2
-POPUP_CORNER_RADIUS=4
 
-HAS_BATTERY=$(if [ "$(pmset -g batt | grep "Battery")" = "" ]; then echo "false"; else echo "true"; fi)
+##### Changing Defaults #####
+# We now change some default values that are applied to all further items
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --bar                height=20                                                         \
-                                corner_radius=5                                                   \
-                                border_width=0                                                    \
-                                margin=0                                                          \
-                                blur_radius=30                                                    \
-                                position=bottom                                                   \
-                                padding_left=8                                                   \
-                                padding_right=8                                                   \
-                                color=0x00ffffff                                                  \
-                                topmost=off                                                       \
-                                font_smoothing=off                                                \
-                                y_offset=5                                                        \
-                                                                                                  \
-           --default            drawing=on                                                        \
-                                lazy=off                                                          \
-                                updates=when_shown                                                \
-                                cache_scripts=on                                                  \
-                                label.font="$FONT:Medium:16.0"                                  \
-                                icon.font="$FONT:Bold:13.0"                                       \
-                                icon.color=$ICON_COLOR                                            \
-                                label.color=$LABEL_COLOR                                          \
-                                icon.padding_left=$PADDINGS                                       \
-                                icon.padding_right=$PADDINGS                                      \
-                                label.padding_left=$PADDINGS                                      \
-                                label.padding_right=$PADDINGS                                     \
-                                background.padding_right=$PADDINGS                                \
-                                background.padding_left=$PADDINGS                                 \
-                                background.color=$SEGMENT_BACKGROUND_COLOR                        \
-                                background.border_color=0xff539afc                                \
-                                background.border_width=$SEGMENT_BORDER_WIDTH                     \
-                                background.height=$SEGMENT_HEIGHT                                 \
-                                background.corner_radius=$CORNER_RADIUS                           \
-                                background.drawing=off                                            \
-                                background.shadow.color=0x88000000                                            \
-                                background.shadow.drawing=off                                            \
-                                background.shadow.angle=45                                            \
-                                background.shadow.distance=6                                           \
-                                icon.background.height=$SEGMENT_HEIGHT                            \
-                                icon.background.color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR         \
-                                icon.background.corner_radius=$CORNER_RADIUS                      \
-                                icon.background.drawing=off                                       \
-                                label.background.color=$SEGMENT_BACKGROUND_HIGHLIGHT_COLOR        \
-                                label.background.border_width=$SEGMENT_BORDER_WIDTH               \
-                                label.background.border_color=0xff539afc                          \
-                                label.background.height=$SEGMENT_HEIGHT                           \
-                                label.background.corner_radius=$CORNER_RADIUS                     \
-                                label.background.drawing=off                                      \
-                                popup.background.border_width=$POPUP_BORDER_WIDTH                 \
-                                popup.background.corner_radius=$POPUP_CORNER_RADIUS               \
-                                popup.background.border_color=$POPUP_BORDER_COLOR                 \
-                                popup.background.color=$POPUP_BACKGROUND_COLOR                    \
-                                                                                                  \
-           --add item           label_template left                                               \
-           --set label_template icon.drawing=off                                                  \
-                                label.font="$FONT:Black:14.0"                                     \
-                                label.background.drawing=on                                       \
-                                label.color=$CONTRAST_COLOR                                       \
-                                label.background.height=$SEGMENT_HEIGHT                           \
-                                click_script="$PLUGIN_DIR/toggle_bracket.sh"                      \
-                                background.padding_left=$SEGMENT_SPACING                          \
-                                background.padding_right=0                                        \
-                                drawing=off
+sketchybar --default updates=when_shown                        \
+                     drawing=on                                \
+                     icon.font="$FONT:Bold:16.0"               \
+                     icon.color=0xffa9b1d6                     \
+                     label.font="$FONT:Bold:14.0"              \
+                     label.color=0xffa9b1d6                    \
+                     label.padding_left=4                      \
+                     label.padding_right=4                     \
+                     icon.padding_left=4                       \
+                     icon.padding_right=4
 
-###################### FINALIZE ###################
+##### Adding Mission Control Space Indicators #####
+# Now we add some mission control spaces:
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# to indicate active and available mission control spaces
 
-source "$ITEM_DIR/spaces.sh"
-# source "$ITEM_DIR/system.sh"
-source "$ITEM_DIR/calendar.sh"
+SPACE_ICONS=("" "爵" "" "" "邏" "" "7" "8" "9" "10")
 
-############## FINALIZING THE SETUP ##############
+for i in "${!SPACE_ICONS[@]}"
+do
+  sid=$(($i+1))
+  sketchybar --add space space.$sid left                                 \
+             --set space.$sid associated_space=$sid                      \
+                              icon=${SPACE_ICONS[i]}                     \
+                              icon.padding_left=6                        \
+                              icon.padding_right=6                       \
+                              background.padding_left=4                  \
+                              background.padding_right=4                 \
+                              background.color=0xff24283b                \
+                              background.corner_radius=0                 \
+                              background.height=22                       \
+                              background.drawing=off                     \
+                              label.drawing=off                          \
+                              script="$PLUGIN_DIR/space.sh"              \
+                              click_script="yabai -m space --focus $sid"
+done
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar
+# only the properties deviating from the current defaults need to be set
+
+# sketchybar --add item space_separator left                            \
+#            --set space_separator icon=                               \
+#                                  background.padding_left=15           \
+#                                  background.padding_right=15          \
+#                                  label.drawing=off                    
+
+
+##### Adding Center Items #####
+# Additionally, "center" , left of the notch "q" and right of the notch "e" is
+
+sketchybar --add item window_title center                             \
+           --set window_title    script="$PLUGIN_DIR/window_title.sh" \
+                                 icon.drawing=off                     \
+           --subscribe window_title front_app_switched
+
+##### Adding Right Items #####
+# In the same way as the left items we can add items to the right side.
+# available as a position:
+# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+
+# Clock
+
+sketchybar --add item clock right                        \
+           --set clock   update_freq=10                  \
+                        icon.drawing=off                 \
+                         script="$PLUGIN_DIR/clock.sh"   
+                                                         
+# Battery 
+
+sketchybar --add item battery right                                                                   \
+           --set battery script="$PLUGIN_DIR/battery.sh"                                              \
+                         update_freq=10                                                               \
+                         icon.color=0xff9ece6a                                                        \
+                         label.drawing=off                                                            \
+                         click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
+           --subscribe battery system_woke
+
+# Sound
+
+sketchybar --add item sound right                     \
+           --set sound update_freq=5                  \
+                       label.drawing=off              \
+                       script="$PLUGIN_DIR/sound.sh"
+
+# Wifi
+
+sketchybar --add item wifi right                        \
+           --set wifi    script="$PLUGIN_DIR/wifi.sh"   \
+                         label.drawing=off              \
+                         update_freq=5
+
+# Input Source
+
+sketchybar -m --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
+              --add       item               keyboard right                                              \
+              --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
+                                             label.font="$FONT:Retina:14.0"                              \
+                                          # label.color=0xfff7768e
+sketchybar -m --subscribe keyboard           input_change                        
+
+
+# # Music
+# sketchybar -m --add event song_update com.apple.iTunes.playerInfo
+
+# sketchybar -m --add item music_info                      right  \
+#               --set music_info script="$PLUGIN_DIR/music.sh" \
+#               --set music_info click_script="$PLUGIN_DIR/music_click.sh" \
+#                                label.font="$FONT:Retina:12.0"           \
+#                               #  label.drawing=off \
+# sketchybar -m --subscribe music_info song_update
+
+# sketchybar --add item ram_label right \
+#            --set ram_label label.font="FiraCode Nerd Font:Regular:10.0" \
+#                            label=RAM \
+#                            y_offset=6 \
+#                            width=0 \
+#                                            \
+#            --add item ram_percentage right \
+#            --set ram_percentage label.font="FiraCode Nerd Font:Regular:10.0" \
+#                                 y_offset=-4 \
+#                                 update_freq=1 \
+#                                 script="~/.config/sketchybar/plugins/ram.sh"
+
+##### Finalizing Setup #####
 sketchybar --update
 
 echo "sketchybar configuration loaded.."
