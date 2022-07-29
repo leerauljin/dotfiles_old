@@ -4,7 +4,15 @@
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-FONT="FiraCode Nerd Font"
+FONT="BlexMono Nerd Font"
+BACKGROUND=0xf51c1e26
+FOREGROUND=0xffd5d8da
+RED=0xffe95678
+GREEN=0xff29d398
+YELLOW=0xfffab795
+BLUE=0xff26bbd9
+MAGENTA=0xffee64ac
+CYAN=0xff59e1e3
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
@@ -13,16 +21,16 @@ FONT="FiraCode Nerd Font"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar height=28        \
-                 blur_radius=0    \
-                 position=bottom     \
-                 y_offset=2       \
-                 margin=6         \
-                 corner_radius=6  \
+sketchybar --bar height=32        \
+                 blur_radius=0   \
+                 position=bottom  \
+                 y_offset=0       \
+                 margin=0         \
+                 corner_radius=0  \
                  padding_left=10  \
                  padding_right=10 \
-                 shadow=on        \
-                 color=0xff16161e
+                 shadow=off        \
+                 color=$BACKGROUND
 
 
 ##### Changing Defaults #####
@@ -32,10 +40,10 @@ sketchybar --bar height=28        \
 
 sketchybar --default updates=when_shown                        \
                      drawing=on                                \
-                     icon.font="$FONT:Bold:16.0"               \
-                     icon.color=0xffa9b1d6                     \
-                     label.font="$FONT:Bold:14.0"              \
-                     label.color=0xffa9b1d6                    \
+                     icon.font="$FONT:Bold:18.0"               \
+                     icon.color=$FOREGROUND                     \
+                     label.font="$FONT:Bold:16.0"              \
+                     label.color=$FOREGROUND                    \
                      label.padding_left=4                      \
                      label.padding_right=4                     \
                      icon.padding_left=4                       \
@@ -46,21 +54,24 @@ sketchybar --default updates=when_shown                        \
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces
 
-SPACE_ICONS=("" "爵" "" "" "邏" "" "7" "8" "9" "10")
+# SPACE_ICONS=("¹" "²爵" "³" "⁴" "⁹邏" "⁰" "7" "8" "9" "10")
+SPACE_ICONS=("₁" "₂爵" "₃" "₄" "₉邏" "₀" "₅" "8" "9" "10")
+
 
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space space.$sid left                                 \
+  sketchybar --add space space.$sid center                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
                               icon.padding_left=6                        \
                               icon.padding_right=6                       \
                               background.padding_left=4                  \
                               background.padding_right=4                 \
-                              background.color=0xff24283b                \
+                              background.color=$RED               \
                               background.corner_radius=0                 \
-                              background.height=22                       \
+                              background.height=1                       \
+                              background.y_offset=-12                    \
                               background.drawing=off                     \
                               label.drawing=off                          \
                               script="$PLUGIN_DIR/space.sh"              \
@@ -81,32 +92,36 @@ done
 ##### Adding Center Items #####
 # Additionally, "center" , left of the notch "q" and right of the notch "e" is
 
-sketchybar --add item window_title center                             \
+sketchybar --add item window_title left                             \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
                                  icon.drawing=off                     \
            --subscribe window_title front_app_switched
-
+           
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
 # available as a position:
 # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 
-# Clock
-
-sketchybar --add item clock right                        \
-           --set clock   update_freq=10                  \
-                        icon.drawing=off                 \
-                         script="$PLUGIN_DIR/clock.sh"   
-                                                         
 # Battery 
 
 sketchybar --add item battery right                                                                   \
            --set battery script="$PLUGIN_DIR/battery.sh"                                              \
                          update_freq=10                                                               \
-                         icon.color=0xff9ece6a                                                        \
+                         icon.color=$GREEN                                                        \
+                         icon.padding_right=0     \
                          label.drawing=off                                                            \
                          click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
-           --subscribe battery system_woke
+sketchybar -m --subscribe battery system_woke
+
+# Clock
+
+sketchybar --add item clock right                        \
+           --set clock   update_freq=10                  \
+                         icon.drawing=off                 \
+                         label.font="$FONT:SemiBold Italic:14.0"                              \
+                         script="$PLUGIN_DIR/clock.sh"   
+                                                         
+
 
 # Sound
 
@@ -121,14 +136,26 @@ sketchybar --add item wifi right                        \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"   \
                          label.drawing=off              \
                          update_freq=5
+# RAM
+                         
+# sketchybar --add item ram_label right \
+#            --set ram_label label.font="$FONT:Regular:10.0" \
+#                            label=RAM \
+#                            y_offset=6 \
+#                            width=0 \
+#                                            \
+#            --add item ram_percentage right \
+#            --set ram_percentage label.font="$FONT:Regular:10.0" \
+#                                 y_offset=-4 \
+#                                 update_freq=1 \
+#                                 script="$PLUGIN_DIR/ram.sh"
 
 # Input Source
 
 sketchybar -m --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
               --add       item               keyboard right                                              \
               --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
-                                             label.font="$FONT:Retina:14.0"                              \
-                                          # label.color=0xfff7768e
+                                             label.font="$FONT:SemiBold Italic:14.0"                        
 sketchybar -m --subscribe keyboard           input_change                        
 
 
@@ -142,17 +169,6 @@ sketchybar -m --subscribe keyboard           input_change
 #                               #  label.drawing=off \
 # sketchybar -m --subscribe music_info song_update
 
-# sketchybar --add item ram_label right \
-#            --set ram_label label.font="FiraCode Nerd Font:Regular:10.0" \
-#                            label=RAM \
-#                            y_offset=6 \
-#                            width=0 \
-#                                            \
-#            --add item ram_percentage right \
-#            --set ram_percentage label.font="FiraCode Nerd Font:Regular:10.0" \
-#                                 y_offset=-4 \
-#                                 update_freq=1 \
-#                                 script="~/.config/sketchybar/plugins/ram.sh"
 
 ##### Finalizing Setup #####
 sketchybar --update

@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+RED=0xffe95678
+BLUE=0xff26bbd9
+GREEN=0xff29d398
 
 VOLUME=$(osascript -e "get volume settings" | cut -d " " -d ":" -f2 | cut -d "," -f1)
 MUTED=$(osascript -e "get volume settings" | grep "muted:true")
 
 if [[ $MUTED != "" ]]; then
 ICON="ﱝ"
-COLOR=0xfff7768e
+COLOR=$RED
 else
-COLOR=0xff7aa2f7
+COLOR=$BLUE
 case ${VOLUME} in
   100) ICON="";;
   9[0-9]) ICON="";;

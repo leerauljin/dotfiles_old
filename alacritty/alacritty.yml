@@ -47,7 +47,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 12
-    y: 20
+    y: 12
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -61,7 +61,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: transparent
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -92,7 +92,7 @@ window:
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
-  opacity: 1
+  opacity: 0.95
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode Nerd Font Mono
+    family: BlexMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Text
 
   # Bold font face
   bold:
@@ -122,7 +122,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: BlexMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -133,7 +133,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: BlexMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -144,13 +144,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    family: BlexMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 16.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -235,8 +235,36 @@ schemes:
       magenta: '0xbb9af7'
       cyan:    '0x0db9d7'
       white:   '0xacb0d0'
+  
+  horizon: &horizon
+  # Colors (Horizon Dark)
+    primary:
+      background: '0x1c1e26'
+      foreground: '0xe0e0e0'
+
+    # Normal colors
+    normal:
+      black: '0x16161c'
+      red: '0xe95678'
+      green: '0x29d398'
+      yellow: '0xfab795'
+      blue: '0x26bbd9'
+      magenta: '0xee64ac'
+      cyan: '0x59e1e3'
+      white: '0xd5d8da'
+
+    # Bright colors
+    bright:
+      black: '0x5b5858'
+      red: '0xec6a88'
+      green: '0x3fdaa4'
+      yellow: '0xfbc3a7'
+      blue: '0x3fc4de'
+      magenta: '0xf075b5'
+      cyan: '0x6be4e6'
+      white: '0xd5d8da'
     
-colors: *tokyo-night
+colors: *horizon
 
   # Cursor colors
   #
