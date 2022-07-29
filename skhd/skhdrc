@@ -23,9 +23,9 @@ rcmd - return : open -n -a Alacritty ; yabai -m space --focus 6
 
 # open folders
 # rcmd + shift - h : open ~/
-# rcmd + shift - d : open ~/Downloads
+rcmd + shift - d : open ~/Downloads
 # rcmd + shift - k : open ~/Desktop
-# rcmd + shift - c : open ~/Documents
+rcmd + shift - c : open ~/Documents
 # rcmd + shift - a : open ~/Documents/Academic
 # rcmd + shift - r : open ~/OneDrive\ -\ pusan.ac.kr/Research
 # rcmd + shift - g : open ~/Documents/Academic/Graduate\ School
