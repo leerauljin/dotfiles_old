@@ -1,6 +1,6 @@
 #+TITLE: Doom Emacs, Org-mode, Zotero (and more) configuration for Academic Writing & Notetaking
 #+ATTR_ORG: :width 1000
-[[file:screenshot.jpg]]
+[[file:screenshot.png]]
 * Description
 As usual, I'm anxious to lose all this dotfiles so I've created a public repo for backups and to share my setups for others who wishes to use Emacs for notetaking AND writing purpose (and finally ditch that Microsoft Word!)
 
@@ -15,6 +15,12 @@ In addition, I was looking for a way to somehow organize my annotations left in 
 
 A lot of tips and setups on the internet are outdated, hence, did not work when I tried the exact same setup. I put many hours into setting up config files only to realize that some of things do not work or the fuctions and variables were refactored. This is an updated version, which works in 2022 which I intend to keep updated!
 
+* Recent updates (As of 2022-07-31)
+- Color scheme from [[https://horizontheme.netlify.app][Horizon theme]] has been applied to alacritty, VS code, and sketchybar.
+- Key bindings has been simplified.
+- Changed bottom bar from Übersicht to [[https://github.com/FelixKratz/SketchyBar][Sketchybar]] for stability, ease of configuration, less battery use, etc...
+- Currently working on project that relies on R language. So currently, VS code (with vim extension, of course) is my go-to editor.
+
 * Major programs and packages
 ** Emacs
 The core of this project. Using emacs-mac. Tried emacs-plus with native comp and --no-titlebar but it often crashes. emacs-mac seems to have better font rendering as well. Coudn't quite get --no-title-bar working.
@@ -22,23 +28,22 @@ Doom Emacs is weapon of my choice since it is easy to use and can put into actio
 - Doom-plain theme is what I use for daily bases. I don't need colors since I won't be needing syntax highlighting! If you want to go little further, you may turn on color filters in Acessibility setting to enjoy complete monotone experience. Though, cursor colors are assigned in config file for indentifying current mode.
 - ETbb font for variable font and FiraCode Nerd Font Mono Font for monospace font.
 ** Yabai + skhd
-Window manager of my choice. I've previosuly using Rectangle, Amethyst, and rcmd which are great programs if you don't want to disable SIP. However, I get more control over sending programs to specific spaces while it takes care of the rest of boring window resizing. In addition, skhd is being used to control functions of yabai and app/folder launcher. Now I feel like I'm using the space of my monitor to its fullest and I can never go back!
+Window manager of my choice. I've previosuly using Rectangle, Amethyst, and rcmd which are great programs if you don't want to disable SIP. However, I get more control over sending programs to specific spaces while it takes care of the rest of boring window resizing. Biggest upside of using Yabai with Script Addon is that changing space is instant, without any animation. In addition, skhd is being used to control functions of yabai and app/folder launcher. Now I feel like I'm using the space of my monitor to its fullest and I can never go back!
 
 Some basic rules for keybindings:
-- lctrl + lcmd is used for focus commands
-- lctrl + lcmd + a,d for adjusting window size
-- lctrl + lcmd + b for balancing windows.
-- lctrl + lcmd + t for toggling tile management for focused window.
-- lctrl + lcmd + f for temporarily making focused window fullscreen
-- lctrl + lcmd + SPC for toggling tile management for focused window and position it to the center of screen
-- lctrl + alt is used for moving windows and sending window to space/monitor and focus follows the window.
-- lctrl + alt + shift is used for swaping windows and sending window to space/monitor without follwing it.
-- lctrl + alt + shift + y, u for restarting yabai and ubersicht, respectively.
-- rcmd is used for launching apps.
+- lctrl is used for changing spaces
+- rcmd is used for controling focus and windows
+- lctrl + 1, 2, 3, 4, 9, 0: change focus to space
+- rcmd + h, j, k, l: Move focus (vim style)
+- rcmd + a: balance windows
+- rcmd + s: Stack mode
+- rcmd + d: bsp mode
+- rcmd + f: fullscreen mode
+- rcmd + t: toggle float and resize current window to center
+- lctrl + rcmd + 1, 2, 3, 4, 9, 0: move window to space
+- rcmd is also used for launching apps.
+- rcmd + return: terminal (alacritty)
 - rcmd + shift is used to quickly access folders I frequently use.
-
-Lctrl + lcmd is easier to press than lctrl + alt for me so it is being used for more frequently used commands.
-  
 
 ** Zotero
 With Zotfile and Better Bibtex for Zotero extension.
@@ -48,8 +53,7 @@ With Zotfile and Better Bibtex for Zotero extension.
 To be added.
 
 * Some minor programs and packages that I currently use
-- Übersicht and simple-bar for bottom menu bar. Top menu bar looks fine too but I didn't like the way macOS menu bar overlaps it.
-- Elfeed for RSS.
+- Reeder 5 for RSS. (cloud sync with iOS apps is amazing feature!)
 - Mini-buffer for spotlight-like experience when using Emacs.
 - Raycast for quickly searching through files or an app that does not have keybinding. 
 - Org-roam-ui to see my roam notes in a cool way.

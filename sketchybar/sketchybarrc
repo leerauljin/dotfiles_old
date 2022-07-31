@@ -5,7 +5,7 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="BlexMono Nerd Font"
-BACKGROUND=0xf51c1e26
+BACKGROUND=0xff1c1e26
 FOREGROUND=0xffd5d8da
 RED=0xffe95678
 GREEN=0xff29d398
@@ -70,7 +70,7 @@ do
                               background.padding_right=4                 \
                               background.color=$RED               \
                               background.corner_radius=0                 \
-                              background.height=1                       \
+                              background.height=2                       \
                               background.y_offset=-12                    \
                               background.drawing=off                     \
                               label.drawing=off                          \
