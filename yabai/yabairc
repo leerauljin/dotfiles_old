@@ -53,7 +53,7 @@ yabai -m rule --add app="Firefox" space=2
 
 # Space 3 Writing
 yabai -m config --space 3 layout stack
-
+yabai -m rule --add app="Microsoft Word" space=3
 
 # Space 4 Programming
 yabai -m config --space 4 layout stack

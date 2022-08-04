@@ -77,10 +77,10 @@ rcmd - k: yabai -m window --focus north; yabai -m window --focus stack.prev
 rcmd - l: yabai -m window --focus east
 
 ## Swap window in bsp mode
-rcmd + shift - h: yabai -m window --swap west
-rcmd + shift - j: yabai -m window --swap south
-rcmd + shift - k: yabai -m window --swap north
-rcmd + shift - l: yabai -m window --swap east
+rcmd + lctrl - h: yabai -m window --swap west
+rcmd + lctrl - j: yabai -m window --swap south
+rcmd + lctrl - k: yabai -m window --swap north
+rcmd + lctrl - l: yabai -m window --swap east
 
 ## Change layout
 

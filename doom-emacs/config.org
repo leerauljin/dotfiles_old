@@ -50,9 +50,9 @@
 *** Font family and size
 #+begin_src emacs-lisp :tangle yes
 ;; Set font family and size
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :style "Retina")
+(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 16 :style "Retina")
       ;; doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 26 :style "Retina")
-      doom-variable-pitch-font (font-spec :family "ETbb" :size 20 :slant 'normal :weight 'normal))
+      doom-variable-pitch-font (font-spec :family "ETbb" :size 16 :slant 'normal :weight 'normal))
 #+end_src
 **
 *** Enable bold and italic
@@ -65,8 +65,8 @@
 #+begin_src emacs-lisp :tangle yes
 ;; Set default theme
 (if (display-graphic-p)
-    (setq doom-theme 'doom-ayu-light)
-  (setq doom-theme 'doom-acario-light))
+    (setq doom-theme 'doom-horizon)
+  (setq doom-theme 'doom-horizon))
 #+end_src
 ** Theme change with system appearance
 #+begin_src emacs-lisp :tangle yes
@@ -74,8 +74,8 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme 'doom-tomorrow-day t))
-    ('dark (load-theme 'doom-city-lights t))))
+    ('light (load-theme 'doom-ayu-light t))
+    ('dark (load-theme 'doom-horizon t))))
 
 (add-hook 'ns-system-appearance-change-functions #'apply-system-theme)
 #+end_src
@@ -309,7 +309,7 @@
          (put-text-property (match-beginning 0) (match-end 0)
                             'invisible t)))))))
 
-(add-hook! 'org-mode-hook #'org-mode-remove-stars)
+;; (add-hook! 'org-mode-hook #'org-mode-remove-stars)
 #+end_src
 ** Line spacing
 #+begin_src emacs-lisp :tangle yes
@@ -570,7 +570,7 @@
       bibtex-completion-library-path my/pdf-folders
       bibtex-completion-pdf-field "file"
       bibtex-completion-notes-path "~/Documents/RoamNotes/annotations")
-(add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
+;; (add-hook! 'org-mode-hook #'org-roam-bibtex-mode)
 (advice-add 'bibtex-completion-candidates
             :filter-return 'reverse)
 #+end_src
