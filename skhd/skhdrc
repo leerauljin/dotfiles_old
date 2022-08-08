@@ -82,6 +82,12 @@ rcmd + lctrl - j: yabai -m window --swap south
 rcmd + lctrl - k: yabai -m window --swap north
 rcmd + lctrl - l: yabai -m window --swap east
 
+## Warp window in bsp mode
+rcmd + lctrl + shift - h: yabai -m window --warp west
+rcmd + lctrl + shift - j: yabai -m window --warp south
+rcmd + lctrl + shift - k: yabai -m window --warp north
+rcmd + lctrl + shift - l: yabai -m window --warp east
+
 ## Change layout
 
 rcmd - s: yabai -m space --layout stack

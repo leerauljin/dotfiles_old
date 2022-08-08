@@ -6,6 +6,7 @@ M.disabled = {
     ["<leader>n"] = "",
     ["<leader>rn"] = "",
     ["<leader>fm"] = "",
+    ["<leader>fo"] = "",
     ["<leader>wa"] = "",
     ["<leader>wr"] = "",
     ["<leader>wl"] = "",
@@ -64,6 +65,36 @@ M.toggle = {
   },
 }
 
+-- <leader> + o : open related
+-- Nvterm related
+
+M.nvterm = {
+  n = {
+    -- toggle in normal mode
+    ["<leader>ot"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "   toggle floating term",
+    },
+
+    ["<leader>oh"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "   toggle horizontal term",
+    },
+
+    ["<leader>ov"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "   toggle vertical term",
+    },
+  }
+}
+
+
 -- <leader> + l : LSP related
 M.lsp = {
   n = {
@@ -90,6 +121,12 @@ M.lsp = {
   }
 }
 
+-- <leader> + f : Find related
+M.find = {
+  n = {
+    ["<leader>fr"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
+  }
+}
 
 -- <leader> + g : Git related
 M.git = {
@@ -99,4 +136,3 @@ M.git = {
 }
 
 return M
-
