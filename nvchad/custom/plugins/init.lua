@@ -1,10 +1,10 @@
 return {
-  ["goolord/alpha-nvim"] = {
-    disable = false,
-  },
-  -- ["folke/which-key.nvim"] = {
+  -- ["goolord/alpha-nvim"] = {
   --   disable = false,
   -- },
+  ["folke/which-key.nvim"] = {
+    disable = false,
+  },
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
@@ -12,4 +12,10 @@ return {
     end,
   },
   ["mcchrish/nnn.vim"] = {},
+  ["tpope/vim-surround"] = {},
+  ["phaazon/hop.nvim"] = {
+    config = function ()
+      require('hop').setup()
+    end
+  },
 }

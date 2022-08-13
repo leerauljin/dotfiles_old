@@ -1,8 +1,12 @@
--- lua/custom/mappings 
+--easymotion/vim-easymotion lua/custom/mappings 
 local M = {}
 
 M.disabled = {
   n ={
+    ["s"] = "",
+    ["S"] = "",
+    ["H"] = "",
+    ["L"] = "",
     ["<leader>n"] = "",
     ["<leader>rn"] = "",
     ["<leader>fm"] = "",
@@ -12,10 +16,15 @@ M.disabled = {
     ["<leader>wl"] = "",
     ["<leader>cm"] = "",
     ["<leader>x"] = "",
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
   }
 }
 
 M.general = {
+  i = {
+    [";;"] = { "<Esc>" },
+  },
   n = {
     -- close buffer + hide terminal buffer
     ["<leader>d"] = {
@@ -24,6 +33,14 @@ M.general = {
       end,
       "   close buffer",
     },
+    ["H"] = { "^" },
+    ["L"] = { "$" },
+
+    -- hop related
+    ["s"] = { "<cmd> HopChar2AC <CR>", "Go to bigram (After cursor)"},
+    ["S"] = { "<cmd> HopChar2BC <CR>", "Go to bigram (Before cursor)"},
+    ["<leader>j"] = { "<cmd> HopLineStartAC <CR>", "Go to line (After cursor)"},
+    ["<leader>k"] = { "<cmd> HopLineStartBC <CR>", "Go to line (Before cursor)"},
     --
     -- ["<C-q>"] = {
     --   function()
@@ -94,6 +111,15 @@ M.nvterm = {
   }
 }
 
+-- <leader> + q : Quit related
+M.quit = {
+  n ={
+    -- line numbers
+    ["<leader>qq"] = { "<cmd> q <CR>", "Quit" },
+    ["<leader>qQ"] = { "<cmd> q! <CR>", "Quit" },
+    ["<leader>qw"] = { "<cmd> wq <CR>", "Write and quit" },
+  },
+}
 
 -- <leader> + l : LSP related
 M.lsp = {
@@ -134,5 +160,21 @@ M.git = {
     ["<leader>gm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
   }
 }
+
+
+-- <leader> + h : Helper related
+M.help = {
+  n = {
+    ["<leader>hm"] = { "<cmd> Mason <CR>", "Mason" },
+
+    ["<leader>hp"] = { "<cmd> PackerStatus <CR>", "Packer status" },
+
+    ["<leader>hu"] = { "<cmd> PackerUpdate <CR>", "Packer update" },
+
+    ["<leader>hs"] = { "<cmd> PackerSync <CR>", "Packer sync" },
+
+  }
+}
+
 
 return M
