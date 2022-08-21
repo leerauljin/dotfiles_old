@@ -60,6 +60,7 @@ yabai -m config --space 4 layout stack
 yabai -m rule --add app="Code" space=4
 # yabai -m rule --add app="Code" opacity=0.95
 yabai -m rule --add app="jamovi" space=4
+yabai -m rule --add app="QGIS" space=4
 
 
 # Space 5 Entertainment
