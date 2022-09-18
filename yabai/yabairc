@@ -14,12 +14,12 @@ yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
-yabai -m config window_shadow                off
+yabai -m config window_shadow                on
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        0.97
 yabai -m config normal_window_opacity        0.97
-yabai -m config window_border                on
+yabai -m config window_border                off
 yabai -m config window_border_width          5
 yabai -m config active_window_border_color   0xff26bbd9
 yabai -m config normal_window_border_color   0xff2e303e
@@ -62,15 +62,16 @@ yabai -m rule --add app="Code" space=4
 yabai -m rule --add app="jamovi" space=4
 yabai -m rule --add app="QGIS" space=4
 
+# Space 5 Schedule
 
-# Space 5 Entertainment
-yabai -m rule --add app="Music" space=5
-yabai -m rule --add app="Plex" space=5
-yabai -m rule --add app="TV" space=5
+# Space 6 Entertainment
+yabai -m rule --add app="Music" space=6
+yabai -m rule --add app="Plex" space=6
+yabai -m rule --add app="TV" space=6
 
-# Space 6 Terminal
-yabai -m rule --add app="Alacritty"     space=6
-yabai -m rule --add app="iTerm2"     space=6
+# Space 7 Terminal
+yabai -m rule --add app="Alacritty"     space=7
+yabai -m rule --add app="iTerm2"     space=7
 
 
 

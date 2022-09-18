@@ -55,7 +55,7 @@ sketchybar --default updates=when_shown                        \
 # to indicate active and available mission control spaces
 
 # SPACE_ICONS=("¹" "²爵" "³" "⁴" "⁹邏" "⁰" "7" "8" "9" "10")
-SPACE_ICONS=("₁" "₂爵" "₃" "₄" "₉邏" "₀" "₅" "8" "9" "10")
+SPACE_ICONS=("₁" "₂爵" "₃" "₄" "₅" "₉邏" "₀" ""  "9" "10")
 
 
 for i in "${!SPACE_ICONS[@]}"

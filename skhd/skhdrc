@@ -56,9 +56,10 @@ lctrl - 1 : yabai -m space --focus 1
 lctrl - 2 : yabai -m space --focus 2
 lctrl - 3 : yabai -m space --focus 3
 lctrl - 4 : yabai -m space --focus 4
-lctrl - 9 : yabai -m space --focus 5
-lctrl - 0 : yabai -m space --focus 6
-lctrl - 5 : yabai -m space --focus 7
+lctrl - 5 : yabai -m space --focus 5
+lctrl - 9 : yabai -m space --focus 6
+lctrl - 0 : yabai -m space --focus 7
+lctrl - 6 : yabai -m space --focus 8
 
 ## Send window and focus
 
@@ -66,9 +67,10 @@ lctrl + rcmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
 lctrl + rcmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
 lctrl + rcmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
 lctrl + rcmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
-lctrl + rcmd - 9 : yabai -m window --space 5; yabai -m space --focus 5
-lctrl + rcmd - 0 : yabai -m window --space 6; yabai -m space --focus 6
-lctrl + rcmd - 5 : yabai -m window --space 7; yabai -m space --focus 7
+lctrl + rcmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
+lctrl + rcmd - 9 : yabai -m window --space 6; yabai -m space --focus 6
+lctrl + rcmd - 0 : yabai -m window --space 7; yabai -m space --focus 7
+lctrl + rcmd - 6 : yabai -m window --space 8; yabai -m space --focus 8
 
 ## focus window in bsp mode
 rcmd - h: yabai -m window --focus west
