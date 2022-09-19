@@ -5,7 +5,7 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="BlexMono Nerd Font"
-BACKGROUND=0xff1c1e26
+BACKGROUND=0xf01c1e26
 FOREGROUND=0xffd5d8da
 RED=0xffe95678
 GREEN=0xff29d398
@@ -23,14 +23,15 @@ CYAN=0xff59e1e3
 
 sketchybar --bar height=32        \
                  blur_radius=0   \
-                 position=bottom  \
-                 y_offset=0       \
-                 margin=0         \
-                 corner_radius=0  \
+                 position=top  \
+                 y_offset=6       \
+                 margin=6         \
+                 corner_radius=10  \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=off        \
                  color=$BACKGROUND
+
 
 
 ##### Changing Defaults #####
@@ -53,19 +54,30 @@ sketchybar --default updates=when_shown                        \
 # Now we add some mission control spaces:
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces
+# Clock
+
+sketchybar --add item clock left                        \
+           --set clock   update_freq=10                  \
+                         icon.drawing=off                 \
+                         label.font="$FONT:Bold:14.0"          \
+                         label.color=$GREEN \
+                         label.y_offset=1 \
+                         script="$PLUGIN_DIR/clock.sh"   
 
 # SPACE_ICONS=("¹" "²爵" "³" "⁴" "⁹邏" "⁰" "7" "8" "9" "10")
-SPACE_ICONS=("₁" "₂爵" "₃" "₄" "₅" "₉邏" "₀" ""  "9" "10")
+SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
+
+
 
 
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space space.$sid center                                 \
+  sketchybar --add space space.$sid left                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
-                              icon.padding_left=6                        \
-                              icon.padding_right=6                       \
+                              icon.padding_left=4                        \
+                              icon.padding_right=4                       \
                               background.padding_left=4                  \
                               background.padding_right=4                 \
                               background.color=$RED               \
@@ -77,6 +89,15 @@ do
                               script="$PLUGIN_DIR/space.sh"              \
                               click_script="yabai -m space --focus $sid"
 done
+
+sketchybar --add item space_separator left \
+           --set space_separator icon= \
+                                 background.padding_left=6 \
+                                 background.padding_right=6 \
+                                 icon.font="$FONT:SemiBold:14.0"        \
+                                 label.drawing=off \
+                                 icon.color=$RED
+
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar
@@ -94,6 +115,8 @@ done
 
 sketchybar --add item window_title left                             \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
+                                 label.font="$FONT:SemiBold Italic:14.0"        \
+                                 label.color=$YELLOW                    \
                                  icon.drawing=off                     \
            --subscribe window_title front_app_switched
            
@@ -102,26 +125,23 @@ sketchybar --add item window_title left                             \
 # available as a position:
 # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 
+
+                                                         
+sketchybar --add item date right                        \
+           --set date   update_freq=10                  \
+                         icon.drawing=off                 \
+                         label.font="$FONT:SemiBold Italic:14.0"        \
+                         script="$PLUGIN_DIR/date.sh"   
 # Battery 
 
 sketchybar --add item battery right                                                                   \
            --set battery script="$PLUGIN_DIR/battery.sh"                                              \
                          update_freq=10                                                               \
                          icon.color=$GREEN                                                        \
-                         icon.padding_right=0     \
+                         icon.padding_right=4     \
                          label.drawing=off                                                            \
                          click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
 sketchybar -m --subscribe battery system_woke
-
-# Clock
-
-sketchybar --add item clock right                        \
-           --set clock   update_freq=10                  \
-                         icon.drawing=off                 \
-                         label.font="$FONT:SemiBold Italic:14.0"                              \
-                         script="$PLUGIN_DIR/clock.sh"   
-                                                         
-
 
 # Sound
 
@@ -136,6 +156,16 @@ sketchybar --add item wifi right                        \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"   \
                          label.drawing=off              \
                          update_freq=5
+
+# Input Source
+
+sketchybar -m --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
+              --add       item               keyboard right                                              \
+              --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
+                                             label.font="$FONT:SemiBold Italic:16.0"                        
+sketchybar -m --subscribe keyboard           input_change                        
+
+
 # RAM
                          
 # sketchybar --add item ram_label right \
@@ -149,14 +179,6 @@ sketchybar --add item wifi right                        \
 #                                 y_offset=-4 \
 #                                 update_freq=1 \
 #                                 script="$PLUGIN_DIR/ram.sh"
-
-# Input Source
-
-sketchybar -m --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
-              --add       item               keyboard right                                              \
-              --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
-                                             label.font="$FONT:SemiBold Italic:14.0"                        
-sketchybar -m --subscribe keyboard           input_change                        
 
 
 # # Music
