@@ -118,6 +118,7 @@ sketchybar --add item window_title left                             \
                                  label.font="$FONT:SemiBold Italic:14.0"        \
                                  label.color=$YELLOW                    \
                                  icon.drawing=off                     \
+                                 label.y_offset=1 \
            --subscribe window_title front_app_switched
            
 ##### Adding Right Items #####
