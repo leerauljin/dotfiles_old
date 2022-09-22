@@ -37,4 +37,3 @@ fi
 
 sketchybar -m --set music_info icon="$ICON" \
               --set music_info label="${TITLE} x ${ARTIST}" \
-              --set music_info drawing=on

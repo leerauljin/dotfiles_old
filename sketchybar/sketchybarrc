@@ -120,7 +120,17 @@ sketchybar --add item window_title left                             \
                                  icon.drawing=off                     \
                                  label.y_offset=1 \
            --subscribe window_title front_app_switched
-           
+# E V E N T S
+sketchybar -m --add event song_update com.apple.iTunes.playerInfo
+
+# M U S I C
+sketchybar -m --add item music_info center  \
+              --set music_info script="~/.config/sketchybar/plugins/music.sh" \
+                    label.font="$FONT:SemiBold:16.0" \
+                    label.color=$GREEN \
+                    icon.color=$RED     \
+              --set music_info click_script="~/.config/sketchybar/plugins/music_click.sh" \
+              --subscribe music_info song_update 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
 # available as a position:
