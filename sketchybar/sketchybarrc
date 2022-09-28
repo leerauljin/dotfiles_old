@@ -150,7 +150,8 @@ sketchybar --add item battery right                                             
                          update_freq=10                                                               \
                          icon.color=$GREEN                                                        \
                          icon.padding_right=4     \
-                         label.drawing=off                                                            \
+                         label.color=$GREEN       \
+                        #  label.drawing=off                                                            \
                          click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
 sketchybar -m --subscribe battery system_woke
 
@@ -165,6 +166,7 @@ sketchybar --add item sound right                     \
 
 sketchybar --add item wifi right                        \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"   \
+                         label.color=$BLUE              \
                          label.drawing=off              \
                          update_freq=5
 
