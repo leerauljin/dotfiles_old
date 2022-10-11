@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: fig
-# key: fig_
-# --
-#+CAPTION: ${1:caption}
-#+NAME: fig:${2:key}
-#+ATTR_ORG: :width ${3:8}00
-[[./figures/${4:filename}]]
-$0

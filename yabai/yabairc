@@ -58,13 +58,13 @@ yabai -m rule --add app="Microsoft Word" space=3
 # Space 4 Programming
 yabai -m config --space 4 layout stack
 yabai -m rule --add app="Code" space=4
-yabai -m rule --add app="Code" opacity=0.95
+# yabai -m rule --add app="Code" opacity=0.95
 yabai -m rule --add app="jamovi" space=4
 yabai -m rule --add app="QGIS" space=4
 
 # Space 5 Schedule
 yabai -m rule --add app="Notion" space=5
-yabai -m rule --add app="Notion" opacity=0.95
+# yabai -m rule --add app="Notion" opacity=0.95
 yabai -m rule --add app="Calendar" space=5
 
 # Space 6 Terminal
