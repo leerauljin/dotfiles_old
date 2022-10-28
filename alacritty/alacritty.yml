@@ -92,7 +92,7 @@ window:
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
-  opacity: 0.95
+  opacity: 1
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: BlexMono Nerd Font Mono
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Retina
 
   # Bold font face
   bold:
@@ -122,7 +122,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font Mono
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -133,10 +133,10 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font Mono
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: Light
 
   # Bold italic font face
   bold_italic:
@@ -144,10 +144,10 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font Mono
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    style: Medium
 
   # Point size
   size: 16.0

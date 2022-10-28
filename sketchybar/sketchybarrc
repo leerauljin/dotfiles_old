@@ -5,7 +5,7 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="BlexMono Nerd Font"
-BACKGROUND=0xf01c1e26
+BACKGROUND=0xff1c1e26
 FOREGROUND=0xffd5d8da
 RED=0xffe95678
 GREEN=0xff29d398

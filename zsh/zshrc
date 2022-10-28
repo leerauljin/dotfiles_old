@@ -11,7 +11,7 @@ export ZSH="/Users/seonjinlee/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="jovial"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -75,9 +75,13 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-syntax-highlighting
-  brew
+  autojump
+  urltools
+  bgnotify
   zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-history-enquirer
+  jovial
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,8 +125,12 @@ alias tm=tmux
 alias ta="tmux attach"
 alias tk=taskell
 alias lg=lazygit
+alias google-chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /opt/homebrew/bin/google-chrome'
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /opt/homebrew/bin/google-chrome'
+
 
 bindkey -v
+
 
 # <<< conda initialize <<<
 
@@ -163,3 +171,4 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+export HOMEBREW_NO_AUTO_UPDATE=true
