@@ -23,8 +23,8 @@ CYAN=0xff59e1e3
 
 sketchybar --bar height=32        \
                  blur_radius=0   \
-                 position=top  \
-                 y_offset=6       \
+                 position=bottom  \
+                 y_offset=2       \
                  margin=6         \
                  corner_radius=10  \
                  padding_left=10  \

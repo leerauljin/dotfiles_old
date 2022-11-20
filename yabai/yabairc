@@ -14,7 +14,7 @@ yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
-yabai -m config window_shadow                on
+yabai -m config window_shadow                off
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        0.97
@@ -107,8 +107,8 @@ yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add title="^MiniPlayer$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
-yabai -m config external_bar all:36:0
-# yabai -m config external_bar all:0:34
+# yabai -m config external_bar all:36:0
+yabai -m config external_bar all:0:36
 
 
 # This prevents focus jumping around spaces after closing emacsclient
