@@ -1,7 +1,4 @@
-# This is a demo config to show some of the most important commands more easily.
-# This is meant to be changed and configured, as it is intentionally kept sparse.
-# For a more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
+alias s="sketchybar"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="BlexMono Nerd Font"
@@ -14,17 +11,12 @@ BLUE=0xff26bbd9
 MAGENTA=0xffee64ac
 CYAN=0xff59e1e3
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar, these are only some of the
-# options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+# Bar appearance
 
-sketchybar --bar height=32        \
+s --bar height=32        \
                  blur_radius=0   \
-                 position=bottom  \
-                 y_offset=2       \
+                 position=top  \
+                 y_offset=6       \
                  margin=6         \
                  corner_radius=10  \
                  padding_left=10  \
@@ -32,14 +24,9 @@ sketchybar --bar height=32        \
                  shadow=off        \
                  color=$BACKGROUND
 
+# Defaults
 
-
-##### Changing Defaults #####
-# We now change some default values that are applied to all further items
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
-sketchybar --default updates=when_shown                        \
+s --default updates=when_shown                        \
                      drawing=on                                \
                      icon.font="$FONT:Bold:18.0"               \
                      icon.color=$FOREGROUND                     \
@@ -50,30 +37,21 @@ sketchybar --default updates=when_shown                        \
                      icon.padding_left=4                       \
                      icon.padding_right=4
 
-##### Adding Mission Control Space Indicators #####
-# Now we add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces
-# Clock
+# Left items
 
-sketchybar --add item clock left                        \
-           --set clock   update_freq=10                  \
-                         icon.drawing=off                 \
-                         label.font="$FONT:Bold:14.0"          \
-                         label.color=$GREEN \
-                         label.y_offset=1 \
-                         script="$PLUGIN_DIR/clock.sh"   
+s --add alias "iStat Menus Status,com.bjango.istatmenus.battery" left          \
+            --set "iStat Menus Status,com.bjango.istatmenus.battery" icon.padding_left=0  \
+                  icon.padding_right=0 \
+                  label.padding_left=0 \
+                  label.padding_right=0
 
 # SPACE_ICONS=("¹" "²爵" "³" "⁴" "⁹邏" "⁰" "7" "8" "9" "10")
 SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
 
-
-
-
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space space.$sid left                                 \
+  s --add space space.$sid left                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
                               icon.padding_left=4                        \
@@ -90,7 +68,7 @@ do
                               click_script="yabai -m space --focus $sid"
 done
 
-sketchybar --add item space_separator left \
+s --add item space_separator left \
            --set space_separator icon= \
                                  background.padding_left=6 \
                                  background.padding_right=6 \
@@ -98,114 +76,70 @@ sketchybar --add item space_separator left \
                                  label.drawing=off \
                                  icon.color=$RED
 
-
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar
-# only the properties deviating from the current defaults need to be set
-
-# sketchybar --add item space_separator left                            \
-#            --set space_separator icon=                               \
-#                                  background.padding_left=15           \
-#                                  background.padding_right=15          \
-#                                  label.drawing=off                    
-
-
-##### Adding Center Items #####
-# Additionally, "center" , left of the notch "q" and right of the notch "e" is
-
-sketchybar --add item window_title left                             \
+s --add item window_title left                             \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
                                  label.font="$FONT:SemiBold Italic:14.0"        \
                                  label.color=$YELLOW                    \
                                  icon.drawing=off                     \
                                  label.y_offset=1 \
            --subscribe window_title front_app_switched
-# E V E N T S
-sketchybar -m --add event song_update com.apple.iTunes.playerInfo
 
-# M U S I C
-sketchybar -m --add item music_info center  \
-              --set music_info script="~/.config/sketchybar/plugins/music.sh" \
-                    label.font="$FONT:SemiBold:16.0" \
-                    label.color=$GREEN \
-                    icon.color=$RED     \
-              --set music_info click_script="~/.config/sketchybar/plugins/music_click.sh" \
-              --subscribe music_info song_update 
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# available as a position:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+# Center items
 
-
-                                                         
-sketchybar --add item date right                        \
+s --add item date center                        \
            --set date   update_freq=10                  \
+                        background.padding_right=0 \
                          icon.drawing=off                 \
-                         label.font="$FONT:SemiBold Italic:14.0"        \
-                         script="$PLUGIN_DIR/date.sh"   
-# Battery 
+                        icon.padding_right=0 \
+                        label.padding_right=0   \
+                        label.align=right   \
+                         label.font="$FONT:Bold:16.0"        \
+                         script="$PLUGIN_DIR/date.sh" 
 
-sketchybar --add item battery right                                                                   \
-           --set battery script="$PLUGIN_DIR/battery.sh"                                              \
-                         update_freq=10                                                               \
-                         icon.color=$GREEN                                                        \
-                         icon.padding_right=4     \
-                         label.color=$GREEN       \
-                        #  label.drawing=off                                                            \
-                         click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
-sketchybar -m --subscribe battery system_woke
+s --add item date_separator center \
+           --set date_separator icon="|"\
+                                    align=center   \
+                                 background.padding_left=3 \
+                                 background.padding_right=3 \
+                                 icon.font="$FONT:SemiBold:14.0"        \
+                                 label.drawing=off \
+                                 icon.color=$RED
 
-# Sound
+s --add item clock center                        \
+           --set clock   update_freq=10                  \
+                        background.padding_left=0 \
+                         icon.drawing=off                 \
+                        icon.padding_left=0 \
+                        label.padding_left=3   \
+                        label.align=left   \
+                         label.font="$FONT:Bold:16.0"          \
+                         label.color=$GREEN \
+                         label.y_offset=1 \
+                         script="$PLUGIN_DIR/clock.sh"   
 
-sketchybar --add item sound right                     \
-           --set sound update_freq=5                  \
-                       label.drawing=off              \
-                       script="$PLUGIN_DIR/sound.sh"
+# Right items
 
-# Wifi
+# s --query default_menu_items
 
-sketchybar --add item wifi right                        \
-           --set wifi    script="$PLUGIN_DIR/wifi.sh"   \
-                         label.color=$BLUE              \
-                         label.drawing=off              \
-                         update_freq=5
+for i in \
+"TextInputMenuAgent,Item-0" \
+  "Control Center,WiFi"     \
+  "Control Center,Sound"     \
+  "Dropbox,Item-0"              \
+  "iStat Menus Status,com.bjango.istatmenus.network" \
+  "iStat Menus Status,com.bjango.istatmenus.memory" \
+  "iStat Menus Status,com.bjango.istatmenus.cpu"
+            
+do
+  s --add alias "$i" right          \
+             --set "$i" icon.padding_left=0  \
+                        icon.padding_right=0 \
+                        label.padding_left=0 \
+                        label.padding_right=0
+done
 
-# Input Source
+# Finalize
 
-sketchybar -m --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
-              --add       item               keyboard right                                              \
-              --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
-                                             label.font="$FONT:SemiBold Italic:16.0"                        
-sketchybar -m --subscribe keyboard           input_change                        
+s --update
 
-
-# RAM
-                         
-# sketchybar --add item ram_label right \
-#            --set ram_label label.font="$FONT:Regular:10.0" \
-#                            label=RAM \
-#                            y_offset=6 \
-#                            width=0 \
-#                                            \
-#            --add item ram_percentage right \
-#            --set ram_percentage label.font="$FONT:Regular:10.0" \
-#                                 y_offset=-4 \
-#                                 update_freq=1 \
-#                                 script="$PLUGIN_DIR/ram.sh"
-
-
-# # Music
-# sketchybar -m --add event song_update com.apple.iTunes.playerInfo
-
-# sketchybar -m --add item music_info                      right  \
-#               --set music_info script="$PLUGIN_DIR/music.sh" \
-#               --set music_info click_script="$PLUGIN_DIR/music_click.sh" \
-#                                label.font="$FONT:Retina:12.0"           \
-#                               #  label.drawing=off \
-# sketchybar -m --subscribe music_info song_update
-
-
-##### Finalizing Setup #####
-sketchybar --update
-
-echo "sketchybar configuration loaded.."
+echo "s configuration loaded.."
