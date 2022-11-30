@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=/Applications/Stata/StataMP.app/Contents/MacOS:$PATH
 
@@ -15,11 +16,32 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/seonjinlee/.oh-my-zsh"
 
+source $HOME/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zthxxx/zsh-history-enquirer
+antigen bundle autojump
+
+# Syntax highlighting bundle.
+
+# Load the theme.
+antigen theme spaceship-prompt/spaceship-prompt
+
+# Tell Antigen that you're done.
+antigen apply
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -81,14 +103,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  autojump
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-history-enquirer
-  # jovial
-)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
