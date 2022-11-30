@@ -39,13 +39,6 @@ s --default updates=when_shown                        \
 
 # Left items
 
-s --add alias "iStat Menus Status,com.bjango.istatmenus.battery" left          \
-            --set "iStat Menus Status,com.bjango.istatmenus.battery" icon.padding_left=0  \
-                  icon.padding_right=0 \
-                  label.padding_left=0 \
-                  label.padding_right=0
-
-# SPACE_ICONS=("¹" "²爵" "³" "⁴" "⁹邏" "⁰" "7" "8" "9" "10")
 SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
 
 for i in "${!SPACE_ICONS[@]}"
@@ -67,6 +60,7 @@ do
                               script="$PLUGIN_DIR/space.sh"              \
                               click_script="yabai -m space --focus $sid"
 done
+
 
 s --add item space_separator left \
            --set space_separator icon= \
@@ -122,13 +116,11 @@ s --add item clock center                        \
 # s --query default_menu_items
 
 for i in \
-"TextInputMenuAgent,Item-0" \
+  "iStat Menus Status,com.bjango.istatmenus.battery" \
   "Control Center,WiFi"     \
   "Control Center,Sound"     \
   "Dropbox,Item-0"              \
-  "iStat Menus Status,com.bjango.istatmenus.network" \
-  "iStat Menus Status,com.bjango.istatmenus.memory" \
-  "iStat Menus Status,com.bjango.istatmenus.cpu"
+"TextInputMenuAgent,Item-0" 
             
 do
   s --add alias "$i" right          \
@@ -136,6 +128,24 @@ do
                         icon.padding_right=0 \
                         label.padding_left=0 \
                         label.padding_right=0
+done
+
+s --add item right_sep right \
+           --set right_sep icon="|" \
+                                 background.padding_left=6 \
+                                 background.padding_right=6 \
+                                 icon.font="$FONT:SemiBold:14.0"        \
+                                 label.drawing=off \
+                                 icon.color=$RED
+
+for i in \
+  "iStat Menus Status,com.bjango.istatmenus.combined" 
+do
+  s --add alias "$i" right          \
+             --set "$i" icon.padding_left=0  \
+                        icon.padding_right=0 \
+                        label.padding_left=0 \
+                        label.padding_right=0 
 done
 
 # Finalize

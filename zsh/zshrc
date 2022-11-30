@@ -1,8 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=/Applications/Stata/StataMP.app/Contents/MacOS:$PATH
+
+if [[ $(arch) == 'arm64' ]]; then
+  export PATH=/opt/homebrew/bin:$PATH
+  export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+  export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
+  export ARCHFLAGS="-arch arm64"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/seonjinlee/.oh-my-zsh"
@@ -76,8 +84,6 @@ ZSH_THEME="spaceship"
 plugins=(
   git
   autojump
-  urltools
-  bgnotify
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-history-enquirer
@@ -105,7 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-export ARCHFLAGS="-arch arm64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -123,52 +128,4 @@ alias vim=nvim
 alias ls="exa -l --group-directories-first"
 alias tm=tmux
 alias ta="tmux attach"
-alias tk=taskell
 alias lg=lazygit
-alias google-chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /opt/homebrew/bin/google-chrome'
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /opt/homebrew/bin/google-chrome'
-
-
-bindkey -v
-
-
-# <<< conda initialize <<<
-
-
-export PATH=/opt/homebrew/bin:$PATH
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
-
-n ()
-{
-    # Block nesting of nnn in subshells
-    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
-        echo "nnn is already running"
-        return
-    fi
-
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The backslash allows one to alias n to nnn if desired without making an
-    # infinitely recursive alias
-    \nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
-export HOMEBREW_NO_AUTO_UPDATE=true
