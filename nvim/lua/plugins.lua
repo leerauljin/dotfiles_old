@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+return require('packer').startup({ function(use)
   -- Core
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -36,17 +36,44 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  -- Editor
 
+  use 'ray-x/go.nvim'
+
+
+  -- Editor
+  use 'numToStr/Comment.nvim'
+  use 'tpope/vim-surround'
   use 'windwp/nvim-autopairs'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'ggandor/leap.nvim'
+  use 'norcalli/nvim-colorizer.lua'
+  use 'christoomey/vim-tmux-navigator' -- tmux & split window navigation
+  use 'szw/vim-maximizer' -- maximizes and restores current window
 
   -- UI
   use 'lunarvim/horizon.nvim'
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'goolord/alpha-nvim'
+  use 'nvim-tree/nvim-tree.lua'
+  use 'akinsho/bufferline.nvim'
+
+  use 'NvChad/nvterm'
+
+  use 'nvim-telescope/telescope.nvim' -- fuzzy finder
+  use 'nvim-telescope/telescope-file-browser.nvim' -- fuzzy finder
 
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }
+})
