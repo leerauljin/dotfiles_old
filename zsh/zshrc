@@ -24,10 +24,11 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle command-not-found
+antigen bundle autojump
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zthxxx/zsh-history-enquirer
-antigen bundle autojump
+# antigen bundle zthxxx/zsh-history-enquirer
+antigen bundle jeffreytse/zsh-vi-mode
 
 # Syntax highlighting bundle.
 
@@ -36,6 +37,7 @@ antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -144,3 +146,5 @@ alias ls="exa -l --group-directories-first"
 alias tm=tmux
 alias ta="tmux attach"
 alias lg=lazygit
+
+export HOMEBREW_NO_AUTO_UPDATE=true
