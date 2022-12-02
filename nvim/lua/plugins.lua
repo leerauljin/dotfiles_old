@@ -60,6 +60,8 @@ return require('packer').startup({ function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'akinsho/bufferline.nvim'
 
+  use 'folke/which-key.nvim'
+
   use 'NvChad/nvterm'
 
   use 'nvim-telescope/telescope.nvim' -- fuzzy finder
