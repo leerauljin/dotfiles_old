@@ -38,7 +38,9 @@ map("n", "<leader>w<", "<C-w><", { desc = "decrease width" })
 
 -- <leader>f : file
 map("n", "<leader>fs", ":w <CR>", { desc = "save file" })
-map("n", "<leader>fS", ":wa <CR>", { desc = "save all files" })
+map("n", "<leader>fS", ":w ", { desc = "save file as" })
+map("n", "<leader>fR", ":sav ", { desc = "rename file" })
+map("n", "<leader>fa", ":wa <CR>", { desc = "save all files" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
 map("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { desc = "find files" })
 
@@ -58,12 +60,12 @@ map("n", "<leader>bD", ":bD <CR>", { desc = "kill buffer without saving" })
 
 
 -- <leader>o : open
-map({ "n", "t" }, "<leader>ot", function() require("nvterm.terminal").toggle('horizontal') end,
-    { desc = "open horizontal terminal" })
-map({ "n", "t" }, "<leader>oT", function() require("nvterm.terminal").toggle('vertical') end,
-    { desc = "open vertical terminal" }) -- open new tab
-map({ "n", "t" }, "<leader>of", function() require("nvterm.terminal").toggle('float') end,
-    { desc = "open floating terminal" }) -- open new tab
+-- map({ "n", "t" }, "<leader>ot", ":ToggleTerm direction=horizontal <CR>",
+--     { desc = "open horizontal terminal" })
+-- map({ "n", "t" }, "<leader>oT", function() require("nvterm.terminal").toggle('vertical') end,
+--     { desc = "open vertical terminal" }) -- open new tab
+-- map({ "n", "t" }, "<leader>of", function() require("nvterm.terminal").toggle('float') end,
+--     { desc = "open floating terminal" }) -- open new tab
 
 map("n", "<leader>oe", "<cmd>Telescope file_browser<cr>", { desc = "open file browser" })
 

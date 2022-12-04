@@ -63,8 +63,6 @@ return require('packer').startup({ function(use)
 
     use 'folke/which-key.nvim'
 
-    use 'NvChad/nvterm'
-
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'nvim-telescope/telescope-ui-select.nvim'
