@@ -144,7 +144,10 @@ alias pip=pip3
 alias vim=nvim
 alias ls="exa -l --group-directories-first"
 alias tm=tmux
-alias ta="tmux attach"
+alias ta="tmux attach -t"
+alias tl="tmux list-sessions"
+alias v="fd --type f --hidden --exclude .git --exclude .DS_Store | fzf-tmux -p --reverse | xargs nvim"
 alias lg=lazygit
 
 export HOMEBREW_NO_AUTO_UPDATE=true
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"

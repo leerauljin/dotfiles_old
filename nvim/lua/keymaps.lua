@@ -6,58 +6,84 @@ local map = vim.keymap.set -- for conciseness
 -- delete single character without copying into register
 map("n", "x", '"_x')
 
--- window management
-map("n", "<leader>sv", "<C-w>v") -- split window vertically
-map("n", "<leader>sh", "<C-w>s") -- split window horizontally
-map("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-map("n", "<leader>sx", ":close<CR>") -- close current split window
+-- navigate within insert mode
+map("i", "<C-h>", "<Left>")
+map("i", "<C-l>", "<Right>")
+map("i", "<C-j>", "<Down>")
+map("i", "<C-k>", "<Up>")
 
-map("n", "<leader>to", ":tabnew<CR>") -- open new tab
-map("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-map("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-map("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+-- lspsaga
+map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "show line diagnostics", silent = true })
+map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "lsp finder", silent = true })
+map("n", "gr", "<cmd>Lspsaga rename<CR>", { desc = "rename", silent = true })
+map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek definition", silent = true })
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "hover", silent = true })
 
-map({ "n", "t" }, "<leader>tt", function() require("nvterm.terminal").toggle('horizontal') end) -- open new tab
-----------------------
--- Plugin Keybinds
-----------------------
+-- <leader>w : window management
+map("n", "<leader>wv", "<C-w>v", { desc = "split window vertically" })
+map("n", "<leader>ws", "<C-w>s", { desc = "split window horizontally" })
+map("n", "<leader>we", "<C-w>=", { desc = "eqaulize split window" })
+map("n", "<leader>wq", ":close<CR>", { desc = "close window" })
+map("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "maximize split window" })
 
--- vim-maximizer
-map("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+map("n", "<leader>wh", "<C-w>h", { desc = "window left" })
+map("n", "<leader>wl", "<C-w>l", { desc = "window right" })
+map("n", "<leader>wj", "<C-w>j", { desc = "window down" })
+map("n", "<leader>wk", "<C-w>k", { desc = "window up" })
 
--- nvim-tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+map("n", "<leader>w+", "<C-w>+", { desc = "increase height" })
+map("n", "<leader>w-", "<C-w>-", { desc = "decrease height" })
+map("n", "<leader>w>", "<C-w>>", { desc = "increase width" })
+map("n", "<leader>w<", "<C-w><", { desc = "decrease width" })
 
--- telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
--- telescope git commands (not on youtube nvim video)
-map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-map("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
-
--- restart lsp server (not on youtube nvim video)
-map("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
-
--- use <C-t> to jump back
-map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+-- <leader>f : file
+map("n", "<leader>fs", ":w <CR>", { desc = "save file" })
+map("n", "<leader>fS", ":wa <CR>", { desc = "save all files" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
+map("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { desc = "find files" })
 
 
-map("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+-- <leader>q : quit
+map("n", "<leader>qs", ":xa <CR>", { desc = "save all files and quit" })
+map("n", "<leader>qq", ":qa <CR>", { desc = "quit all" })
+map("n", "<leader>qQ", ":qa! <CR>", { desc = "quit all without saving" })
 
--- Peek Definition
--- you can edit the definition file in this flaotwindow
--- also support open/vsplit/etc operation check definition_action_keys
--- support tagstack C-t jump back
-map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+-- <leader>b : buffer
+map("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "switch buffer" })
+map("n", "<leader>bn", "<cmd> enew <CR>", { desc = "new buffer" })
+map("n", "<leader>bs", ":w <CR>", { desc = "save buffer" })
+map("n", "<leader>bS", ":wa <CR>", { desc = "save all buffers" })
+map("n", "<leader>bd", ":bd <CR>", { desc = "kill buffer" })
+map("n", "<leader>bD", ":bD <CR>", { desc = "kill buffer without saving" })
 
--- Show line diagnostics
-map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
--- Hover Doc
-map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+-- <leader>o : open
+map({ "n", "t" }, "<leader>ot", function() require("nvterm.terminal").toggle('horizontal') end,
+    { desc = "open horizontal terminal" })
+map({ "n", "t" }, "<leader>oT", function() require("nvterm.terminal").toggle('vertical') end,
+    { desc = "open vertical terminal" }) -- open new tab
+map({ "n", "t" }, "<leader>of", function() require("nvterm.terminal").toggle('float') end,
+    { desc = "open floating terminal" }) -- open new tab
+
+map("n", "<leader>oe", "<cmd>Telescope file_browser<cr>", { desc = "open file browser" })
+
+
+-- <leader>h : help / management
+map("n", "<leader>ht", "<cmd>Telescope help_tags<cr>", { desc = "search help tags" })
+map("n", "<leader>hk", "<cmd>Telescope keymaps<cr>", { desc = "search keymaps" })
+map("n", "<leader>hp", ":PackerSync<CR>", { desc = "sync packages" })
+map("n", "<leader>hl", ":LspRestart<CR>", { desc = "restart lsp" })
+
+-- <leader>t : toggle
+map("n", "<leader>tl", ":set nu! rnu!<CR>", { desc = "toggle line number" })
+map("n", "<leader>tr", ":set rnu!<CR>", { desc = "toggle relative number" })
+
+
+-- <leader>g : git
+map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "git commits" })
+map("n", "<leader>gf", "<cmd>Telescope git_bcommits<cr>", { desc = "git file/buffer commits" })
+map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "git brances" })
+map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "git status" })
+map("n", "<leader>gg",
+    function() require("nvterm.terminal").send('lazygit', 'float') require("nvterm.terminal").show_term('float') end
+    , { desc = "open lazygit" })

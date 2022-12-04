@@ -37,11 +37,12 @@ o.termguicolors = true
 o.signcolumn = "yes"
 o.cmdheight = 1
 o.background = "dark"
+o.wrap = false
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
+    pattern = '*',
+    command = "set nopaste"
 })
 
 

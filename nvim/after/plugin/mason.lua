@@ -8,9 +8,9 @@ if (not status3) then return end
 mason.setup()
 
 lspconfig.setup {
-  automatic_installation = true
+    automatic_installation = true
 }
 
 null_ls.setup {
-  automatic_installation = true
+    automatic_installation = true
 }

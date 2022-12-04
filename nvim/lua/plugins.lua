@@ -47,8 +47,7 @@ return require('packer').startup({ function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'ggandor/leap.nvim'
     use 'norcalli/nvim-colorizer.lua'
-    use 'christoomey/vim-tmux-navigator' -- tmux & split window navigation
-    use 'szw/vim-maximizer' -- maximizes and restores current window
+    use 'github/copilot.vim'
 
     -- UI
     use 'lunarvim/horizon.nvim'
@@ -58,6 +57,8 @@ return require('packer').startup({ function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'goolord/alpha-nvim'
     use 'nvim-tree/nvim-tree.lua'
+    use 'christoomey/vim-tmux-navigator' -- tmux & split window navigation
+    use 'szw/vim-maximizer' -- maximizes and restores current window
     -- use 'romgrk/barbar.nvim'
 
     use 'folke/which-key.nvim'

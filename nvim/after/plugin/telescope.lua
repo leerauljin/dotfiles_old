@@ -19,7 +19,7 @@ telescope.setup {
                 mirror = true,
             },
             width = 0.6,
-            height = 0.5,
+            height = 0.8,
             prompt_position = "top",
             preview_cutoff = 1,
         },
