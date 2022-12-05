@@ -1,6 +1,6 @@
-require('options')
-require('plugins')
-require('theme')
-require('keymaps')
+require('leerauljin.base')
+require('leerauljin.plugins').setup()
+require('leerauljin.theme')
+require('leerauljin.maps')
 
 require('impatient')

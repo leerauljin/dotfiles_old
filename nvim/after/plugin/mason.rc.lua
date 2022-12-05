@@ -14,3 +14,9 @@ lspconfig.setup {
 null_ls.setup {
     automatic_installation = true
 }
+
+-- local status4, zero = pcall(require, 'lspzero')
+-- if (not status4) then return end
+--
+-- zero.preset('recommended')
+-- zero.setup()

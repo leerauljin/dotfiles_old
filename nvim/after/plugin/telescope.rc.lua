@@ -6,22 +6,26 @@ local builtin = require("telescope.builtin")
 -- configure telescope
 telescope.setup {
     defaults = {
-        -- prompt_prefix = "   ",
+        prompt_prefix = "",
         selection_caret = "  ",
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
-        sorting_strategy = "ascending",
-        layout_strategy = "vertical",
+        -- sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
         results_title = false,
+        prompt_title = false,
         layout_config = {
-            vertical = {
-                mirror = true,
+            horizontal = {
+                prompt_position = "bottom",
+                preview_width = 0.55,
+                results_width = 0.8,
             },
-            width = 0.6,
-            height = 0.8,
-            prompt_position = "top",
-            preview_cutoff = 1,
+            vertical = {
+                width = 0.6,
+                height = 0.4,
+            },
+            preview_cutoff = 120,
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         file_ignore_patterns = { "node_modules" },
@@ -38,8 +42,16 @@ telescope.setup {
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         mappings = {
-            n = { ["q"] = require("telescope.actions").close },
+            n = { ["q"] = actions.close },
         },
+    },
+    pickers = {
+        buffers = {
+            mirror = false,
+            initial_mode = "normal",
+            layout_strategy = "vertical",
+            previewer = false,
+        }
     },
     extensions = {
         file_browser = {
