@@ -1,22 +1,11 @@
-local status, mason = pcall(require, "mason")
-if not status then return end
-local status2, lspconfig = pcall(require, "mason-lspconfig")
-if not status2 then return end
-local status3, null_ls = pcall(require, "mason-null-ls")
-if not status3 then return end
+local ok1, mason = pcall(require, "mason")
+if not ok1 then return end
 
 mason.setup()
 
-lspconfig.setup {
+local ok2, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok2 then return end
+
+mason_lspconfig.setup {
     automatic_installation = true
 }
-
-null_ls.setup {
-    automatic_installation = true
-}
-
--- local status4, zero = pcall(require, 'lspzero')
--- if (not status4) then return end
---
--- zero.preset('recommended')
--- zero.setup()

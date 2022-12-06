@@ -42,15 +42,19 @@ local opts = {
 }
 
 local mappings = {
+    c = {
+        name = "+code",
+        p = { "cmd> call Black()<CR>", "format python" },
+    },
     q = {
         name = "+quit",
         l = { "<cmd>SessionLoad<cr>", "reload last session" },
+        L = { "<cmd>Telescope persisted<cr>", "choose last session" },
         s = { ":xa <CR>", "save all files and quit" },
         q = { ":qa <CR>", "quit all" },
         Q = { ":qa! <CR>", "quit all without saving" },
 
     },
-
     f = {
         name = "+file",
 
