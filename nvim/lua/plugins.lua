@@ -86,6 +86,7 @@ local function plugins(use)
     use 'saadparwaiz1/cmp_luasnip' -- nvim-cmp source for buffer words
     use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
     use 'hrsh7th/cmp-nvim-lua' -- nvim-cmp source for neovim's built-in LSP
+    use 'hrsh7th/cmp-cmdline' -- nvim-cmp source for neovim's built-in LSP
 
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'
@@ -118,9 +119,6 @@ local function plugins(use)
     use { 'folke/trouble.nvim',
         event = "VimEnter",
         cmd = { "TroubleToggle", "Trouble" },
-        config = function()
-            require('trouble').setup()
-        end,
     }
 
     use { 'folke/todo-comments.nvim',
