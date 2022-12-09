@@ -111,9 +111,9 @@ local mappings = {
         n = { ":set nu! rnu!<CR>", "toggle line number" },
         r = { ":set rnu!<CR>", "toggle relative number" },
         z = { ":ZenMode<CR>", "toggle zen mode" },
-        l = { ":TroubleToggle<CR>", "toggle trouble lsp diagnostics" },
-        d = { ":TodoTrouble<CR>", "toggle todo list" },
-        t = { "<cmd> Twilight<CR>", "toggle twilight" },
+        t = { ":TroubleToggle<CR>", "toggle trouble lsp diagnostics" },
+        l = { ":TodoTrouble<CR>", "toggle todo list" },
+        w = { "<cmd> Twilight<CR>", "toggle twilight" },
     },
     g = {
         name = "+git",

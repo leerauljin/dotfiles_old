@@ -74,6 +74,7 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config {
+    underline = true,
     virtual_text = false,
     -- virtual_text = {
     --     prefix = '●'
@@ -84,5 +85,5 @@ vim.diagnostic.config {
     },
 }
 
--- vim.o.updatetime = 250
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

@@ -96,6 +96,11 @@ local function plugins(use)
     use 'ray-x/go.nvim'
     use 'olexsmir/gopher.nvim'
 
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use "dhruvasagar/vim-table-mode"
     -- Editor
     use { "tpope/vim-surround", event = "BufRead" }
     use "windwp/nvim-autopairs"

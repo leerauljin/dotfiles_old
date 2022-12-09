@@ -21,7 +21,8 @@ local sources = {
     -- markdown
     null_ls.builtins.diagnostics.write_good,
     null_ls.builtins.diagnostics.alex,
-    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.diagnostics.proselint,
+    null_ls.builtins.code_actions.ltrs,
 }
 
 
