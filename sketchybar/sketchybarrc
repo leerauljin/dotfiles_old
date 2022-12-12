@@ -1,15 +1,12 @@
 alias s="sketchybar"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-FONT="BlexMono Nerd Font"
-BACKGROUND=0xff1c1e26
-FOREGROUND=0xffd5d8da
-RED=0xffe95678
-GREEN=0xff29d398
-YELLOW=0xfffab795
-BLUE=0xff26bbd9
-MAGENTA=0xffee64ac
-CYAN=0xff59e1e3
+FONT="JetBrainsMono Nerd Font"
+BACKGROUND=0xff161616
+FOREGROUND=0xfff2f4f8
+RED=0xffee5396
+GREEN=0xff25be6a
+BLUE=0xff33b1ff
 
 # Bar appearance
 
@@ -72,8 +69,8 @@ s --add item space_separator left \
 
 s --add item window_title left                             \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
-                                 label.font="$FONT:SemiBold Italic:14.0"        \
-                                 label.color=$YELLOW                    \
+                                 label.font="$FONT:ExtraBold Italic:16.0"        \
+                                 label.color=$BLUE                    \
                                  icon.drawing=off                     \
                                  label.y_offset=1 \
            --subscribe window_title front_app_switched
@@ -106,7 +103,7 @@ s --add item clock center                        \
                         icon.padding_left=0 \
                         label.padding_left=3   \
                         label.align=left   \
-                         label.font="$FONT:Bold:16.0"          \
+                         label.font="$FONT:ExtraBold:16.0"          \
                          label.color=$GREEN \
                          label.y_offset=1 \
                          script="$PLUGIN_DIR/clock.sh"   

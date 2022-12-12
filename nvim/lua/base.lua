@@ -8,7 +8,7 @@ opt.termguicolors = true
 opt.timeoutlen = 500
 opt.updatetime = 200
 
-opt.scrolloff = 8
+opt.scrolloff = 999
 
 opt.backspace = "indent,eol,start"
 

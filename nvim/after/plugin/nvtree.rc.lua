@@ -18,7 +18,7 @@ tree.setup {
         update_cwd = false,
     },
     view = {
-        adaptive_size = false,
+        adaptive_size = true,
         side = "right",
         width = 25,
         hide_root_folder = true,
@@ -43,7 +43,7 @@ tree.setup {
         },
 
         icons = {
-            webdev_colors = false,
+            webdev_colors = true,
             show = {
                 file = true,
                 folder = true,

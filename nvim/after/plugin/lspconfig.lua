@@ -77,13 +77,13 @@ vim.diagnostic.config {
     underline = true,
     virtual_text = false,
     -- virtual_text = {
-    --     prefix = '●'
+    --     prefix = '▪'
     -- },
     update_in_insert = true,
     float = {
-        source = "always", -- Or "if_many"
+        source = "if_many", -- Or "if_many"
     },
 }
 
-vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- vim.o.updatetime = 250
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

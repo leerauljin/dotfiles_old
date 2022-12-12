@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: BlexMono Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Text
+    style: Regular
 
   # Bold font face
   bold:
@@ -122,7 +122,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -133,10 +133,10 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: SemiBold Italic
+    style: Italic
 
   # Bold italic font face
   bold_italic:
@@ -144,10 +144,10 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: BlexMono Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: SemiBold Italic
+    style: Bold Italic
 
   # Point size
   size: 16.0
@@ -177,65 +177,36 @@ font:
 
 
 schemes:
-  # Tokyo Night theme, based on both:
-  #   https://github.com/ghifarit53/tokyonight-vim
-  #   https://github.com/enkia/tokyo-night-vscode-theme
-  tokyo-night: &tokyo-night
+  carbonfox: &carbonfox
+    colors:
     # Default colors
     primary:
-      background: '0x1a1b26'
-      foreground: '0xa9b1d6'
-
+      background: '0x161616'
+      foreground: '0xf2f4f8'
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x787c99'
-
+      black:   '0x282828'
+      red:     '0xee5396'
+      green:   '0x25be6a'
+      yellow:  '0x08bdba'
+      blue:    '0x78a9ff'
+      magenta: '0xbe95ff'
+      cyan:    '0x33b1ff'
+      white:   '0xdfdfe0'
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      black:   '0x484848'
+      red:     '0xf16da6'
+      green:   '0x46c880'
+      yellow:  '0x2dc7c4'
+      blue:    '0x8cb6ff'
+      magenta: '0xc8a5ff'
+      cyan:    '0x52bdff'
+      white:   '0xe4e4e5'
+    indexed_colors:
+      - { index: 16, color: '0x3ddbd9' }
+      - { index: 17, color: '0xff7eb6' }
 
-  tokyo-night-storm: &tokyo-night-storm
-    # Default colors
-    primary:
-      background: '0x24283b'
-      foreground: '0xa9b1d6'
-
-    # Normal colors
-    normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x9699a8'
-
-    # Bright colors
-    bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
-  
   horizon: &horizon
   # Colors (Horizon Dark)
     primary:
@@ -264,7 +235,7 @@ schemes:
       cyan: '0x6be4e6'
       white: '0xd5d8da'
     
-colors: *horizon
+colors: *carbonfox
 
   # Cursor colors
   #

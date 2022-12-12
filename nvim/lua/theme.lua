@@ -1,6 +1,4 @@
--- set colorscheme with protected call
-local status, _ = pcall(vim.cmd, "colorscheme horizon")
-if not status then
-    print("Colorscheme not found!") -- print error if colorscheme not installed
-    return
-end
+local ok, nightfox = pcall(require, 'nightfox')
+if not ok then return end
+
+vim.cmd("colorscheme carbonfox")

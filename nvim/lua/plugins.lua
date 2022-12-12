@@ -164,6 +164,7 @@ local function plugins(use)
     -- themes
     use 'lunarvim/horizon.nvim'
     use 'sainnhe/everforest'
+    use "EdenEast/nightfox.nvim"
 
     if packer_bootstrap then
         require('packer').sync()

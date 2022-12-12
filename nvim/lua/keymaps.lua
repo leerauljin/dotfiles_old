@@ -20,3 +20,7 @@ map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "lsp finder", silent = tr
 map("n", "gr", "<cmd>Lspsaga rename<CR>", { desc = "rename", silent = true })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek definition", silent = true })
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "hover", silent = true })
+
+-- Diagnsotic jump can use `<c-o>` to jump back
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
