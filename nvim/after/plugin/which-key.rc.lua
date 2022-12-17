@@ -1,6 +1,7 @@
 local ok, wk = pcall(require, 'which-key')
 if not ok then return end
 
+
 local conf = {
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
@@ -22,7 +23,9 @@ local conf = {
         spacing = 6, -- spacing between columns
     },
 
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>",
+        "call", "lua", "^:", "^ " },
+
 
     triggers_blacklist = {
         -- list of mode / prefixes that should never be hooked by WhichKey
@@ -41,10 +44,13 @@ local opts = {
     nowait = false, -- use `nowait` when creating keymaps
 }
 
-local mappings = {
+local leader_maps = {
+    s = { ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>", "replace word" },
+    S = { ":%s/<C-r><C-w>/<C-r>0/g<CR>", "replace word with register" },
+    x = { "<cmd>!chmod +x %<CR>", "chmod +x" },
     c = {
         name = "+code",
-        p = { "cmd> call Black()<CR>", "format python" },
+        f = { vim.lsp.buf.format, "format" },
     },
     q = {
         name = "+quit",
@@ -55,9 +61,9 @@ local mappings = {
         Q = { ":qa! <CR>", "quit all without saving" },
 
     },
+    ["<leader>"] = { "<cmd>Telescope find_files<cr>", "find files" },
     f = {
         name = "+file",
-
         s = { ":w <CR>", "save file" },
         n = { ":e ", "new file" },
         S = { ":w ", "save file as" },
@@ -65,9 +71,10 @@ local mappings = {
         a = { ":wa <CR>", "save all files" },
         f = { "<cmd>Telescope find_files<cr>", "find files" },
         b = { "<cmd>Telescope file_browser<cr>", "open file browser" },
-        r = { "<cmd>Telescope oldfiles<cr>", "open recent file" },
+        o = { "<cmd>Telescope oldfiles<cr>", "open recent file" },
         w = { "<cmd>Telescope live_grep<cr>", "live grep" },
     },
+    [","] = { "<cmd>Telescope buffers<cr>", "switch buffer" },
     b = {
         name = "+buffer",
         b = { "<cmd>Telescope buffers<cr>", "switch buffer" },
@@ -77,6 +84,7 @@ local mappings = {
         d = { ":bd <CR>", "kill buffer" },
         D = { ":bD <CR>", "kill buffer without saving" },
         r = { ":bufdo :e <CR>", "refresh buffers" },
+        m = { "<cmd>Telescope marks<cr>", "search marks" },
     },
     w = {
         name = "+windows",
@@ -128,4 +136,42 @@ local mappings = {
 }
 
 wk.setup(conf)
-wk.register(mappings, opts)
+wk.register(leader_maps, opts)
+
+-- lspsaga
+local ok, _ = require('lspsaga')
+if not ok then return end
+
+
+local saga_maps = {
+    K = {},
+    g = {
+        l = { "<cmd>Lspsaga show_line_diagnostics<CR>",
+            "show lien diagnostics" },
+        h = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
+        r = { "<cmd>Lspsaga rename<CR>", "rename" },
+        d = { "<cmd>Lspsaga hover_doc<CR>", "hover" },
+    }
+}
+wk.register(saga_maps)
+
+
+-- harpoon
+local ok, _ = require('harpoon')
+if not ok then return end
+
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+local harpoon_maps = {
+    j = {
+        name = "+harpoon",
+        j = { mark.add_file, "add file" },
+        q = { ui.toggle_quick_menu, "quick menu" },
+        a = { function() ui.nav_file(1) end, "harpoon to file 1" },
+        s = { function() ui.nav_file(2) end, "harpoon to file 2" },
+        d = { function() ui.nav_file(3) end, "harpoon to file 3" },
+        f = { function() ui.nav_file(4) end, "harpoon to file 4" },
+    },
+}
+wk.register(harpoon_maps, opts)

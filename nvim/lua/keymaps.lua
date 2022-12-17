@@ -14,13 +14,27 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 map("n", "gw", "*N")
 map("x", "gw", "*N")
 
--- lspsaga
-map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "show line diagnostics", silent = true })
-map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "lsp finder", silent = true })
-map("n", "gr", "<cmd>Lspsaga rename<CR>", { desc = "rename", silent = true })
-map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek definition", silent = true })
-map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "hover", silent = true })
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+
+-- move code in visual mode
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
+-- make cursor stay when using J
+map("n", "J", "mzJ`z")
+
+-- greatest remap ever
+map("x", "<leader>p", [["_dP]], { desc = "paste without yank"})
+
+-- make cursor stay in center
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+
+map("n", "Q", "<nop>")
+map("n", "<leader>x", "", { silent = true })

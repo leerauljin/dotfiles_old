@@ -5,20 +5,8 @@ if not ok2 then return end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
-local enable_format_on_save = function(_, bufnr)
-    vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup_format,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-    })
-end
-
 local on_attach = function(client, bufnr)
-    enable_format_on_save(client, bufnr)
+    -- enable_format_on_save(client, bufnr)
 end
 
 
@@ -84,6 +72,3 @@ vim.diagnostic.config {
         source = "if_many", -- Or "if_many"
     },
 }
-
--- vim.o.updatetime = 250
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

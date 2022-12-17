@@ -6,9 +6,9 @@ local opt = vim.opt
 opt.termguicolors = true
 
 opt.timeoutlen = 500
-opt.updatetime = 200
+opt.updatetime = 50
 
-opt.scrolloff = 999
+opt.scrolloff = 8
 
 opt.backspace = "indent,eol,start"
 
@@ -33,7 +33,7 @@ opt.undofile = true
 opt.number = true
 opt.relativenumber = true
 
-opt.cursorline = true
+opt.cursorline = false
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.pumheight = 10
@@ -42,7 +42,7 @@ opt.pumheight = 10
 opt.title = true
 
 -- editor
-opt.wrap = true
+opt.wrap = false
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = -1
@@ -58,7 +58,8 @@ opt.splitbelow = true
 
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = true
+opt.hlsearch = false
+opt.incsearch = true
 
 
 -- other

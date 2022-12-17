@@ -2,7 +2,8 @@ alias s="sketchybar"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
-BACKGROUND=0xff161616
+FONTALT="Helvetica"
+BACKGROUND=0xf0161616
 FOREGROUND=0xfff2f4f8
 RED=0xffee5396
 GREEN=0xff25be6a
@@ -59,21 +60,21 @@ do
 done
 
 
-s --add item space_separator left \
-           --set space_separator icon= \
-                                 background.padding_left=6 \
-                                 background.padding_right=6 \
-                                 icon.font="$FONT:SemiBold:14.0"        \
-                                 label.drawing=off \
-                                 icon.color=$RED
-
-s --add item window_title left                             \
-           --set window_title    script="$PLUGIN_DIR/window_title.sh" \
-                                 label.font="$FONT:ExtraBold Italic:16.0"        \
-                                 label.color=$BLUE                    \
-                                 icon.drawing=off                     \
-                                 label.y_offset=1 \
-           --subscribe window_title front_app_switched
+// s --add item space_separator left \
+//            --set space_separator icon= \
+//                                  background.padding_left=6 \
+//                                  background.padding_right=6 \
+//                                  icon.font="$FONT:SemiBold:14.0"        \
+//                                  label.drawing=off \
+//                                  icon.color=$RED
+//
+// s --add item window_title left                             \
+//            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
+//                                  label.font="$FONT:ExtraBold Italic:16.0"        \
+//                                  label.color=$BLUE                    \
+//                                  icon.drawing=off                     \
+//                                  label.y_offset=1 \
+//            --subscribe window_title front_app_switched
 
 # Center items
 
@@ -87,33 +88,32 @@ s --add item date center                        \
                          label.font="$FONT:Bold:16.0"        \
                          script="$PLUGIN_DIR/date.sh" 
 
-s --add item date_separator center \
-           --set date_separator icon="|"\
-                                    align=center   \
-                                 background.padding_left=3 \
-                                 background.padding_right=3 \
-                                 icon.font="$FONT:SemiBold:14.0"        \
-                                 label.drawing=off \
-                                 icon.color=$RED
 
-s --add item clock center                        \
+# Right items
+
+
+s --add item clock right                        \
            --set clock   update_freq=10                  \
                         background.padding_left=0 \
                          icon.drawing=off                 \
                         icon.padding_left=0 \
-                        label.padding_left=3   \
+                        label.padding_left=6   \
                         label.align=left   \
-                         label.font="$FONT:ExtraBold:16.0"          \
-                         label.color=$GREEN \
+                         label.font="$FONT:ExtraBold:14.0"          \
+                         label.color=$BLUE \
                          label.y_offset=1 \
                          script="$PLUGIN_DIR/clock.sh"   
 
-# Right items
-
+s --add item date_separator right \
+           --set date_separator icon="|"\
+                                    align=center   \
+                                 icon.font="$FONT:ExtraBold:14.0"        \
+                                 label.drawing=off \
+                                 icon.color=$RED
 # s --query default_menu_items
 
 for i in \
-  "iStat Menus Status,com.bjango.istatmenus.battery" \
+  "Control Center,Battery"     \
   "Control Center,WiFi"     \
   "Control Center,Sound"     \
   "Dropbox,Item-0"              \
@@ -127,23 +127,6 @@ do
                         label.padding_right=0
 done
 
-s --add item right_sep right \
-           --set right_sep icon="|" \
-                                 background.padding_left=6 \
-                                 background.padding_right=6 \
-                                 icon.font="$FONT:SemiBold:14.0"        \
-                                 label.drawing=off \
-                                 icon.color=$RED
-
-for i in \
-  "iStat Menus Status,com.bjango.istatmenus.combined" 
-do
-  s --add alias "$i" right          \
-             --set "$i" icon.padding_left=0  \
-                        icon.padding_right=0 \
-                        label.padding_left=0 \
-                        label.padding_right=0 
-done
 
 # Finalize
 

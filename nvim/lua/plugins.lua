@@ -33,7 +33,6 @@ local function plugins(use)
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'nvim-telescope/telescope-ui-select.nvim'
-    use 'folke/tokyonight.nvim'
 
     -- git
     use {
@@ -44,13 +43,6 @@ local function plugins(use)
         end,
     }
     use { "github/copilot.vim", event = "BufRead" }
-    use { "olimorris/persisted.nvim",
-        -- module = "persisted", -- For lazy loading
-        config = function()
-            require("persisted").setup()
-            require("telescope").load_extension("persisted")
-        end,
-    }
 
     -- lsp
     use {
@@ -160,6 +152,7 @@ local function plugins(use)
             require('gitsigns').setup()
         end,
     }
+    use 'ThePrimeagen/harpoon'
 
     -- themes
     use 'lunarvim/horizon.nvim'
