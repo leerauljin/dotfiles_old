@@ -42,7 +42,9 @@ opt.pumheight = 10
 opt.title = true
 
 -- editor
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true
+opt.textwidth = 80
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = -1

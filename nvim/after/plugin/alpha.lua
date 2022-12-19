@@ -12,6 +12,7 @@ local options = {
 
     header = {
         type = "text",
+        -- from oxocarbon
         val = {
             "         _..._         _..._         _..._         _..._         _..._         ",
             "       .:::::::.     .::::. `.     .::::  `.     .::'   `.     .'     `.       ",
@@ -29,7 +30,7 @@ local options = {
     buttons = {
         type = "group",
         val = {
-            dashboard.button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
+            dashboard.button("SPC SPC", "  Find File  ", ":Telescope find_files<CR>"),
             dashboard.button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
             dashboard.button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
             dashboard.button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
