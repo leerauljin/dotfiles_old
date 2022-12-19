@@ -1,9 +1,12 @@
+#!/bin/sh
+
 alias s="sketchybar"
+
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
-BACKGROUND=0xf0161616
+BACKGROUND=0xff161616
 FOREGROUND=0xfff2f4f8
 RED=0xffee5396
 GREEN=0xff25be6a

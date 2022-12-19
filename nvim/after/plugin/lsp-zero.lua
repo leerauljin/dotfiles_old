@@ -39,12 +39,7 @@ lsp.configure('pyright', {
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
-    sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = ''
-    }
+    set_lsp_keymaps = false,
 })
 
 
@@ -54,9 +49,12 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-y>'] = cmp.mapping.complete(),
 })
+
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
 
 local function cmp_border(hl_name)
     return {
@@ -86,7 +84,7 @@ lsp.setup_nvim_cmp({
         border = cmp_border "CmpDocBorder",
     },
     formatting = {
-        format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
+        format = lspkind.cmp_format({ with_text = true, maxwidth = 50 })
     },
     mapping = cmp_mappings,
 })
@@ -94,11 +92,18 @@ lsp.setup_nvim_cmp({
 cmp.setup(cmp_config)
 lsp.setup()
 
+local signs = { Error = "✘ ", Warn = "▲ ", Hint = "⚑ ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
 
 vim.diagnostic.config {
     underline = true,
     virtual_text = {
-        prefix = '▪'
+        prefix = '▪',
+        severity = { min = vim.diagnostic.severity.WARN }
     },
     update_in_insert = true,
     float = {

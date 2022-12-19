@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+# export TERM="xterm-256color"
+# [[ -n $TMUX ]] && export TERM="screen-256color" export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=/Applications/Stata/StataMP.app/Contents/MacOS:$PATH
 
 if [[ $(arch) == 'arm64' ]]; then
@@ -12,9 +13,6 @@ if [[ $(arch) == 'arm64' ]]; then
   export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
   export ARCHFLAGS="-arch arm64"
 fi
-
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/seonjinlee/.oh-my-zsh"
 
 source $HOME/antigen.zsh
 

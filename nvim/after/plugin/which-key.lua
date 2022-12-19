@@ -44,6 +44,15 @@ local opts = {
     nowait = false, -- use `nowait` when creating keymaps
 }
 
+local vopts = {
+    mode = "v", -- Visual mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+}
+
 local leader_maps = {
     s = { ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>", "replace word" },
     S = { ":%s/<C-r><C-w>/<C-r>0/g<CR>", "replace word with register" },
@@ -116,12 +125,10 @@ local leader_maps = {
     },
     t = {
         name = "+toggle",
-        n = { ":set nu! rnu!<CR>", "toggle line number" },
-        r = { ":set rnu!<CR>", "toggle relative number" },
-        z = { ":ZenMode<CR>", "toggle zen mode" },
-        t = { ":TroubleToggle<CR>", "toggle trouble lsp diagnostics" },
-        l = { ":TodoTrouble<CR>", "toggle todo list" },
-        w = { "<cmd> Twilight<CR>", "toggle twilight" },
+        l = { ":set nu! rnu!<CR>", "toggle line number" },
+        L = { ":set rnu!<CR>", "toggle relative number" },
+        d = { ":TroubleToggle<CR>", "toggle trouble lsp diagnostics" },
+        t = { ":TodoTrouble<CR>", "toggle todo list" },
     },
     g = {
         name = "+git",
@@ -144,20 +151,20 @@ if not ok then return end
 
 
 local saga_maps = {
-    K = {},
+    K = { "<cmd>Lspsaga hover_doc<CR>", "hover" },
     g = {
-        l = { "<cmd>Lspsaga show_line_diagnostics<CR>",
-            "show lien diagnostics" },
         h = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
         r = { "<cmd>Lspsaga rename<CR>", "rename" },
-        d = { "<cmd>Lspsaga hover_doc<CR>", "hover" },
+        d = { "<cmd>Lspsaga peek_definition<CR>", "peek definition"},
+        D = { function() vim.lsp.buf.definition() end, "go to definition"},
+        l = { function() vim.diagnostic.open_float() end, "open diagnostic"},
     }
 }
 wk.register(saga_maps)
 
 
 -- harpoon
-local ok, _ = require('harpoon')
+local ok, _ = pcall(require, 'harpoon')
 if not ok then return end
 
 local mark = require("harpoon.mark")
@@ -175,3 +182,23 @@ local harpoon_maps = {
     },
 }
 wk.register(harpoon_maps, opts)
+
+
+local ok, _ = pcall(require, 'true-zen')
+if not ok then return end
+local zen_maps = {
+    t = {
+        a = {":TZAtaraxis<CR>", 'ataraxis'},
+        m = {":TZMinimalist<CR>", 'minimalist'},
+        n = {":'<,'>TZNarrow<CR>", 'narrow'},
+    }
+}
+
+local zen_vmaps = {
+    t = {
+        n = {":'<,'>TZNarrow<CR>", 'narrow'},
+    }
+}
+
+wk.register(zen_maps,opts)
+wk.register(zen_vmaps,vopts)

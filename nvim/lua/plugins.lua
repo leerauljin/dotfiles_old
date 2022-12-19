@@ -51,25 +51,25 @@ local function plugins(use)
     }
 
     use {
-      'VonHeikemen/lsp-zero.nvim',
-      requires = {
-        -- LSP Support
-        {'neovim/nvim-lspconfig'},
-        {'williamboman/mason.nvim'},
-        {'williamboman/mason-lspconfig.nvim'},
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-        -- Autocompletion
-        {'hrsh7th/nvim-cmp'},
-        {'hrsh7th/cmp-buffer'},
-        {'hrsh7th/cmp-path'},
-        {'saadparwaiz1/cmp_luasnip'},
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/cmp-nvim-lua'},
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
 
-        -- Snippets
-        {'L3MON4D3/LuaSnip'},
-        {'rafamadriz/friendly-snippets'},
-      }
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
     }
 
     use 'jose-elias-alvarez/null-ls.nvim'
@@ -138,15 +138,7 @@ local function plugins(use)
     use 'szw/vim-maximizer'
     use 'onsails/lspkind-nvim'
 
-    use { 'folke/zen-mode.nvim',
-        cmd = "ZenMode", }
-
-    use { 'folke/twilight.nvim',
-        cmd = "Twilight",
-        config = function()
-            require('twilight').setup()
-        end
-    }
+    use "Pocco81/true-zen.nvim"
 
     use { 'lewis6991/gitsigns.nvim',
         event = "BufReadPre",
