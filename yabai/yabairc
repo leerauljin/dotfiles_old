@@ -107,7 +107,7 @@ yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add title="^MiniPlayer$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
-yabai -m config external_bar all:36:0
+yabai -m config external_bar all:34:0
 # yabai -m config external_bar all:0:36
 
 

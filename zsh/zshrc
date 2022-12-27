@@ -4,6 +4,7 @@
 # [[ -n $TMUX ]] && export TERM="screen-256color" export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export PATH=/Applications/Stata/StataMP.app/Contents/MacOS:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 if [[ $(arch) == 'arm64' ]]; then
   export PATH=/opt/homebrew/bin:$PATH

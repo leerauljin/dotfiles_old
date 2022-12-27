@@ -59,11 +59,15 @@ telescope.setup {
             -- disables netrw and use telescope-file-browser in its place
             hijack_netrw = true,
         },
+        bibtex = {
+            global_files = { "/Users/seonjinlee/Dropbox/200_Academic/240_Writings/249_Resources/zotero.bib" }
+        }
     },
 }
 
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
+telescope.load_extension("bibtex")
 
 -- local colors = require("horizon.palette").get_palette()
 -- local TelescopeColor = {

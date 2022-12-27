@@ -14,7 +14,7 @@ BLUE=0xff33b1ff
 
 # Bar appearance
 
-s --bar height=32        \
+s --bar height=28        \
                  blur_radius=0   \
                  position=top  \
                  y_offset=6       \
@@ -54,7 +54,7 @@ do
                               background.padding_right=4                 \
                               background.color=$RED               \
                               background.corner_radius=0                 \
-                              background.height=2                       \
+                              background.height=3                       \
                               background.y_offset=-12                    \
                               background.drawing=off                     \
                               label.drawing=off                          \

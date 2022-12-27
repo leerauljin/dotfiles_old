@@ -23,6 +23,10 @@ local sources = {
     null_ls.builtins.diagnostics.alex,
     null_ls.builtins.diagnostics.proselint,
     null_ls.builtins.code_actions.ltrs,
+
+    -- latex
+    null_ls.builtins.formatting.latexindent,
+    -- null_ls.builtins.diagnostics.chktex
 }
 
 

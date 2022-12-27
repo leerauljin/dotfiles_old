@@ -33,6 +33,11 @@ local function plugins(use)
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'nvim-telescope/telescope-ui-select.nvim'
+    use { "nvim-telescope/telescope-bibtex.nvim",
+        requires = {
+            { 'nvim-telescope/telescope.nvim' },
+        },
+    }
 
     -- git
     use {
@@ -97,6 +102,9 @@ local function plugins(use)
         run = function() vim.fn["mkdp#util#install"]() end,
     })
     use "dhruvasagar/vim-table-mode"
+    use "frabjous/knap"
+    -- use "jalvesaq/zotcite"
+
     -- Editor
     use { "tpope/vim-surround", event = "BufRead" }
     use "windwp/nvim-autopairs"
