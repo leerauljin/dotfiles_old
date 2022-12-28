@@ -70,8 +70,9 @@ lsp.setup_nvim_cmp({
         border = cmp_border "CmpDocBorder",
     },
     mapping = cmp_mappings,
+    -- VS Code style (icon first)
     formatting = {
-        format = lspkind.cmp_format({ with_text = true, maxwidth = 50 })
+        format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
     },
 })
 

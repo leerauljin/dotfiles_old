@@ -57,10 +57,9 @@ local leader_maps = {
     s = { ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>", "replace word" },
     S = { ":%s/<C-r><C-w>/<C-r>0/g<CR>", "replace word with register" },
     x = { "<cmd>!chmod +x %<CR>", "chmod +x" },
+    p = { vim.lsp.buf.format, "prettify" },
     c = {
         name = "+code",
-        f = { vim.lsp.buf.format, "format" },
-        l = { ":LspRestart<CR>", "restart lsp" },
     },
     q = {
         name = "+quit",
@@ -122,6 +121,7 @@ local leader_maps = {
         k = { ":Telescope keymaps<cr>", "search keymaps" },
         s = { ":PackerSync<CR>", "sync packages" },
         p = { ":PackerProfile<CR>", "packer profile" },
+        l = { ":LspRestart<CR>", "restart lsp" },
     },
     t = {
         name = "+toggle",
@@ -140,7 +140,7 @@ local leader_maps = {
         name = "+open",
         e = { ":NvimTreeToggle<cr>", "file explorer" },
     },
-    r = { ":Telescope bibtex<cr>", "find citation"}
+    r = { ":Telescope bibtex<cr>", "find citation" }
 
 }
 
@@ -157,9 +157,9 @@ local saga_maps = {
     g = {
         h = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
         r = { "<cmd>Lspsaga rename<CR>", "rename" },
-        d = { "<cmd>Lspsaga peek_definition<CR>", "peek definition"},
-        D = { function() vim.lsp.buf.definition() end, "go to definition"},
-        l = { function() vim.diagnostic.open_float() end, "open diagnostic"},
+        d = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
+        D = { function() vim.lsp.buf.definition() end, "go to definition" },
+        l = { function() vim.diagnostic.open_float() end, "open diagnostic" },
     }
 }
 wk.register(saga_maps)
@@ -190,20 +190,20 @@ local ok, _ = pcall(require, 'true-zen')
 if not ok then return end
 local zen_maps = {
     t = {
-        a = {":TZAtaraxis<CR>", 'ataraxis'},
-        m = {":TZMinimalist<CR>", 'minimalist'},
-        n = {":'<,'>TZNarrow<CR>", 'narrow'},
+        a = { ":TZAtaraxis<CR>", 'ataraxis' },
+        m = { ":TZMinimalist<CR>", 'minimalist' },
+        n = { ":'<,'>TZNarrow<CR>", 'narrow' },
     }
 }
 
 local zen_vmaps = {
     t = {
-        n = {":'<,'>TZNarrow<CR>", 'narrow'},
+        n = { ":'<,'>TZNarrow<CR>", 'narrow' },
     }
 }
 
-wk.register(zen_maps,opts)
-wk.register(zen_vmaps,vopts)
+wk.register(zen_maps, opts)
+wk.register(zen_vmaps, vopts)
 
 local ok, knap = pcall(require, 'knap')
 if not ok then return end
@@ -211,11 +211,11 @@ if not ok then return end
 local knap_maps = {
     l = {
         name = "latex",
-        r = {function() knap.process_once() end, 'refresh document'},
-        a = {function() knap.toggle_autopreviewing() end, 'toggle autopreview'},
-        q = {function() knap.close_viewer() end, 'close viewer'},
-        j = {function() knap.forward_jump() end, 'jump'},
+        r = { function() knap.process_once() end, 'refresh document' },
+        a = { function() knap.toggle_autopreviewing() end, 'toggle autopreview' },
+        q = { function() knap.close_viewer() end, 'close viewer' },
+        j = { function() knap.forward_jump() end, 'jump' },
     }
 }
 
-wk.register(knap_maps,opts)
+wk.register(knap_maps, opts)

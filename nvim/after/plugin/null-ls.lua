@@ -22,7 +22,7 @@ local sources = {
     null_ls.builtins.diagnostics.write_good,
     null_ls.builtins.diagnostics.alex,
     null_ls.builtins.diagnostics.proselint,
-    null_ls.builtins.code_actions.ltrs,
+    -- null_ls.builtins.code_actions.ltrs,
 
     -- latex
     null_ls.builtins.formatting.latexindent,

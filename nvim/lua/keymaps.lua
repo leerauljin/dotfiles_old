@@ -27,7 +27,7 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "J", "mzJ`z")
 
 -- greatest remap ever
-map("x", "<leader>p", [["_dP]], { desc = "paste without yank"})
+map("x", "p", [["_dP]], { desc = "paste without yank"})
 
 -- make cursor stay in center
 map("n", "<C-d>", "<C-d>zz")
