@@ -31,8 +31,6 @@ antigen bundle jeffreytse/zsh-vi-mode
 
 # Syntax highlighting bundle.
 
-# Load the theme.
-antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
@@ -151,3 +149,5 @@ alias lg=lazygit
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+
+eval "$(starship init zsh)"

@@ -6,11 +6,11 @@ alias s="sketchybar"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
-BACKGROUND=0xff161616
-FOREGROUND=0xfff2f4f8
-RED=0xffee5396
-GREEN=0xff25be6a
-BLUE=0xff33b1ff
+BACKGROUND=0xff141b1e
+FOREGROUND=0xffdadada
+RED=0xffe57474
+GREEN=0xff8ccf7e
+BLUE=0xff67b0e8
 
 # Bar appearance
 

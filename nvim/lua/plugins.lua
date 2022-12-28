@@ -47,7 +47,11 @@ local function plugins(use)
             require("neogit").setup {}
         end,
     }
-    use { "github/copilot.vim", event = "BufRead" }
+
+    use {
+      "zbirenbaum/copilot.lua",
+      event = "VimEnter",
+    }
 
     -- lsp
     use {
@@ -162,6 +166,8 @@ local function plugins(use)
     use 'lunarvim/horizon.nvim'
     use 'sainnhe/everforest'
     use "EdenEast/nightfox.nvim"
+    use { "ellisonleao/gruvbox.nvim" }
+    use { 'Everblush/everblush.nvim', as = 'everblush' }
 
     if packer_bootstrap then
         require('packer').sync()

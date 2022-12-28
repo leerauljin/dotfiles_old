@@ -60,6 +60,7 @@ local leader_maps = {
     c = {
         name = "+code",
         f = { vim.lsp.buf.format, "format" },
+        l = { ":LspRestart<CR>", "restart lsp" },
     },
     q = {
         name = "+quit",
@@ -116,12 +117,11 @@ local leader_maps = {
     h = {
         name = "+help",
 
-        t = { "<cmd>Telescope colorscheme<cr>", "change colorscheme" },
-        h = { "<cmd>Telescope help_tags<cr>", "search help tags" },
-        k = { "<cmd>Telescope keymaps<cr>", "search keymaps" },
+        t = { ":Telescope colorscheme<cr>", "change colorscheme" },
+        h = { ":Telescope help_tags<cr>", "search help tags" },
+        k = { ":Telescope keymaps<cr>", "search keymaps" },
         s = { ":PackerSync<CR>", "sync packages" },
         p = { ":PackerProfile<CR>", "packer profile" },
-        l = { ":LspRestart<CR>", "restart lsp" },
     },
     t = {
         name = "+toggle",

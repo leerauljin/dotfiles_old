@@ -1,4 +1,4 @@
-local ok, nightfox = pcall(require, 'nightfox')
+-- local ok, nightfox = pcall(require, 'nightfox')
 -- if not ok then return end
-
-vim.cmd("colorscheme carbonfox")
+-- vim.g.everforest_background = "hard"
+vim.cmd("colorscheme everblush")

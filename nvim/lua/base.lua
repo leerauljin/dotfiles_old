@@ -19,6 +19,7 @@ opt.history = 50
 opt.mouse = "a"
 
 api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+
 g.mapleader = " "
 g.maplocalleader = " "
 
@@ -37,6 +38,7 @@ opt.cursorline = false
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.pumheight = 10
+opt.pumblend = 15
 -- o.background = "dark"
 
 opt.title = true
