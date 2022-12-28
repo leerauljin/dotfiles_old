@@ -49,8 +49,8 @@ local function plugins(use)
     }
 
     use {
-      "zbirenbaum/copilot.lua",
-      event = "VimEnter",
+        "zbirenbaum/copilot.lua",
+        event = "VimEnter",
     }
 
     -- lsp
@@ -93,7 +93,12 @@ local function plugins(use)
         "j-hui/fidget.nvim",
         event = "BufReadPre",
         config = function()
-            require("fidget").setup {}
+            require("fidget").setup {
+                text = {
+                    spinner = "dots_snake",
+                    done = ""
+                }
+            }
         end,
     }
 

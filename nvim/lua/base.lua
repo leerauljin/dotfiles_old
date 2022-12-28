@@ -38,8 +38,8 @@ opt.cursorline = false
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.pumheight = 10
--- opt.pumblend = 15
--- o.background = "dark"
+opt.pumblend = 10
+opt.background = "dark"
 
 opt.title = true
 

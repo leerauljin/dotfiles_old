@@ -147,7 +147,6 @@ local leader_maps = {
 wk.setup(conf)
 wk.register(leader_maps, opts)
 
--- lspsaga
 local ok, _ = require('lspsaga')
 if not ok then return end
 
@@ -160,6 +159,7 @@ local saga_maps = {
         d = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
         D = { function() vim.lsp.buf.definition() end, "go to definition" },
         l = { function() vim.diagnostic.open_float() end, "open diagnostic" },
+        a = { "<cmd>Lspsaga code_action<CR>", "code action" },
     }
 }
 wk.register(saga_maps)

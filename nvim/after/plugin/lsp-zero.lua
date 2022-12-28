@@ -72,7 +72,7 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     -- VS Code style (icon first)
     formatting = {
-        format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+        format = lspkind.cmp_format({ mode = 'symbol_text', maxwidth = 50 }),
     },
 })
 
