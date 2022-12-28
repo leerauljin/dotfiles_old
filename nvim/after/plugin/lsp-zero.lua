@@ -51,10 +51,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-e>'] = cmp.mapping.confirm({ select = true }),
     ['<C-y>'] = cmp.mapping.complete(),
+    ['<TAB>'] = nil,
+    ['<S-Tab>'] = nil,
 })
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
 
 local function cmp_border(hl_name)
     return {
