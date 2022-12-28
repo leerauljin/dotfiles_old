@@ -49,7 +49,7 @@ local function plugins(use)
     }
 
     use {
-        "zbirenbaum/copilot.lua",
+        "github/copilot.vim",
         event = "VimEnter",
     }
 
@@ -166,6 +166,7 @@ local function plugins(use)
         end,
     }
     use 'ThePrimeagen/harpoon'
+    use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons'}
 
     -- themes
     use 'lunarvim/horizon.nvim'

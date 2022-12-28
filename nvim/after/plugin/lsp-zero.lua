@@ -7,6 +7,8 @@ lsp.ensure_installed {
     'pyright'
 }
 
+
+
 lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
@@ -67,7 +69,8 @@ end
 
 lsp.setup_nvim_cmp({
     documentation = {
-        border = cmp_border "CmpDocBorder",
+        border = "solid",
+        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
     },
     mapping = cmp_mappings,
     -- VS Code style (icon first)

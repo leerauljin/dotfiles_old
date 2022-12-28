@@ -37,8 +37,8 @@ opt.relativenumber = true
 opt.cursorline = false
 opt.signcolumn = "yes"
 opt.cmdheight = 1
-opt.pumheight = 10
-opt.pumblend = 10
+-- opt.pumheight = 10
+opt.pumblend = 15
 opt.background = "dark"
 
 opt.title = true

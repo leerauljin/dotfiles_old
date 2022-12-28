@@ -91,7 +91,7 @@ local leader_maps = {
         s = { ":w <CR>", "save buffer" },
         S = { ":wa <CR>", "save all buffers" },
         d = { ":bd <CR>", "kill buffer" },
-        D = { ":bD <CR>", "kill buffer without saving" },
+        D = { ":bd! <CR>", "kill buffer without saving" },
         r = { ":bufdo :e <CR>", "refresh buffers" },
         m = { "<cmd>Telescope marks<cr>", "search marks" },
     },

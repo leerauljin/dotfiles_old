@@ -20,12 +20,13 @@ tree.setup {
     view = {
         adaptive_size = true,
         side = "left",
-        width = 25,
+        width = 20,
         hide_root_folder = true,
     },
     git = {
-        enable = false,
-        ignore = true,
+        enable = true,
+        ignore = false,
+        timeout = 400,
     },
     filesystem_watchers = {
         enable = true,
@@ -39,15 +40,15 @@ tree.setup {
         highlight_git = false,
         highlight_opened_files = "none",
         indent_markers = {
-            enable = false,
+            enable = true,
         },
 
         icons = {
-            webdev_colors = true,
+            webdev_colors = false,
             show = {
-                file = true,
+                file = false,
                 folder = true,
-                folder_arrow = true,
+                folder_arrow = false,
                 git = true,
             },
         },
