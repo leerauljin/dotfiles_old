@@ -1,5 +1,6 @@
 local ok, everblush = pcall(require, 'everblush')
 if not ok then return end
+
 local colors = require('everblush.core').get_colors()
 everblush.setup({
     transparent_background = false,
@@ -23,7 +24,7 @@ everblush.setup({
         StatusLineTerminal = { fg = colors.color5 },
         WinSeparator       = { fg = colors.color8, bg = colors.bacground },
         TelescopeSelection = { fg = colors.background, bg = colors.color4 },
-        TelescopeMatching  = { fg = colors.color2 },
+        TelescopeMatching  = { fg = colors.color1 },
         NvimTreeGitDirty   = { fg = colors.color3 },
         NvimTreeFolderIcon = { fg = colors.color8 },
 
@@ -56,3 +57,18 @@ everblush.setup({
         -- fg
     }
 })
+
+local curl_groups = {
+    "DiagnosticUnderlineError",
+    "DiagnosticUnderlineWarn",
+    "DiagnosticUnderlineInfo",
+    "DiagnosticUnderlineHint",
+}
+
+local function set_undercurl(group)
+    vim.cmd("highlight " .. group .. " gui=undercurl")
+end
+
+for _, group in ipairs(curl_groups) do
+    set_undercurl(group)
+end

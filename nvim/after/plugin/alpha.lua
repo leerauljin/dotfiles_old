@@ -23,7 +23,7 @@ local options = {
         },
         opts = {
             position = "center",
-            hl = "Function",
+            hl = "Number",
         },
     },
 

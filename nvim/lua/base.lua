@@ -34,11 +34,12 @@ opt.undofile = true
 opt.number = true
 opt.relativenumber = true
 
-opt.cursorline = true
+-- opt.cursorline = true
 opt.signcolumn = "yes"
 opt.cmdheight = 0
 -- opt.pumheight = 10
 opt.pumblend = 15
+opt.winblend = 15
 opt.background = "dark"
 
 opt.title = true
