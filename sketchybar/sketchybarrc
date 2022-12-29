@@ -11,15 +11,16 @@ FOREGROUND=0xffdadada
 RED=0xffe57474
 GREEN=0xff8ccf7e
 BLUE=0xff67b0e8
+YELLOW=0xffe5c76b
 
 # Bar appearance
 
 s --bar height=28        \
                  blur_radius=0   \
-                 position=top  \
-                 y_offset=6       \
-                 margin=6         \
-                 corner_radius=10  \
+                 position=bottom  \
+                 y_offset=0       \
+                 margin=0         \
+                 corner_radius=0  \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=off        \
@@ -40,7 +41,24 @@ s --default updates=when_shown                        \
 
 # Left items
 
+s --add item clock left                        \
+           --set clock   update_freq=10                  \
+                        background.padding_left=0 \
+                         icon.drawing=off                 \
+                        icon.padding_left=0 \
+                        label.padding_left=6   \
+                        label.align=left   \
+                         label.font="$FONT:ExtraBold:16.0"          \
+                         label.color=$GREEN \
+                         script="$PLUGIN_DIR/clock.sh"   
 SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
+
+s --add item clock_separator left \
+           --set clock_separator icon="|"\
+                                    align=center   \
+                                 icon.font="$FONT:ExtraBold:14.0"        \
+                                 label.drawing=off \
+                                 icon.color=$RED
 
 for i in "${!SPACE_ICONS[@]}"
 do
@@ -71,41 +89,34 @@ done
 //                                  label.drawing=off \
 //                                  icon.color=$RED
 //
-// s --add item window_title left                             \
-//            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
-//                                  label.font="$FONT:ExtraBold Italic:16.0"        \
-//                                  label.color=$BLUE                    \
-//                                  icon.drawing=off                     \
-//                                  label.y_offset=1 \
-//            --subscribe window_title front_app_switched
+ s --add item window_title center                             \
+            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
+                                  label.font="$FONT:Bold Italic:16.0"        \
+                                  label.color=$BLUE                    \
+                                  icon.drawing=off                     \
+                                  label.y_offset=1 \
+            --subscribe window_title front_app_switched
 
 # Center items
-
-s --add item date center                        \
-           --set date   update_freq=10                  \
-                        background.padding_right=0 \
-                         icon.drawing=off                 \
-                        icon.padding_right=0 \
-                        label.padding_right=0   \
-                        label.align=right   \
-                         label.font="$FONT:Bold:16.0"        \
-                         script="$PLUGIN_DIR/date.sh" 
 
 
 # Right items
 
 
-s --add item clock right                        \
-           --set clock   update_freq=10                  \
-                        background.padding_left=0 \
+
+
+s --add item date right                        \
+           --set date   update_freq=10                  \
+                        background.padding_right=0 \
                          icon.drawing=off                 \
-                        icon.padding_left=0 \
-                        label.padding_left=6   \
-                        label.align=left   \
-                         label.font="$FONT:ExtraBold:14.0"          \
-                         label.color=$BLUE \
-                         label.y_offset=1 \
-                         script="$PLUGIN_DIR/clock.sh"   
+                        icon.padding_right=0 \
+                        label.padding_left=12   \
+                        label.padding_right=0   \
+                        label.align=right   \
+                         label.font="$FONT:ExtraBold:16.0"        \
+                         script="$PLUGIN_DIR/date.sh"     \
+
+
 
 s --add item date_separator right \
            --set date_separator icon="|"\

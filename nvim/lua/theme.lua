@@ -10,6 +10,8 @@ everblush.setup({
         Pmenu              = { bg = colors.color0 },
         NormalFloat        = { bg = colors.color0 },
         FloatBorder        = { fg = colors.color0, bg = colors.color0 },
+        CursorLineNr       = { fg = colors.foreground },
+        CursorLine         = { bg = colors.color0 },
         CmpItemAbbr        = { bg = "none" },
         CmpItemMenu        = { bg = "none" },
         CmpItemKind        = { bg = "none" },
@@ -22,6 +24,8 @@ everblush.setup({
         WinSeparator       = { fg = colors.color8, bg = colors.bacground },
         TelescopeSelection = { fg = colors.background, bg = colors.color4 },
         TelescopeMatching  = { fg = colors.color2 },
+        NvimTreeGitDirty   = { fg = colors.color3 },
+        NvimTreeFolderIcon = { fg = colors.color8 },
 
         -- dark gray
         CmpItemAbbrDeprecated  = { fg = colors.color8, bg = "none" },

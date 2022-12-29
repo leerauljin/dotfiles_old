@@ -5,6 +5,7 @@
 
 export PATH=/Applications/Stata/StataMP.app/Contents/MacOS:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
 
 if [[ $(arch) == 'arm64' ]]; then
   export PATH=/opt/homebrew/bin:$PATH

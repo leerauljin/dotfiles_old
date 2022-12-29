@@ -106,13 +106,12 @@ local function plugins(use)
     use 'ray-x/go.nvim'
     use 'olexsmir/gopher.nvim'
 
-    use({
+    use{
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    }
     use "dhruvasagar/vim-table-mode"
     use "frabjous/knap"
-    -- use "jalvesaq/zotcite"
 
     -- Editor
     use { "tpope/vim-surround", event = "BufRead" }
@@ -123,11 +122,9 @@ local function plugins(use)
             require('Comment').setup()
         end,
     }
-    use { 'ggandor/leap.nvim',
-        config = function()
-            require('leap').add_default_mappings()
-        end,
-    }
+    use 'tpope/vim-repeat'
+    use 'ggandor/lightspeed.nvim'
+
     use { 'norcalli/nvim-colorizer.lua',
         config = function()
             require('colorizer').setup()
