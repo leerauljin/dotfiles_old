@@ -72,7 +72,7 @@ do
                               background.padding_right=4                 \
                               background.color=$RED               \
                               background.corner_radius=0                 \
-                              background.height=3                       \
+                              background.height=2                       \
                               background.y_offset=-12                    \
                               background.drawing=off                     \
                               label.drawing=off                          \
