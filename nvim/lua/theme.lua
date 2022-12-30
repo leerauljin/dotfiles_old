@@ -7,10 +7,11 @@ everblush.setup({
     override = {
         Whitespace         = { fg = colors.color0 },
         GitSignsChange     = { fg = colors.color3 },
-        NonText            = { fg = colors.background },
+        NonText            = { fg = colors.color0 },
         Pmenu              = { bg = colors.color0 },
+        PmenuThumb              = { bg = colors.color0 },
         NormalFloat        = { bg = colors.color0 },
-        FloatBorder        = { fg = colors.color0, bg = colors.color0 },
+        FloatBorder        = { fg = colors.background, bg = colors.background },
         CursorLineNr       = { fg = colors.foreground },
         CursorLine         = { bg = colors.color0 },
         CmpItemAbbr        = { bg = "none" },

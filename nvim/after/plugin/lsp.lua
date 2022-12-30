@@ -73,8 +73,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 local nvim_cmp_conf = {
     documentation = {
-        border = "solid",
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        -- border = 'rounded',
+        border = "none",
+        winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat",
     },
     mapping = cmp_mappings,
     -- VS Code style (icon first)

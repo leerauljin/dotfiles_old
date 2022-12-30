@@ -22,6 +22,7 @@ local function plugins(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'lewis6991/impatient.nvim'
+    use 'nathom/filetype.nvim'
     use 'folke/which-key.nvim'
 
     -- ui (core)
@@ -46,6 +47,7 @@ local function plugins(use)
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'nvim-telescope/telescope-ui-select.nvim'
+    use 'mrjones2014/legendary.nvim'
     use { 'nvim-telescope/telescope-bibtex.nvim',
         requires = {
             { 'nvim-telescope/telescope.nvim' },

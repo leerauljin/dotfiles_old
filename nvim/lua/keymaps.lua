@@ -38,3 +38,8 @@ map("n", "N", "Nzzzv")
 
 map("n", "Q", "<nop>")
 map("n", "<leader>x", "", { silent = true })
+
+map("n", "<M-]>", ">>")
+map("i", "<M-]>", "<C-t>")
+map("n", "<M-[>", "<<")
+map("i", "<M-[>", "<C-u>")
