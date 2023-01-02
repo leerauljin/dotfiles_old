@@ -94,8 +94,6 @@ local function plugins(use)
     use 'christoomey/vim-tmux-navigator'
     use 'Pocco81/true-zen.nvim'
     use 'ThePrimeagen/harpoon'
-    use { 'akinsho/bufferline.nvim',
-        requires = 'nvim-tree/nvim-web-devicons' }
     use { 'glepnir/lspsaga.nvim',
         requires = 'neovim/nvim-lspconfig'
     }

@@ -141,6 +141,7 @@ alias python=python3
 alias pip=pip3
 alias vim=nvim
 alias v=nvim
+alias s="kitty +kitten ssh"
 alias ls="exa -l --group-directories-first"
 alias tm=tmux
 alias ta="tmux attach -t"

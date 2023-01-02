@@ -87,7 +87,7 @@ rcmd - 0 : open -n -a Finder
 rcmd - b : open -a Safari; yabai -m space --focus 2
 
 # rcmd - return : open -n -a Kitty ; yabai -m space --focus 6
-rcmd - return : open -n -a WezTerm
+rcmd - return : open -n -a Kitty
 
 
 

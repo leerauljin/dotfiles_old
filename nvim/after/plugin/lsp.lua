@@ -107,10 +107,11 @@ lsp.setup_nvim_cmp(nvim_cmp_conf)
 lsp.setup()
 
 vim.diagnostic.config {
-    virtual_text = {
-        prefix = '▪',
-        severity = { min = vim.diagnostic.severity.WARN }
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --     prefix = '▪',
+    --     severity = { min = vim.diagnostic.severity.WARN }
+    -- },
     update_in_insert = true,
     float = {
         source = "if_many",
