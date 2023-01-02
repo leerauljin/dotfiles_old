@@ -14,6 +14,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 map("n", "gw", "*N")
 map("x", "gw", "*N")
 
+-- dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, silent = true, expr = true })
+
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
@@ -27,7 +31,7 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "J", "mzJ`z")
 
 -- greatest remap ever
-map("x", "p", [["_dP]], { desc = "paste without yank"})
+map("x", "p", [["_dP]], { desc = "paste without yank" })
 
 -- make cursor stay in center
 map("n", "<C-d>", "<C-d>zz")
