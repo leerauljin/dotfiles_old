@@ -77,6 +77,15 @@ if ok then trouble.setup {
     }
 end
 
+--lang
+local ok, _ = pcall(require, 'knap')
+if ok then
+   local knapconf = {
+        delay = 100,
+    }
+    vim.g.knap_settings = knapconf
+end
+
 --git
 local ok, gitsigns = pcall(require, 'gitsigns')
 if ok then gitsigns.setup() end
