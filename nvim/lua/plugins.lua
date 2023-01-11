@@ -115,7 +115,8 @@ local function plugins(use)
     -- lang
     use 'ray-x/go.nvim'
     use 'olexsmir/gopher.nvim'
-    use 'frabjous/knap'
+    use 'lervag/vimtex'
+    -- use 'frabjous/knap'
 
     -- themes
     use { 'Everblush/everblush.nvim', as = 'everblush' }

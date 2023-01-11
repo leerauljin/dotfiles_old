@@ -6,7 +6,7 @@ ts.setup {
 
     highlight = {
         enable = true,
-        disable = { "markdown" },
+        disable = { "markdown", 'latex' },
     },
     indent = {
         enable = true,
