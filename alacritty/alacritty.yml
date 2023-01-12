@@ -239,7 +239,7 @@ schemes:
       magenta: '0xce89df'
       cyan: '0x67cbe7'
       white: '0xbdc3c2'
-colors: *everblush
+colors: *carbonfox
 
 # Cursor colors
 #
