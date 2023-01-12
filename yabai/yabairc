@@ -70,8 +70,8 @@ yabai -m rule --add app="Notion" space=5
 yabai -m rule --add app="Calendar" space=5
 
 # Space 6 Terminal
-yabai -m rule --add app="Alacritty"     space=6
-yabai -m rule --add app="iTerm2"     space=6
+# yabai -m rule --add app="Alacritty"     space=6
+# yabai -m rule --add app="iTerm2"     space=6
 
 
 

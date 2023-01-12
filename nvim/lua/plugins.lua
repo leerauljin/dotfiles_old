@@ -120,6 +120,7 @@ local function plugins(use)
 
     -- themes
     use { 'Everblush/everblush.nvim', as = 'everblush' }
+    use "EdenEast/nightfox.nvim"
 
     if packer_bootstrap then
         require('packer').sync()
