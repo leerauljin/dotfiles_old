@@ -6,18 +6,18 @@ alias s="sketchybar"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
-BACKGROUND=0xff141b1e
-FOREGROUND=0xffdadada
-RED=0xffe57474
-GREEN=0xff8ccf7e
+BACKGROUND=0xff161616
+FOREGROUND=0xfff2f4f8
+RED=0xffee5396
+GREEN=0xff25be6a
 BLUE=0xff67b0e8
-YELLOW=0xffe5c76b
+YELLOW=0xff08bdba
 
 # Bar appearance
 
 s --bar height=28        \
                  blur_radius=0   \
-                 position=bottom  \
+                 position=top  \
                  y_offset=0       \
                  margin=0         \
                  corner_radius=0  \
