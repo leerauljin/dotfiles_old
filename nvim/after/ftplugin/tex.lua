@@ -1,13 +1,19 @@
 local g = vim.g
 local o = vim.o
+local viewer = "zathura"
 
+if require("jit").arch == "arm64" then
+    viewer = "sioyek"
+end
 
-g.vimtex_view_method = "sioyek"
-g.vimtex_view_general_viewer = "sioyek"
+g.vimtex_view_method = viewer
+g.vimtex_view_general_viewer = viewer
 g.tex_conceal = 'abdmg'
+g.vimtex_quickfix_mode = 0
 o.conceallevel = 2
 o.spell=true
 o.spelllang = 'en'
+
 g.vimtex_toc_config = {
     mode = 1,
     fold_enable = 0,
