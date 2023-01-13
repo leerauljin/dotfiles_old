@@ -35,9 +35,19 @@ local conf = {
     },
 }
 
+wk.setup(conf)
+
 local opts = {
     mode = "n", -- Normal mode
     prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+}
+local nopts = {
+    mode = "n", -- Normal mode
+    prefix = "",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -146,25 +156,20 @@ local leader_maps = {
 
 }
 
-wk.setup(conf)
 wk.register(leader_maps, opts)
 
-local ok, _ = require('lspsaga')
-if not ok then return end
-
-
-local saga_maps = {
-    K = { "<cmd>Lspsaga hover_doc<CR>", "hover" },
+local normal_maps = {
     g = {
-        h = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
-        r = { "<cmd>Lspsaga rename<CR>", "rename" },
+        h = { "^", "begining of line" },
+        l = { "$", "end of line" },
+        r = { "<cmd>lua require('renamer').rename()<cr>", "rename" },
         d = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
-        D = { function() vim.lsp.buf.definition() end, "go to definition" },
-        l = { function() vim.diagnostic.open_float() end, "open diagnostic" },
-        a = { "<cmd>Lspsaga code_action<CR>", "code action" },
-    }
+        k = { function() vim.diagnostic.open_float() end, "open diagnostic" },
+        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "code action" },
+    },
+    m = {"%"},
 }
-wk.register(saga_maps)
+wk.register(normal_maps, nopts)
 
 
 -- harpoon

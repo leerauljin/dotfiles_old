@@ -2,7 +2,7 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
 ts.setup {
-    ignore_install = { "markdown" },
+    ignore_install = {},
 
     highlight = {
         enable = true,

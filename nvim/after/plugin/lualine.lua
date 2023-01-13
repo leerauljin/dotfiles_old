@@ -2,30 +2,30 @@ local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 
 local modes = {
-    ['n']   =' ',
-    ['no']  =' ',
-    ['nov'] =' ',
-    ['noV'] =' ',
-    ['no'] =' ',
-    ['niI'] =' ',
-    ['niR'] =' ',
-    ['niV'] =' ',
+    ['n']   = ' ',
+    ['no']  = ' ',
+    ['nov'] = ' ',
+    ['noV'] = ' ',
+    ['no'] = ' ',
+    ['niI'] = ' ',
+    ['niR'] = ' ',
+    ['niV'] = ' ',
 
-    ['i']  =' ',
-    ['ic'] =' ',
-    ['ix'] =' ',
-    ['s']  =' ',
-    ['S']  =' ',
+    ['i']  = ' ',
+    ['ic'] = ' ',
+    ['ix'] = ' ',
+    ['s']  = ' ',
+    ['S']  = ' ',
 
-    ['v']  =' ',
-    ['V']  =' ',
-    ['']  =' ',
-    ['r']  ='﯒ ',
-    ['r?'] =' ',
-    ['c']  =' ',
-    ['t']  =' ',
-    ['!']  =' ',
-    ['R']  =' ',
+    ['v']  = ' ',
+    ['V']  = ' ',
+    ['']  = ' ',
+    ['r']  = '﯒ ',
+    ['r?'] = ' ',
+    ['c']  = ' ',
+    ['t']  = ' ',
+    ['!']  = ' ',
+    ['R']  = ' ',
 }
 local function get_mode()
     local mode_code = vim.api.nvim_get_mode().mode
@@ -39,16 +39,16 @@ lualine.setup {
     options = {
         icons_enabled = true,
         theme = 'carbonfox',
-        section_separators ='',
-        component_separators ='',
+        section_separators = '',
+        component_separators = '',
         globalstatus = true,
     },
     sections = {
         lualine_a = { get_mode },
         lualine_b = {},
-        lualine_c = {'branch', 'diff', 'diagnostics' },
-        lualine_x = {{'filetype', icon_only = true }, 'filename'},
-        lualine_y = { 'location' },
-        lualine_z = { }
+        lualine_c = { 'branch', 'diff', 'diagnostics' },
+        lualine_x = { { 'filetype', icon_only = true }, 'filename', 'location' },
+        lualine_y = {},
+        lualine_z = {}
     },
 }

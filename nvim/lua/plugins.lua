@@ -87,16 +87,17 @@ local function plugins(use)
     use { 'folke/todo-comments.nvim',
         cmd = { 'TodoTrouble', "TodoTelescope" },
     }
-
+    use {
+      'filipdutescu/renamer.nvim',
+      branch = 'master',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     -- ui (additional)
     use 'goolord/alpha-nvim'
     use 'szw/vim-maximizer'
     use 'christoomey/vim-tmux-navigator'
     use 'Pocco81/true-zen.nvim'
     use 'ThePrimeagen/harpoon'
-    use { 'glepnir/lspsaga.nvim',
-        requires = 'neovim/nvim-lspconfig'
-    }
     use { 'folke/trouble.nvim',
         event = 'VimEnter',
         cmd = { 'TroubleToggle', "Trouble" },

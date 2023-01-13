@@ -10,7 +10,7 @@ end
 -- editor (core)
 local ok, autopairs = pcall(require, "nvim-autopairs")
 if ok then autopairs.setup({
-      disable_filetype = { "TelescopePrompt" , "vim" },
+        disable_filetype = { "TelescopePrompt", "vim" },
     })
 
     local ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
@@ -43,6 +43,12 @@ end
 local ok, todo = pcall(require, 'todo-comments')
 if ok then todo.setup() end
 
+local ok, renamer = pcall(require, 'renamer')
+if ok then renamer.setup {
+        title = '',
+        border_chars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    }
+end
 
 -- ui (additional)
 local ok, zen = pcall(require, 'true-zen')
@@ -66,7 +72,7 @@ if ok then
             virtual_text = false
         }
     }
-    saga.init_lsp_saga(config)
+    saga.setup(config)
 end
 
 local ok, trouble = pcall(require, "trouble")
@@ -80,7 +86,7 @@ end
 --lang
 local ok, _ = pcall(require, 'knap')
 if ok then
-   local knapconf = {
+    local knapconf = {
         delay = 100,
     }
     vim.g.knap_settings = knapconf
@@ -92,4 +98,3 @@ if ok then gitsigns.setup() end
 
 local ok, neogit = pcall(require, 'neogit')
 if ok then neogit.setup() end
-

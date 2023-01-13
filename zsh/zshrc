@@ -168,3 +168,6 @@ export FZF_DEFAULT_OPTS='
   --height 13'
 
 eval "$(starship init zsh)"
+
+# Following line was automatically added by arttime installer
+export PATH=/Users/seonjinlee/.local/bin:$PATH
