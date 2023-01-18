@@ -73,8 +73,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 local nvim_cmp_conf = {
     documentation = {
-        -- border = 'rounded',
-        border = "none",
+        border = 'single',
+        -- border = "none",
         winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat",
     },
     mapping = cmp_mappings,

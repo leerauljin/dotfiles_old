@@ -2,3 +2,4 @@
 doom-emacs/custom.el
 doom-emacs/config.el
 nvim/plugin/packer_compiled.lua
+nvim/spell
