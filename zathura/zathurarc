@@ -1,46 +1,47 @@
 set window-title-basename "true"
 set selection-clipboard "clipboard"
+set synctex true
 
 map <C-i> recolor
 
-set notification-error-bg       "#ff5555" # Red
-set notification-error-fg       "#dadada" # Foreground
-set notification-warning-bg     "#ffb86c" # Orange
-set notification-warning-fg     "#22292b" # Selection
-set notification-bg             "#181f21" # Background
-set notification-fg             "#dadada" # Foreground
+set notification-error-bg       "#ee5396" # Red
+set notification-error-fg       "#f2f4f8" # Foreground
+set notification-warning-bg     "#08bdba" # Orange
+set notification-warning-fg     "#2a2a2a" # Selection
+set notification-bg             "#161616" # Background
+set notification-fg             "#f2f4f8" # Foreground
 
 set completion-bg               "#1f2628" # Background
 set completion-fg               "#6d7476" # Comment
-set completion-group-bg         "#181f21" # Background
-set completion-group-fg         "#dadada" # Comment
+set completion-group-bg         "#161616" # Background
+set completion-group-fg         "#f2f4f8" # Comment
 set completion-highlight-bg     "#6da4cd" # Selection
-set completion-highlight-fg     "#22292b" # Foreground
+set completion-highlight-fg     "#2a2a2a" # Foreground
 
-set index-bg                    "#181f21" # Background
-set index-fg                    "#dadada" # Foreground
-set index-active-bg             "#22292b" # Current Line
-set index-active-fg             "#dadada" # Foreground
+set index-bg                    "#161616" # Background
+set index-fg                    "#f2f4f8" # Foreground
+set index-active-bg             "#2a2a2a" # Current Line
+set index-active-fg             "#f2f4f8" # Foreground
 
-set inputbar-bg                 "#181f21" # Background
-set inputbar-fg                 "#dadada" # Foreground
-set statusbar-bg                "#181f21" # Background
-set statusbar-fg                "#dadada" # Foreground
+set inputbar-bg                 "#161616" # Background
+set inputbar-fg                 "#f2f4f8" # Foreground
+set statusbar-bg                "#161616" # Background
+set statusbar-fg                "#f2f4f8" # Foreground
 
-set highlight-color             "#ffb86c" # Orange
-set highlight-active-color      "#ff79c6" # Pink
+set highlight-color             "#08bdba" # Orange
+set highlight-active-color      "#f16da6" # Pink
 
-set default-bg                  "#181f21" # Background
-set default-fg                  "#dadada" # Foreground
+set default-bg                  "#161616" # Background
+set default-fg                  "#f2f4f8" # Foreground
 
 set render-loading              true
-set render-loading-fg           "#181f21" # Background
-set render-loading-bg           "#dadada" # Foreground
+set render-loading-fg           "#161616" # Background
+set render-loading-bg           "#f2f4f8" # Foreground
 
 # Recolor mode settings
 
-set recolor-lightcolor          "#181f21" # Background
-set recolor-darkcolor           "#dadada" # Foreground
+set recolor-lightcolor          "#161616" # Background
+set recolor-darkcolor           "#f2f4f8" # Foreground
 
 # Startup options
 
