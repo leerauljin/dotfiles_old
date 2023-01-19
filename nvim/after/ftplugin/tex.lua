@@ -9,6 +9,7 @@ g.vimtex_quickfix_mode = 0
 o.conceallevel = 1
 o.spell=true
 o.spelllang = 'en'
+o.textwidth = 0
 
 g.vimtex_toc_config = {
     mode = 1,
