@@ -16,10 +16,18 @@ bullets.setup()
 local ok, wk = pcall(require, 'which-key')
 if not ok then return end
 
+local opts = {
+    mode = "n", -- Normal mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+}
 local org_maps = {
     o = {
         name = "+org",
         ['<TAB>'] = {function() orgmode.action("org_mappings.toggle_checkbox") end, 'toggle checkbox'}
     },
 }
-wk.register(org_maps)
+wk.register(org_maps, opts)
