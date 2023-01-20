@@ -21,10 +21,6 @@ local sources = {
     -- markdown
     null_ls.builtins.diagnostics.write_good,
     null_ls.builtins.diagnostics.alex,
-
-    -- latex
-    -- null_ls.builtins.formatting.latexindent,
-    -- null_ls.builtins.diagnostics.chktex
 }
 
 

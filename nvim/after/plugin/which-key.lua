@@ -139,16 +139,13 @@ local leader_maps = {
         L = { ":set rnu!<CR>", "toggle relative number" },
         d = { ":TroubleToggle<CR>", "toggle trouble lsp diagnostics" },
         t = { ":TodoTrouble<CR>", "toggle todo list" },
+        e = { ":NvimTreeToggle<cr>", "file explorer" },
     },
     g = {
         name = "+git",
         g = { ":Neogit kind=split<cr>", "open neogit (split)" },
         G = { ":Neogit<cr>", "open neogit (fullscreen)" },
         c = { ":Neogit commit<cr>", "git commit" },
-    },
-    o = {
-        name = "+open",
-        e = { ":NvimTreeToggle<cr>", "file explorer" },
     },
     r = { ":Telescope bibtex<cr>", "find citation" }
 
@@ -209,18 +206,3 @@ local zen_vmaps = {
 
 wk.register(zen_maps, opts)
 wk.register(zen_vmaps, vopts)
-
-local ok, knap = pcall(require, 'knap')
-if not ok then return end
-
-local knap_maps = {
-    l = {
-        name = "latex",
-        r = { function() knap.process_once() end, 'refresh document' },
-        a = { function() knap.toggle_autopreviewing() end, 'toggle autopreview' },
-        q = { function() knap.close_viewer() end, 'close viewer' },
-        j = { function() knap.forward_jump() end, 'jump' },
-    }
-}
-
-wk.register(knap_maps, opts)
