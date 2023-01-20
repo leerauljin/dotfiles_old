@@ -1,0 +1,69 @@
+#+TITLE: Doom Emacs, Org-mode, Zotero (and more) configuration for Academic Writing & Notetaking
+#+ATTR_ORG: :width 1000
+[[file:screenshot.png]]
+* Description
+As usual, I'm anxious to lose all this dotfiles so I've created a public repo for backups and to share my setups for others who wishes to use Emacs for notetaking AND writing purpose (and finally ditch that Microsoft Word!)
+
+Disclaimer, the setup is highly experimental so there are a lot of cleaning left to be done.
+
+Currently using Macbook Pro M1 2020 with 16GB of RAM. It handles 6 + 1 spaces with tons of programs open without a sweat. Fan only cranked up for /brew install emacs/. 
+
+* Philosophy
+I'm preparing for my dissertation and wanted to invest some time to create a system that will help me write more efficently and effectively. I've been using Emacs for writing short snippets of code for research and always craved an "evil mode" for my workflow. Video [[https://www.youtube.com/watch?v=FtieBc3KptU][Emacs For Writers]] by Jay Dixit heavily inspired me to (almost) completly move on to Emacs for writing. I also learned stenography for few weeks which influenced me quite a bit to use abbrev-mode extensibly.
+
+In addition, I was looking for a way to somehow organize my annotations left in hundreds of PDF file so that it would be more reusable, rather than completly relying on my brain. Org-roam, Org-roam-bibtex, and Org-ref packages are backbone of the notetaking system.
+
+A lot of tips and setups on the internet are outdated, hence, did not work when I tried the exact same setup. I put many hours into setting up config files only to realize that some of things do not work or the fuctions and variables were refactored. This is an updated version, which works in 2022 which I intend to keep updated!
+
+* Recent updates (As of 2022-07-31)
+- Color scheme from [[https://horizontheme.netlify.app][Horizon theme]] has been applied to alacritty, VS code, and sketchybar.
+- Key bindings has been simplified.
+- Changed bottom bar from Übersicht to [[https://github.com/FelixKratz/SketchyBar][Sketchybar]] for stability, ease of configuration, less battery use, etc...
+- Currently working on project that relies on R language. So currently, VS code (with vim extension, of course) is my go-to editor.
+
+* Major programs and packages
+** Emacs
+The core of this project. Using emacs-mac. Tried emacs-plus with native comp and --no-titlebar but it often crashes. emacs-mac seems to have better font rendering as well. Coudn't quite get --no-title-bar working.
+Doom Emacs is weapon of my choice since it is easy to use and can put into action from day 1 without much configuration. I'm interested in the Nano Emacs for its simplicity but that's another rabit hole which I will investigate litle later.
+- Doom-plain theme is what I use for daily bases. I don't need colors since I won't be needing syntax highlighting! If you want to go little further, you may turn on color filters in Acessibility setting to enjoy complete monotone experience. Though, cursor colors are assigned in config file for indentifying current mode.
+- ETbb font for variable font and FiraCode Nerd Font Mono Font for monospace font.
+** Yabai + skhd
+Window manager of my choice. I've previosuly using Rectangle, Amethyst, and rcmd which are great programs if you don't want to disable SIP. However, I get more control over sending programs to specific spaces while it takes care of the rest of boring window resizing. Biggest upside of using Yabai with Script Addon is that changing space is instant, without any animation. In addition, skhd is being used to control functions of yabai and app/folder launcher. Now I feel like I'm using the space of my monitor to its fullest and I can never go back!
+
+Some basic rules for keybindings:
+- lctrl is used for changing spaces
+- rcmd is used for controling focus and windows
+- lctrl + 1, 2, 3, 4, 9, 0: change focus to space
+- rcmd + h, j, k, l: Move focus (vim style)
+- rcmd + a: balance windows
+- rcmd + s: Stack mode
+- rcmd + d: bsp mode
+- rcmd + f: fullscreen mode
+- rcmd + t: toggle float and resize current window to center
+- lctrl + rcmd + 1, 2, 3, 4, 9, 0: move window to space
+- rcmd is also used for launching apps.
+- rcmd + return: terminal (alacritty)
+- rcmd + shift is used to quickly access folders I frequently use.
+
+** Zotero
+With Zotfile and Better Bibtex for Zotero extension.
+- Zotfile provides more human-accessible ways to sort PDF files for citations. It also supports exporting PDFs to synced folder to be annotated on tablet and import the annotated file with a click of the button! This is ideal for me since I mostly read papers on my iPad using Flexcil app.
+- Better Bibtex for Zotero is used to automatically create citation key for each citation and export my Zotero library to BibLaTeX file. Zotxt was also considered as an option but it seems that Zotxt does not work as intended (for my purpose) since Zotero update for enhanced security. Better Bibtex + Org-ref works fine for me for notetaking and writing. The only caveat is that the interaction between Emacs and Zotero is not an direct communication and has to go through .bib file. Not that big problem for me since I'm planning to use LaTeX for the final export.
+** Org-roam, org-roam-bibtex, org-ref, and org-noter
+To be added.
+
+* Some minor programs and packages that I currently use
+- Reeder 5 for RSS. (cloud sync with iOS apps is amazing feature!)
+- Mini-buffer for spotlight-like experience when using Emacs.
+- Raycast for quickly searching through files or an app that does not have keybinding. 
+- Org-roam-ui to see my roam notes in a cool way.
+* Did you know...
+These are some really basic tips that I wish someone told me earlier! Keeping these here in case I forget these.
+- You can use leader key commands (SPC + something) in the insert mode using M+SPC, i.e., you don't need leave insert mode to use commands.
+- Ctrl + [ works same as ESC! No need to reach far left corner to change back to normal mode!
+- When using abbrev-mode, it recognizes punctuations and capitalization. For example, when /em/ is set as an abbreviation of /emacs/, typing /Em/ will convert it to /Emacs/ and /em,/ will be converted to /emacs,/ so that you don't have to mannualy add abbreviations for all this situations! Sadly, it doesn't work with plural :(
+- C-x + o for changing windows. Especially useful in the insert mode!
+
+* Todo
+- [ ] Find way to magically add period at the end of sentence automatically.
+- [ ] Cleaner config file.
