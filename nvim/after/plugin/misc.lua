@@ -53,6 +53,11 @@ end
 -- ui (additional)
 local ok, zen = pcall(require, 'true-zen')
 if ok then zen.setup {
+        modes = {
+            ataraxis = {
+                minimum_writing_area = { width = 100, height = 44 }
+            }
+        },
         integrations = {
             tmux = false,
             kitty = { -- increment font size in Kitty. Note: you must set `allow_remote_control socket-only` and `listen_on unix:/tmp/kitty` in your personal config (ataraxis)

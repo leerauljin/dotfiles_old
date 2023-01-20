@@ -68,9 +68,7 @@ local leader_maps = {
     S = { ":%s/<C-r><C-w>/<C-r>0/g<CR>", "replace word with register" },
     x = { "<cmd>!chmod +x %<CR>", "chmod +x" },
     p = { vim.lsp.buf.format, "prettify" },
-    c = {
-        name = "+code",
-    },
+    c = { "<cmd>Telescope spell_suggest<cr>", "suggest spell" },
     q = {
         name = "+quit",
         l = { "<cmd>SessionLoad<cr>", "reload last session" },
