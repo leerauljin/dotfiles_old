@@ -19,13 +19,13 @@ YELLOW=0xff08bdba
 s --bar height=28        \
                  blur_radius=0   \
                  position=bottom  \
-                 y_offset=3       \
+                 y_offset=2       \
                  margin=6         \
                  corner_radius=8  \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=off        \
-                 color=$BACKGROUND
+                 color=$BAR
 
 # Defaults
 
