@@ -25,7 +25,7 @@ s --bar height=28        \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=off        \
-                 color=$BAR
+                 color=$BACKGROUND
 
 # Defaults
 
@@ -50,7 +50,7 @@ s --add item date left                        \
                         label.padding_right=6   \
                         label.align=left   \
                          label.font="$FONT:Bold:10.0"        \
-                         y_offset=6                      \
+                         y_offset=7                      \
                         width=15          \
                          script="$PLUGIN_DIR/date.sh"     \
            --subscribe                 date system_woke             \
@@ -65,7 +65,7 @@ s --add item clock left                        \
                         label.align=left   \
                          label.font="$FONT:ExtraBold:14.0"          \
                          label.color=$GREEN \
-                         y_offset=-6                      \
+                         y_offset=-5                      \
                          script="$PLUGIN_DIR/clock.sh"   
            --subscribe                 clock system_woke             \
 
