@@ -71,6 +71,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<S-Tab>'] = nil,
 })
 
+
+
 local nvim_cmp_conf = {
     documentation = {
         border = 'single',
@@ -94,7 +96,7 @@ local lsp_pref = {
 
 lsp.preset('recommended')
 lsp.ensure_installed {
-    'sumneko_lua',
+    'lua_ls',
     'pyright'
 }
 
@@ -117,3 +119,23 @@ vim.diagnostic.config {
         source = "if_many",
     },
 }
+
+local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+
+ls.add_snippets("tex", {
+	s("cp", {
+    t("\\citep{"), i(1, "citekey"), t("}"), i(0)
+	}),
+  s("ct", {
+  -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
+  t("\\citet{"), i(1, "citekey"), t("}"), i(0)
+	}),
+s("trigger", {
+	t({"After expanding, the cursor is here ->"}), i(1),
+	t({"", "After jumping forward once, cursor is here ->"}), i(2),
+	t({"", "After jumping once more, the snippet is exited there ->"}), i(0),
+})
+})
