@@ -6,7 +6,7 @@ alias s="sketchybar"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
-BAR=0x00161616
+BAR=0x33161616
 BACKGROUND=0xff161616
 FOREGROUND=0xfff2f4f8
 RED=0xffee5396
@@ -16,16 +16,16 @@ YELLOW=0xff08bdba
 
 # Bar appearance
 
-s --bar height=28        \
-                 blur_radius=0   \
+s --bar height=24        \
+                 blur_radius=100   \
                  position=top  \
-                 y_offset=6       \
-                 margin=6         \
-                 corner_radius=8  \
+                 y_offset=0       \
+                 margin=0         \
+                 corner_radius=0  \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=off        \
-                 color=$BACKGROUND
+                 color=$BAR
 
 # Defaults
 
@@ -41,54 +41,32 @@ s --default updates=when_shown                        \
                      icon.padding_right=4
 
 # Left items
-s --add item date left                        \
-           --set date   update_freq=120                  \
-                        background.padding_right=0 \
-                         icon.drawing=off                 \
-                        icon.padding_right=0 \
-                        label.padding_left=0   \
-                        label.padding_right=6   \
-                        label.align=left   \
-                         label.font="$FONT:Bold:10.0"        \
-                         y_offset=7                      \
-                        width=15          \
-                         script="$PLUGIN_DIR/date.sh"     \
-           --subscribe                 date system_woke             \
 
 s --add item clock left                        \
            --set clock   update_freq=1                  \
-                        background.padding_left=0 \
-                        background.padding_right=0 \
                          icon.drawing=off                 \
                         icon.padding_left=0 \
-                        label.padding_left=0   \
-                        label.align=left   \
-                         label.font="$FONT:ExtraBold:14.0"          \
-                         label.color=$GREEN \
-                         y_offset=-5                      \
+                         label.font="$FONT:Bold:14.0"          \
+                         label.align=center \
+                         label.color=$FOREGROUND \
+                                 y_offset=1  \
                          script="$PLUGIN_DIR/clock.sh"   
-           --subscribe                 clock system_woke             \
+           --subscribe                 clock system_woke             
 
-s --add item clock_separator left \
-           --set clock_separator icon="|"\
-                                    align=center   \
-                                 icon.font="$FONT:ExtraBold:14.0"        \
-                                 label.drawing=off \
-                                 icon.color=$RED
 # Center items
 
 SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  s --add space space.$sid left                                 \
+  s --add space space.$sid center                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
                               background.padding_left=4                  \
                               background.padding_right=4                 \
                               background.color=$RED               \
                               background.height=2                       \
-                              background.y_offset=-12                     \
+                              background.y_offset=-10                     \
                               label.drawing=off                          \
                               script="$PLUGIN_DIR/space.sh"              \
                               click_script="yabai -m space --focus $sid"
