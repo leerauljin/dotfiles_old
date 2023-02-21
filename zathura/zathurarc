@@ -4,44 +4,56 @@ set synctex true
 
 map <C-i> recolor
 
-set notification-error-bg       "#ee5396" # Red
-set notification-error-fg       "#f2f4f8" # Foreground
-set notification-warning-bg     "#08bdba" # Orange
-set notification-warning-fg     "#2a2a2a" # Selection
-set notification-bg             "#161616" # Background
-set notification-fg             "#f2f4f8" # Foreground
+###############################################################################
+# Zathura Gruvbox Material Dark
+#
+# Material Soft Variant
+# Inspired by: https://github.com/sainnhe/gruvbox-material
+#
+# Written by: Marco Antonio Cardoso Moreno
+#
+###############################################################################
 
-set completion-bg               "#1f2628" # Background
-set completion-fg               "#6d7476" # Comment
-set completion-group-bg         "#161616" # Background
-set completion-group-fg         "#f2f4f8" # Comment
-set completion-highlight-bg     "#6da4cd" # Selection
-set completion-highlight-fg     "#2a2a2a" # Foreground
+set notification-error-bg       "#32302f" # bg0
+set notification-error-fg       "#ea6962" # red
+set notification-warning-bg     "#32302f" # bg0
+set notification-warning-fg     "#d8a657" # yellow
+set notification-bg             "#32302f" # bg0
+set notification-fg             "#a9b665" # green
 
-set index-bg                    "#161616" # Background
-set index-fg                    "#f2f4f8" # Foreground
-set index-active-bg             "#2a2a2a" # Current Line
-set index-active-fg             "#f2f4f8" # Foreground
+set completion-bg               "#3c3836" # bg2
+set completion-fg               "#d4be98" # fg0
+set completion-group-bg         "#3c3836" # bg1
+set completion-group-fg         "#928374" # gray
+set completion-highlight-bg     "#7daea3" # blue
+set completion-highlight-fg     "#3c3836" # bg2
 
-set inputbar-bg                 "#161616" # Background
-set inputbar-fg                 "#f2f4f8" # Foreground
-set statusbar-bg                "#161616" # Background
-set statusbar-fg                "#f2f4f8" # Foreground
+# Define the color in index mode
+set index-bg                    "#3c3836" # bg2
+set index-fg                    "#d4be98" # fg0
+set index-active-bg             "#7daea3" # blue
+set index-active-fg             "#3c3836" # bg2
 
-set highlight-color             "#08bdba" # Orange
-set highlight-active-color      "#f16da6" # Pink
+set inputbar-bg                 "#3c3836" # bg2
+set inputbar-fg                 "#d4be98" # fg0
 
-set default-bg                  "#161616" # Background
-set default-fg                  "#f2f4f8" # Foreground
+set statusbar-bg                "#3c3836" # bg2
+set statusbar-fg                "#d4be98" # fg0
 
+set highlight-color             "#d8a657" # yellow
+set highlight-active-color      "#e78a4e" # orange
+
+set default-bg                  "#504945" # bg3
+set default-fg                  "#ddc7a1" # fg1
 set render-loading              true
-set render-loading-fg           "#161616" # Background
-set render-loading-bg           "#f2f4f8" # Foreground
+set render-loading-bg           "#32302f" # bg0
+set render-loading-fg           "#d4be98" # fg0
 
-# Recolor mode settings
-
-set recolor-lightcolor          "#161616" # Background
-set recolor-darkcolor           "#f2f4f8" # Foreground
+# Recolor book content's color
+set recolor-lightcolor          "#32302f" # bg0
+set recolor-darkcolor           "#d4be98" # fg0
+set recolor                     "true"
+set recolor-keephue             true      # keep original color
 
 # Startup options
 

@@ -1,4 +1,7 @@
-local ok, _ = pcall(require, 'nightfox')
-if not ok then return end
+-- local ok, _ = pcall(require, 'gruvbox')
+-- if not ok then return end
 
-vim.cmd("colorscheme carbonfox")
+vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_transparent_background = 1
+
+vim.cmd("colorscheme gruvbox-material")

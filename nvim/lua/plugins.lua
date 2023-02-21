@@ -122,7 +122,7 @@ local function plugins(use)
   -- use 'frabjous/knap'
 
   -- themes
-  use { 'Everblush/everblush.nvim', as = 'everblush' }
+  use "sainnhe/gruvbox-material"
   use "EdenEast/nightfox.nvim"
 
   if packer_bootstrap then

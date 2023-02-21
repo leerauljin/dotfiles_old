@@ -2,29 +2,24 @@
 
 alias s="sketchybar"
 
-
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
-BAR=0x33161616
-BACKGROUND=0xff161616
-FOREGROUND=0xfff2f4f8
-RED=0xffee5396
-GREEN=0xff25be6a
-BLUE=0xff67b0e8
-YELLOW=0xff08bdba
+
+. $PLUGIN_DIR/colors.sh
 
 # Bar appearance
 
 s --bar height=24        \
-                 blur_radius=100   \
-                 position=top  \
-                 y_offset=0       \
-                 margin=0         \
-                 corner_radius=0  \
+                 blur_radius=0   \
+                 position=bottom  \
+                 y_offset=3       \
+                 margin=6         \
+                 corner_radius=8  \
                  padding_left=10  \
                  padding_right=10 \
-                 shadow=off        \
+                 shadow=on        \
+                 topmost=on        \
                  color=$BAR
 
 # Defaults
@@ -37,69 +32,86 @@ s --default updates=when_shown                        \
                      label.color=$FOREGROUND                    \
                      label.padding_left=4                      \
                      label.padding_right=4                     \
-                     icon.padding_left=4                       \
-                     icon.padding_right=4
+                     icon.padding_left=6                       \
+                     icon.padding_right=6
 
 # Left items
 
-s --add item clock left                        \
-           --set clock   update_freq=1                  \
-                         icon.drawing=off                 \
-                        icon.padding_left=0 \
-                         label.font="$FONT:Bold:14.0"          \
-                         label.align=center \
-                         label.color=$FOREGROUND \
-                                 y_offset=1  \
-                         script="$PLUGIN_DIR/clock.sh"   
-           --subscribe                 clock system_woke             
+s --add  item  hide  left                                 \
+           --set  hide        click_script="$PLUGIN_DIR/hide.sh"    \
+                              icon.drawing=off                      \
+                              label.drawing=on                      \
+                              label="❚"
+
+s --add item yabai_mode left \
+              --set yabai_mode update_freq=3 \
+                            script="$PLUGIN_DIR/yabai_mode.sh" \
+                            label.drawing=off               \
+                        --subscribe yabai_mode space_change
+
+
 
 # Center items
 
 SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
+# SPACE_ICONS=("float" "web" "work" "code" "org" "term" "7" "8" "9" "10")
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
   s --add space space.$sid center                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
-                              background.padding_left=4                  \
-                              background.padding_right=4                 \
-                              background.color=$RED               \
-                              background.height=2                       \
-                              background.y_offset=-10                     \
+                              icon.highlight_color=$RED                  \
                               label.drawing=off                          \
-                              script="$PLUGIN_DIR/space.sh"              \
+                              background.drawing=on                          \
                               click_script="yabai -m space --focus $sid"
 done
 
 # Right items
 
-# s --add item date_separator right \
-#            --set date_separator icon="|"\
-#                                     align=center   \
-#                                  icon.font="$FONT:ExtraBold:14.0"        \
-#                                  label.drawing=off \
-#                                  icon.color=$RED
-# s --query default_menu_items
+s --add item clock right                        \
+           --set clock   update_freq=30                  \
+                         icon.drawing=off                 \
+                        icon.padding_left=0 \
+                         label.font="$FONT:ExtraBold:14.0"          \
+                         label.align=center \
+                         label.color=$FOREGROUND \
+                         script="$PLUGIN_DIR/clock.sh"              \
+           --subscribe                 clock system_woke             
 
-for i in \
-  "Control Center,Battery"     \
-  "Control Center,WiFi"     \
-  "Control Center,Sound"     \
-  "Amphetamine, Amphetamine"     \
-  "Tailscale,Item-0"              \
-  "Dropbox,Item-0"              \
-  "TextInputMenuAgent,Item-0" 
-            
-do
-  s --add alias "$i" right          \
-             --set "$i" icon.padding_left=0  \
-                        icon.padding_right=0 \
-                        label.padding_left=0 \
-                        label.padding_right=0 
+s --add item battery right \
+              --set battery update_freq=3 \
+                            script="$PLUGIN_DIR/power.sh" \
+                            icon.padding_left=10                   \
+                            icon=                   \
+                            label.drawing=off
+                            
 
-done
+sketchybar --add slider volume right 50                                           \
+           --set volume script="sketchybar --set volume slider.percentage=\$INFO" \
+                        slider.highlight_color=0xff8aadf4                         \
+                        slider.background.height=10                               \
+                        slider.background.corner_radius=3                         \
+                        slider.background.color=0xff494d64                        \
+                        icon.drawing=off                                         \
+                        label.drawing=off                                         \
+           --subscribe volume volume_change
 
+s --add item sound right \
+              --set sound update_freq=3 \
+                            script="$PLUGIN_DIR/sound.sh" \
+                            icon=墳                   \
+                            icon.align=left                   \
+                            icon.padding_right=10                   \
+                            label.drawing=off              \
+                         --subscribe sound volume_change
+
+
+s --add item wifi right \
+              --set wifi update_freq=3 \
+                            script="$PLUGIN_DIR/wifi.sh" \
+                            icon=睊                   \
+                            label.drawing=off
 
 # Finalize
 
