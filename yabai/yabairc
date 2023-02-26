@@ -23,7 +23,7 @@ yabai -m config active_window_opacity        0.97
 yabai -m config normal_window_opacity        0.97
 yabai -m config window_border                on
 yabai -m config window_border_blur           off
-yabai -m config window_border_width          2
+yabai -m config window_border_width          1
 yabai -m config active_window_border_color   0xffd4be98
 yabai -m config normal_window_border_color   0x00282828
 # yabai -m config insert_feedback_color        0xffff0000
@@ -35,11 +35,11 @@ yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
 yabai -m config layout                       bsp
-yabai -m config top_padding                  6
-yabai -m config bottom_padding               6
-yabai -m config left_padding                 6
-yabai -m config right_padding                6
-yabai -m config window_gap                   6
+yabai -m config top_padding                  20
+yabai -m config bottom_padding               20
+yabai -m config left_padding                 20
+yabai -m config right_padding                20
+yabai -m config window_gap                   20
 
 
 ## Default spaces

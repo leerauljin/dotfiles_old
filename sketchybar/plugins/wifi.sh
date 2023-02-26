@@ -14,5 +14,5 @@ if [ "$SSID" = "" ]; then
 else
 #   sketchybar --set $NAME label="$SSID (${CURR_TX}Mbps)" icon=直
   sketchybar --set $NAME icon=直 \
-                         icon.color=$FOREGROUND
+                         icon.color=$FGALT
 fi

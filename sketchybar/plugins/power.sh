@@ -13,7 +13,7 @@ if [[ $CHARGING != "" ]]; then
   exit 0
 fi
 
-[[ ${BATT_PERCENT} -gt 10 ]] && COLOR=$FOREGROUND || COLOR=$RED
+[[ ${BATT_PERCENT} -gt 10 ]] && COLOR=$FGALT || COLOR=$RED
 
 case ${BATT_PERCENT} in
    100) ICON="" ;;

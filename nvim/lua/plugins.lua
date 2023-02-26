@@ -81,9 +81,6 @@ local function plugins(use)
 
   -- editor (additional)
   use 'norcalli/nvim-colorizer.lua'
-  use { 'j-hui/fidget.nvim',
-    event = 'BufReadPre',
-  }
   use { 'folke/todo-comments.nvim',
     cmd = { 'TodoTrouble', "TodoTelescope" },
   }
@@ -98,6 +95,7 @@ local function plugins(use)
   use 'christoomey/vim-tmux-navigator'
   use 'Pocco81/true-zen.nvim'
   use 'ThePrimeagen/harpoon'
+  use 'echasnovski/mini.bracketed'
   use { 'folke/trouble.nvim',
     event = 'VimEnter',
     cmd = { 'TroubleToggle', "Trouble" },
@@ -123,7 +121,6 @@ local function plugins(use)
 
   -- themes
   use "sainnhe/gruvbox-material"
-  use "EdenEast/nightfox.nvim"
 
   if packer_bootstrap then
     require('packer').sync()

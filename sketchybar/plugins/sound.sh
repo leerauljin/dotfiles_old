@@ -11,7 +11,7 @@ ICON="婢"
 COLOR=$RED
 else
 ICON="墳"
-COLOR=$FOREGROUND
+COLOR=$FGALT
 fi
 
 sketchybar -m \

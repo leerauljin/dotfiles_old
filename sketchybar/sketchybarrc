@@ -3,7 +3,7 @@
 alias s="sketchybar"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-FONT="JetBrainsMono Nerd Font"
+FONT="IosevkaTerm Nerd Font"
 FONTALT="Helvetica"
 
 . $PLUGIN_DIR/colors.sh
@@ -19,7 +19,8 @@ s --bar height=24        \
                  padding_left=10  \
                  padding_right=10 \
                  shadow=on        \
-                 topmost=on        \
+                 border_width=1        \
+                 border_color=$FGALT        \
                  color=$BAR
 
 # Defaults
@@ -27,9 +28,9 @@ s --bar height=24        \
 s --default updates=when_shown                        \
                      drawing=on                                \
                      icon.font="$FONT:Bold:18.0"               \
-                     icon.color=$FOREGROUND                     \
+                     icon.color=$FG                     \
                      label.font="$FONT:Bold:16.0"              \
-                     label.color=$FOREGROUND                    \
+                     label.color=$FGALT                    \
                      label.padding_left=4                      \
                      label.padding_right=4                     \
                      icon.padding_left=6                       \
@@ -39,21 +40,32 @@ s --default updates=when_shown                        \
 
 s --add  item  hide  left                                 \
            --set  hide        click_script="$PLUGIN_DIR/hide.sh"    \
-                              icon.drawing=off                      \
-                              label.drawing=on                      \
-                              label="❚"
+                              label.drawing=off                      \
+                              icon.color=$FGALT                      \
+                              icon=""
 
-s --add item yabai_mode left \
-              --set yabai_mode update_freq=3 \
-                            script="$PLUGIN_DIR/yabai_mode.sh" \
-                            label.drawing=off               \
-                        --subscribe yabai_mode space_change
+# s --add item yabai_mode left \
+#               --set yabai_mode update_freq=3 \
+#                             script="$PLUGIN_DIR/yabai_mode.sh" \
+#                               icon.color=$FGALT                      \
+#                             label.drawing=off               \
+#                         --subscribe yabai_mode space_change
 
 
+s --add slider pomo left 50                                           \
+           --set pomo click_script="nohup $PLUGIN_DIR/pomo.sh &" \
+                        slider.highlight_color=$FG                         \
+                        slider.background.color=$FGALT                        \
+                        slider.background.height=10                               \
+                        slider.background.corner_radius=3                         \
+                        icon=󱑊                                         \
+                        icon.y_offset=1                                         \
+                        icon.color=$FGALT                                         \
+                        label.drawing=off
 
 # Center items
 
-SPACE_ICONS=("" "爵" "" "" "" "" "" "8" "9" "10")
+SPACE_ICONS=("󰀱" "爵" "" "" "" "" "" "8" "9" "10")
 # SPACE_ICONS=("float" "web" "work" "code" "org" "term" "7" "8" "9" "10")
 for i in "${!SPACE_ICONS[@]}"
 do
@@ -61,6 +73,7 @@ do
   s --add space space.$sid center                                 \
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
+                              icon.color=$FGALT                  \
                               icon.highlight_color=$RED                  \
                               label.drawing=off                          \
                               background.drawing=on                          \
@@ -75,7 +88,7 @@ s --add item clock right                        \
                         icon.padding_left=0 \
                          label.font="$FONT:ExtraBold:14.0"          \
                          label.align=center \
-                         label.color=$FOREGROUND \
+                         label.color=$GREEN \
                          script="$PLUGIN_DIR/clock.sh"              \
            --subscribe                 clock system_woke             
 
@@ -84,15 +97,16 @@ s --add item battery right \
                             script="$PLUGIN_DIR/power.sh" \
                             icon.padding_left=10                   \
                             icon=                   \
-                            label.drawing=off
+                            label.drawing=off      \
+                         --subscribe battery power_source_change
                             
 
-sketchybar --add slider volume right 50                                           \
+s --add slider volume right 50                                           \
            --set volume script="sketchybar --set volume slider.percentage=\$INFO" \
-                        slider.highlight_color=0xff8aadf4                         \
+                        slider.highlight_color=$BLUE                         \
                         slider.background.height=10                               \
                         slider.background.corner_radius=3                         \
-                        slider.background.color=0xff494d64                        \
+                        slider.background.color=$BLUEALT                        \
                         icon.drawing=off                                         \
                         label.drawing=off                                         \
            --subscribe volume volume_change
@@ -101,6 +115,7 @@ s --add item sound right \
               --set sound update_freq=3 \
                             script="$PLUGIN_DIR/sound.sh" \
                             icon=墳                   \
+                         icon.color=$FGALT                \
                             icon.align=left                   \
                             icon.padding_right=10                   \
                             label.drawing=off              \
@@ -111,7 +126,20 @@ s --add item wifi right \
               --set wifi update_freq=3 \
                             script="$PLUGIN_DIR/wifi.sh" \
                             icon=睊                   \
-                            label.drawing=off
+                         icon.color=$FGALT                \
+                            label.drawing=off            \
+                         --subscribe wifi wifi_change
+
+
+s --add event input_change AppleSelectedInputSourcesChangedNotification
+
+s --add item input right \
+              --set input update_freq=3 \
+                            script="$PLUGIN_DIR/input.sh" \
+                            icon=                   \
+                            icon.padding_right=2                  \
+                             label.color=$FG                    \
+                         --subscribe input input_change
 
 # Finalize
 

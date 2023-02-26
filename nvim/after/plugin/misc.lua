@@ -31,15 +31,6 @@ if ok then comment.setup() end
 local ok, colorizer = pcall(require, 'colorizer')
 if ok then colorizer.setup() end
 
-local ok, fidget = pcall(require, 'fidget')
-if ok then fidget.setup {
-        text = {
-            spinner = 'dots_snake',
-            done = ''
-        }
-    }
-end
-
 local ok, todo = pcall(require, 'todo-comments')
 if ok then todo.setup() end
 
@@ -49,6 +40,9 @@ if ok then renamer.setup {
         border_chars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
     }
 end
+
+local ok, bracketed = pcall(require, 'mini.bracketed')
+if ok then bracketed.setup() end
 
 -- ui (additional)
 local ok, zen = pcall(require, 'true-zen')
