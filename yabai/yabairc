@@ -16,16 +16,16 @@ yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
-yabai -m config window_shadow                on
+yabai -m config window_shadow                off
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        0.97
 yabai -m config normal_window_opacity        0.97
-yabai -m config window_border                on
+yabai -m config window_border                off
 yabai -m config window_border_blur           off
 yabai -m config window_border_width          1
 yabai -m config active_window_border_color   0xffd4be98
-yabai -m config normal_window_border_color   0x00282828
+yabai -m config normal_window_border_color   0x00d4be98
 # yabai -m config insert_feedback_color        0xffff0000
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
@@ -35,11 +35,11 @@ yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
 yabai -m config layout                       bsp
-yabai -m config top_padding                  20
-yabai -m config bottom_padding               20
-yabai -m config left_padding                 20
-yabai -m config right_padding                20
-yabai -m config window_gap                   20
+yabai -m config top_padding                  12
+yabai -m config bottom_padding               12
+yabai -m config left_padding                 12
+yabai -m config right_padding                12
+yabai -m config window_gap                   12
 
 
 ## Default spaces
@@ -108,8 +108,8 @@ yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add title="^MiniPlayer$" manage=off
 # yabai -m rule --add app="^Finder$" manage=off
 
-# yabai -m config external_bar all:24:0
-yabai -m config external_bar all:0:30
+yabai -m config external_bar all:24:0
+# yabai -m config external_bar all:0:30
 
 # Always focus on windows in space when chancing space
 

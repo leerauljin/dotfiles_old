@@ -14,7 +14,7 @@ window:
   decorations: buttonless
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
-  opacity: 0.97
+  opacity: 1
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   history: 10000

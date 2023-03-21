@@ -12,9 +12,9 @@ $python"""
 style = "blue"
 
 [character]
-success_symbol = "[󰀱 ](green)"
-error_symbol = "[󰀱 ](red)"
-vimcmd_symbol = "[󰀱 ](purple)"
+success_symbol = "[▲]()"
+error_symbol = "[▲](red)"
+vimcmd_symbol = "[▲](yellow)"
 
 [git_branch]
 format = "[$branch]($style)"
