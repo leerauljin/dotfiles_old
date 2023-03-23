@@ -24,19 +24,19 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: IosevkaTerm Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
   # Bold font face
   bold:
-    family: IosevkaTerm Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold
   # Italic font face
   italic:
-    family: IosevkaTerm Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Italic
   # Bold italic font face
   bold_italic:
-    family: IosevkaTerm Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
   # Point size
   size: 16.0

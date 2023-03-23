@@ -3,7 +3,7 @@
 alias s="sketchybar"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-FONT="IosevkaTerm Nerd Font"
+FONT="JetBrainsMono Nerd Font"
 FONTALT="Helvetica"
 
 . $PLUGIN_DIR/colors.sh
