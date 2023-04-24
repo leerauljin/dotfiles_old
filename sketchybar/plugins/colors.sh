@@ -1,9 +1,10 @@
 #!/bin/bash
 
-export BAR=0xf732302f
+export BAR=0x0032302f
 export BG=0xff282828
 export FG=0xffd4be98
 export FGALT=0x44d4be98
+# export FGALT=0x77ffffff
 export RED=0xffea6962
 export REDALT=0x44ea6962
 export GREEN=0xffa9b665

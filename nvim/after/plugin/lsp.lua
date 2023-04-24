@@ -100,7 +100,7 @@ lsp.ensure_installed {
     'pyright'
 }
 
-lsp.configure('sumneko_lua', lua_config)
+lsp.configure('lua_ls', lua_config)
 lsp.configure('pyright', py_config)
 
 lsp.set_preferences(lsp_pref)

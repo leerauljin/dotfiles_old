@@ -84,8 +84,7 @@ rcmd - t : yabai -m window --toggle float;\
 # open apps
 rcmd - 0 : open -n -a Finder
 
-rcmd - w : open -a Safari
-rcmd - x : open -a Firefox
+rcmd - w : open -a Firefox
 
 # rcmd - return : open -n -a Kitty ; yabai -m space --focus 6
 rcmd - return : open -n -a Alacritty

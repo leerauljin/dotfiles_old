@@ -12,7 +12,7 @@ FONTALT="Helvetica"
 
 s --bar height=24        \
                  blur_radius=0   \
-                 position=top  \
+                 position=bottom  \
                  y_offset=0       \
                  margin=0         \
                  corner_radius=0  \
@@ -37,10 +37,7 @@ s --default updates=when_shown                        \
                      icon.padding_right=6
 
 # Left items
-
-
-# SPACE_ICONS=("󰀱" "爵" "" "" "" "" "" "8" "9" "10")
-SPACE_ICONS=("home" "web" "work" "code" "org" "term" "ext" "8" "9" "10")
+SPACE_ICONS=("●" "●" "●" "●" "●" "●" "●" "●" "●" "●")
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
@@ -48,18 +45,12 @@ do
              --set space.$sid associated_space=$sid                      \
                               icon=${SPACE_ICONS[i]}                     \
                               icon.color=$FGALT                  \
-                             icon.font="$FONT:Italic:16.0"               \
+                             icon.font="$FONT:Italic:12.0"               \
                               icon.highlight_color=$RED                  \
                               label.drawing=off                          \
                               background.drawing=on                          \
                               click_script="yabai -m space --focus $sid"
 done
-# s --add item yabai_mode left \
-#               --set yabai_mode update_freq=3 \
-#                             script="$PLUGIN_DIR/yabai_mode.sh" \
-#                               icon.color=$FGALT                      \
-#                             label.drawing=off               \
-#                         --subscribe yabai_mode space_change
 
 
 
@@ -70,10 +61,9 @@ s --add item clock center                        \
                         icon.padding_left=0 \
                          label.font="$FONT:ExtraBold:14.0"          \
                          label.align=center \
-                         label.color=$GREEN \
+                         label.color=$RED \
                          script="$PLUGIN_DIR/clock.sh"              \
            --subscribe                 clock system_woke             
-
 
 # Right items
 
@@ -87,15 +77,15 @@ s --add item battery right \
                          --subscribe battery power_source_change
                             
 
-s --add slider volume right 50                                           \
-           --set volume script="sketchybar --set volume slider.percentage=\$INFO" \
-                        slider.highlight_color=$BLUE                         \
-                        slider.background.height=10                               \
-                        slider.background.corner_radius=3                         \
-                        slider.background.color=$BLUEALT                        \
-                        icon.drawing=off                                         \
-                        label.drawing=off                                         \
-           --subscribe volume volume_change
+# s --add slider volume right 50                                           \
+#            --set volume script="sketchybar --set volume slider.percentage=\$INFO" \
+#                         slider.highlight_color=$BLUE                         \
+#                         slider.background.height=10                               \
+#                         slider.background.corner_radius=3                         \
+#                         slider.background.color=$BLUEALT                        \
+#                         icon.drawing=off                                         \
+#                         label.drawing=off                                         \
+#            --subscribe volume volume_change
 
 s --add item sound right \
               --set sound update_freq=3 \
@@ -103,7 +93,6 @@ s --add item sound right \
                             icon=墳                   \
                          icon.color=$FGALT                \
                             icon.align=left                   \
-                            icon.padding_right=10                   \
                             label.drawing=off              \
                          --subscribe sound volume_change
 
