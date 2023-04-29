@@ -19,7 +19,6 @@ tree.setup {
         adaptive_size = true,
         side = "left",
         width = 20,
-        hide_root_folder = true,
     },
     git = {
         enable = true,
@@ -37,6 +36,7 @@ tree.setup {
     renderer = {
         -- highlight_git = false,
         highlight_opened_files = "name",
+        root_folder_label = false,
         indent_markers = {
             enable = true,
         },
