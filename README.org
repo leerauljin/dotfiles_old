@@ -1,6 +1,10 @@
 #+TITLE: Keyboard-centric macOS Configuration for Academic Writing, Data Analysis, & Notetaking
 #+ATTR_ORG: :width 1000
 [[file:screenshot_full.jpg]]
+
+* IMPORTANT
+This repo is no longer updated. please see [[https://github.com/leerauljin/dotfiles][this repo]] which utilizes bare git (bye bye annoying symlinks!)
+
 * Description
 
 macOS configuration centered around Yabai window manager and Neovim 
